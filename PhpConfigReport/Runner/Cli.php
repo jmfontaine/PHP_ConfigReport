@@ -176,15 +176,17 @@ class PhpConfigReport_Runner_Cli extends PhpConfigReport_Runner_Abstract
         echo <<<EOT
 
 Usage:
-  PhpConfigReport [options] <path>
+  phpcr [options] <path>
 
 Options:
-  -d                --debug                    Display debug informations
-  -h                --help                     Display this message
-  -v                --verbose                  Display processing informations
-                    --version                  Display the version informations
+  -d    --debug         Display debug informations
+  -e    --environment   Define PHP environment (default: production)
+  -h    --help          Display this message
+  -v    --verbose       Display processing informations
+        --version       Display the version
+
+
 EOT;
-        echo "\n\n";
     }
 
     /**
