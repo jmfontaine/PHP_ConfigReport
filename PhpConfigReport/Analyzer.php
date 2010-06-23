@@ -36,9 +36,10 @@
  */
 class PhpConfigReport_Analyzer
 {
-    const PRODUCTION = 'production';
-    const STAGING    = 'staging';
-    const TESTING    = 'testing';
+    const PRODUCTION  = 'production';
+    const STAGING     = 'staging';
+    const TESTING     = 'testing';
+    const DEVELOPMENT = 'development';
 
     /**
      * Config instance
@@ -52,10 +53,28 @@ class PhpConfigReport_Analyzer
     protected function _checkErrorsDisplay(&$report)
     {
         if ('1' === $this->_config->getDirective('display_errors') &&
-            self::PRODUCTION == $this->_environment) {
+            self::PRODUCTION === $this->_environment) {
             $report->addError(
                 'display_errors',
                 '"display_errors" directive should be set to "off" in production'
+            );
+        }
+    }
+
+    protected function _checkErrorsLogging(&$report)
+    {
+        if ('1' !== $this->_config->getDirective('log_errors') &&
+            self::PRODUCTION === $this->_environment) {
+            $report->addError(
+                'log_errors',
+                '"log_errors" directive should be set to "on" in production'
+            );
+        } elseif ('1' === $this->_config->getDirective('log_errors') &&
+            self::PRODUCTION !== $this->_environment) {
+            $report->addError(
+                'log_errors',
+                '"log_errors" directive should not be set to "on" in ' .
+                    $this->_environment
             );
         }
     }
@@ -86,6 +105,7 @@ class PhpConfigReport_Analyzer
         $report = new PhpConfigReport_Report();
 
         $this->_checkErrorsDisplay($report);
+        $this->_checkErrorsLogging($report);
 
         return $report;
     }
