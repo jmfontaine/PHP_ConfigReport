@@ -48,7 +48,7 @@ class PhpConfigReport_Runner_Cli extends PhpConfigReport_Runner_Abstract
      * @var ezcConsoleInput
      * @see http://ezcomponents.org/docs/api/trunk/ConsoleTools/ezcConsoleInput.html
      */
-    public static $consoleInput;
+    protected static $_consoleInput;
 
     /**
      * Object used for display in command line
@@ -56,7 +56,7 @@ class PhpConfigReport_Runner_Cli extends PhpConfigReport_Runner_Abstract
      * @var ezcConsoleOutput
      * @see http://ezcomponents.org/docs/api/trunk/ConsoleTools/ezcConsoleOutput.html
      */
-    public static $consoleOutput;
+    protected static $_consoleOutput;
 
     /**
      * Main function. Sets up the environment and coordinate the work.
@@ -77,11 +77,11 @@ class PhpConfigReport_Runner_Cli extends PhpConfigReport_Runner_Abstract
         $output->formats->debug->color   = 'yellow';
         $output->formats->debug->style   = array('italic');
         $output->formats->error->color   = 'red';
-        self::$consoleOutput = $output;
+        self::$_consoleOutput = $output;
 
         // Set console input up
         $input = new ezcConsoleInput();
-        self::$consoleInput = $input;
+        self::$_consoleInput = $input;
 
         $debugOption = new ezcConsoleOption('d', 'debug');
         $debugOption->type = ezcConsoleInput::TYPE_NONE;
@@ -199,14 +199,14 @@ EOT;
     public static function displayMessage($message, $type = 'info')
     {
         if ('info' == $type &&
-            !self::$consoleInput->getOption('verbose')->value) {
+            !self::getConsoleInput()->getOption('verbose')->value) {
             return;
         } elseif ('debug' == $type
-                  && !self::$consoleInput->getOption('debug')->value) {
+                  && !self::getConsoleInput()->getOption('debug')->value) {
             return;
         }
 
-        self::$consoleOutput->outputText("$message\n", $type);
+        self::getConsoleOutput()->outputText("$message\n", $type);
     }
 
     /**
@@ -216,9 +216,19 @@ EOT;
      */
     public static function displayVersion()
     {
-        self::$consoleOutput->outputLine(
+        self::getConsoleOutput()->outputLine(
             'PHP Config Report 0.1-dev by Jean-Marc Fontaine',
             'version'
         );
+    }
+
+    public static function getConsoleInput()
+    {
+        return self::$_consoleInput;
+    }
+
+    public static function getConsoleOutput()
+    {
+        return self::$_consoleOutput;
     }
 }
