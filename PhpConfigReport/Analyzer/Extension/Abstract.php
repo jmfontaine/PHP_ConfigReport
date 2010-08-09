@@ -32,47 +32,54 @@
  */
 
 /**
- * Text renderer
+ * Abstract analyzer for PHP configuration
  */
-class PhpConfigReport_Renderer_Text
-    implements PhpConfigReport_Renderer_Interface
+abstract class PhpConfigReport_Analyzer_Extension_Abstract
 {
     /**
-     * Displays report or generates its files
+     * Config instance
      *
-     * @param PhpConfigReport_Report $report Report
+     * @var PhpConfigReport_Config
+     */
+    protected $_config;
+
+    protected $_environment;
+
+    protected $_extensionName;
+
+    /**
+     * Class constructor
+     *
+     * @param PhpConfigReport_Config $config Config instance
      * @return void
      */
-    public function render(PhpConfigReport_Report $report)
+    public function __construct(PhpConfigReport_Config $config, $environment)
     {
-        $consoleOutput = new ezcConsoleOutput();
-        $consoleOutput->formats->extensionName->style = array('bold');
-        $consoleOutput->formats->columnTitle->style   = array('bold');
-        $consoleOutput->formats->error->bgcolor       = 'red';
-        $consoleOutput->formats->warning->bgcolor     = 'yellow';
+        $this->_config      = $config;
+        $this->_environment = $environment;
+    }
 
-        $consoleOutput->outputLine('Environment: ' . $report->getEnvironment());
+    /**
+     * Generates and returns report section for this extension
+     *
+     * @return PhpConfigReport_Section Section
+     */
+    public function getReportSection()
+    {
+        $section = new PhpConfigReport_Report_Section($this->_environment);
+        $section->setExtensionName($this->_extensionName);
 
-        foreach ($report->getSections() as $section) {
-            $consoleOutput->outputLine();
-            $consoleOutput->outputLine($section->getExtensionName(), 'extensionName');
-
-            $table = new ezcConsoleTable($consoleOutput, 80);
-
-            $table[0]->format     = 'columnTitle';
-            $table[0][0]->content = 'Directive';
-            $table[0][1]->content = 'Level';
-            $table[0][2]->content = 'Message';
-
-            foreach ($section->getItems() as $index => $item) {
-                $table[$index + 1][0]->content = $item['directive'];
-                $table[$index + 1]->format     = $item['level'];
-                $table[$index + 1][1]->content = $item['level'];
-                $table[$index + 1][2]->content = $item['message'];
+        $reflectedClass   = new ReflectionClass($this);
+        $reflectedMethods = $reflectedClass->getMethods(
+            ReflectionMethod::IS_PROTECTED
+        );
+        foreach($reflectedMethods as $reflectedMethod) {
+            $methodName = $reflectedMethod->getName();
+            if ('_check' == substr($methodName, 0, 6)) {
+                $this->$methodName($section);
             }
-
-            $table->outputTable();
-            $consoleOutput->outputLine();
         }
+
+        return $section;
     }
 }

@@ -36,34 +36,27 @@
  */
 class PhpConfigReport_Report
 {
-    const ERROR   = 'error';
-    const WARNING = 'warning';
+    protected $_environment;
+    protected $_sections = array();
 
-    protected $_items = array();
-
-    public function addError($directive, $message)
+    public function __construct($environment)
     {
-        return $this->addItem($directive, $message, self::ERROR);
+        $this->_environment = $environment;
     }
 
-    public function addItem($directive, $message, $type)
+    public function addSection(PhpConfigReport_Report_Section $section)
     {
-        $this->_items[] = array(
-            'directive' => $directive,
-            'message'   => $message,
-            'type'      => $type,
-        );
-
+        $this->_sections[] = $section;
         return $this;
     }
 
-    public function addWarning($directive, $message)
+    public function getEnvironment()
     {
-        return $this->addItem($directive, $message, self::WARNING);
+        return $this->_environment;
     }
 
-    public function getItems()
+    public function getSections()
     {
-        return $this->_items;
+        return $this->_sections;
     }
 }

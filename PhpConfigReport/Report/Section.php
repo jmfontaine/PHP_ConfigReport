@@ -32,47 +32,61 @@
  */
 
 /**
- * Text renderer
+ * Report class
  */
-class PhpConfigReport_Renderer_Text
-    implements PhpConfigReport_Renderer_Interface
+class PhpConfigReport_Report_Section
 {
-    /**
-     * Displays report or generates its files
-     *
-     * @param PhpConfigReport_Report $report Report
-     * @return void
-     */
-    public function render(PhpConfigReport_Report $report)
+    const ERROR   = 'error';
+    const WARNING = 'warning';
+
+    protected $_environment;
+    protected $_extensionName;
+    protected $_items = array();
+
+    public function __construct($environment)
     {
-        $consoleOutput = new ezcConsoleOutput();
-        $consoleOutput->formats->extensionName->style = array('bold');
-        $consoleOutput->formats->columnTitle->style   = array('bold');
-        $consoleOutput->formats->error->bgcolor       = 'red';
-        $consoleOutput->formats->warning->bgcolor     = 'yellow';
+        $this->_environment = $environment;
+    }
 
-        $consoleOutput->outputLine('Environment: ' . $report->getEnvironment());
+    public function addError($directive, $message)
+    {
+        return $this->addItem($directive, $message, self::ERROR);
+    }
 
-        foreach ($report->getSections() as $section) {
-            $consoleOutput->outputLine();
-            $consoleOutput->outputLine($section->getExtensionName(), 'extensionName');
+    public function addItem($directive, $message, $level)
+    {
+        $this->_items[] = array(
+            'directive' => $directive,
+            'message'   => $message,
+            'level'     => $level,
+        );
 
-            $table = new ezcConsoleTable($consoleOutput, 80);
+        return $this;
+    }
 
-            $table[0]->format     = 'columnTitle';
-            $table[0][0]->content = 'Directive';
-            $table[0][1]->content = 'Level';
-            $table[0][2]->content = 'Message';
+    public function addWarning($directive, $message)
+    {
+        return $this->addItem($directive, $message, self::WARNING);
+    }
 
-            foreach ($section->getItems() as $index => $item) {
-                $table[$index + 1][0]->content = $item['directive'];
-                $table[$index + 1]->format     = $item['level'];
-                $table[$index + 1][1]->content = $item['level'];
-                $table[$index + 1][2]->content = $item['message'];
-            }
+    public function getEnvironment()
+    {
+        return $this->_environment;
+    }
 
-            $table->outputTable();
-            $consoleOutput->outputLine();
-        }
+    public function getExtensionName()
+    {
+        return $this->_extensionName;
+    }
+
+    public function getItems()
+    {
+        return $this->_items;
+    }
+
+    public function setExtensionName($extensionName)
+    {
+        $this->_extensionName = $extensionName;
+        return $this;
     }
 }

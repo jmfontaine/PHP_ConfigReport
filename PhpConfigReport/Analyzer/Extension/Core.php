@@ -32,47 +32,38 @@
  */
 
 /**
- * Text renderer
+ * Analyzer for PHP core configuration
  */
-class PhpConfigReport_Renderer_Text
-    implements PhpConfigReport_Renderer_Interface
+class PhpConfigReport_Analyzer_Extension_Core
+    extends PhpConfigReport_Analyzer_Extension_Abstract
 {
-    /**
-     * Displays report or generates its files
-     *
-     * @param PhpConfigReport_Report $report Report
-     * @return void
-     */
-    public function render(PhpConfigReport_Report $report)
+    protected $_extensionName = 'Core';
+
+    protected function _checkDisplayErrors(&$section)
     {
-        $consoleOutput = new ezcConsoleOutput();
-        $consoleOutput->formats->extensionName->style = array('bold');
-        $consoleOutput->formats->columnTitle->style   = array('bold');
-        $consoleOutput->formats->error->bgcolor       = 'red';
-        $consoleOutput->formats->warning->bgcolor     = 'yellow';
+        if ('1' === $this->_config->getDirective('display_errors') &&
+            PhpConfigReport_Analyzer::PRODUCTION === $this->_environment) {
+            $section->addError(
+                'display_errors',
+                'Should be set to "off"'
+            );
+        }
+    }
 
-        $consoleOutput->outputLine('Environment: ' . $report->getEnvironment());
-
-        foreach ($report->getSections() as $section) {
-            $consoleOutput->outputLine();
-            $consoleOutput->outputLine($section->getExtensionName(), 'extensionName');
-
-            $table = new ezcConsoleTable($consoleOutput, 80);
-
-            $table[0]->format     = 'columnTitle';
-            $table[0][0]->content = 'Directive';
-            $table[0][1]->content = 'Level';
-            $table[0][2]->content = 'Message';
-
-            foreach ($section->getItems() as $index => $item) {
-                $table[$index + 1][0]->content = $item['directive'];
-                $table[$index + 1]->format     = $item['level'];
-                $table[$index + 1][1]->content = $item['level'];
-                $table[$index + 1][2]->content = $item['message'];
-            }
-
-            $table->outputTable();
-            $consoleOutput->outputLine();
+    protected function _checkLogErrors(&$section)
+    {
+        if ('1' !== $this->_config->getDirective('log_errors') &&
+            PhpConfigReport_Analyzer::PRODUCTION === $this->_environment) {
+            $section->addError(
+                'log_errors',
+                'Should be set to "on"'
+            );
+        } elseif ('1' === $this->_config->getDirective('log_errors') &&
+            PhpConfigReport_Analyzer::PRODUCTION !== $this->_environment) {
+            $section->addError(
+                'log_errors',
+                'Should be set to "off"'
+            );
         }
     }
 }

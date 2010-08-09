@@ -32,7 +32,7 @@
  */
 
 /**
- * Analyzer for repository data
+ * Analyzer for PHP configuration
  */
 class PhpConfigReport_Analyzer
 {
@@ -50,35 +50,6 @@ class PhpConfigReport_Analyzer
 
     protected $_environment;
 
-    protected function _checkErrorsDisplay(&$report)
-    {
-        if ('1' === $this->_config->getDirective('display_errors') &&
-            self::PRODUCTION === $this->_environment) {
-            $report->addError(
-                'display_errors',
-                '"display_errors" directive should be set to "off" in production'
-            );
-        }
-    }
-
-    protected function _checkErrorsLogging(&$report)
-    {
-        if ('1' !== $this->_config->getDirective('log_errors') &&
-            self::PRODUCTION === $this->_environment) {
-            $report->addError(
-                'log_errors',
-                '"log_errors" directive should be set to "on" in production'
-            );
-        } elseif ('1' === $this->_config->getDirective('log_errors') &&
-            self::PRODUCTION !== $this->_environment) {
-            $report->addError(
-                'log_errors',
-                '"log_errors" directive should not be set to "on" in ' .
-                    $this->_environment
-            );
-        }
-    }
-
     /**
      * Class constructor
      *
@@ -89,23 +60,34 @@ class PhpConfigReport_Analyzer
     {
         PhpConfigReport_Runner_Cli::displayMessage('Initializing analyzer');
 
-        $this->_config = $config;
+        $this->_config      = $config;
         $this->_environment = $environment;
     }
 
     /**
      * Generates and returns report
      *
-     * @param int $startRevision First revision to work on
-     * @param int $endRevision   Last revision to work on
-     * @return VcsStats_Report Report
+     * @return PhpConfigReport_Report Report
      */
     public function getReport()
     {
-        $report = new PhpConfigReport_Report();
+        $report = new PhpConfigReport_Report($this->_environment);
 
-        $this->_checkErrorsDisplay($report);
-        $this->_checkErrorsLogging($report);
+        $extensions = array();
+        $path       = dirname(__FILE__) . '/Analyzer/Extension';
+        $iterator   = new DirectoryIterator($path);
+        foreach ($iterator as $item) {
+            if ($item->isFile() && !$item->isDot() && 'Abstract.php' != $item->getFilename()) {
+                $extensions[] = substr($item->getFilename(), 0, -4);
+            }
+        }
+
+        sort($extensions);
+        foreach ($extensions as $extension) {
+            $class    = "PhpConfigReport_Analyzer_Extension_$extension";
+            $instance = new $class($this->_config, $this->_environment);
+            $report->addSection($instance->getReportSection());
+        }
 
         return $report;
     }

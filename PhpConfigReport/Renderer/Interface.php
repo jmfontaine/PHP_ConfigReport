@@ -39,7 +39,7 @@ interface PhpConfigReport_Renderer_Interface
     /**
      * Generate report output
      *
-     * @param VcsStats_Report $report Report
+     * @param PhpConfigReport_Report $report Report
      * @return void
      */
     public function render(PhpConfigReport_Report $report);

@@ -220,6 +220,7 @@ EOT;
             'PHP Config Report 0.1-dev by Jean-Marc Fontaine',
             'version'
         );
+        self::getConsoleOutput()->outputLine();
     }
 
     public static function getConsoleInput()
