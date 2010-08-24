@@ -56,7 +56,7 @@ class PhpConfigReport_Renderer_Text
         $noIssue = true;
         foreach ($report->getSections() as $section) {
             if ($section->hasIssues()) {
-                $noIssue = true;
+                $noIssue = false;
 
                 $consoleOutput->outputLine();
                 $consoleOutput->outputLine($section->getExtensionName(), 'extensionName');
