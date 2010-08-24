@@ -74,7 +74,7 @@ class PhpConfigReport_Report_Section
     public function addWarning($directiveName, $actualValue, $suggestedValue,
         $comments)
     {
-        return $this->addItem(
+        return $this->addIssue(
             $directiveName,
             $actualValue,
             $suggestedValue,
