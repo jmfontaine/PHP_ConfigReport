@@ -39,6 +39,21 @@ class PhpConfigReport_Analyzer_Extension_Core
 {
     protected $_extensionName = 'Core';
 
+    public function checkAllowUrlFopen()
+    {
+        if ($this->isDirectiveEnabled('allow_url_fopen')) {
+            $comments = 'If not really needed this directive should be set ' .
+                        'to off for security reasons';
+
+            $this->addWarning(
+                'allow_url_fopen',
+                'on',
+                'off',
+                $comments
+            );
+        }
+    }
+
     public function checkDisplayErrors()
     {
         if ($this->isEnvironment(PhpConfigReport_Analyzer::PRODUCTION) &&
