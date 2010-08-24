@@ -31,64 +31,41 @@
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 
-/**
- * Analyzer for PHP configuration
- */
-class PhpConfigReport_Analyzer
+interface PhpConfigReport_Issue_Interface
 {
-    const PRODUCTION  = 'production';
-    const STAGING     = 'staging';
-    const TESTING     = 'testing';
-    const DEVELOPMENT = 'development';
+    const ERROR   = 'error';
+    const WARNING = 'warning';
 
-    /**
-     * Config instance
-     *
-     * @var PhpConfigReport_Config
-     */
-    protected $_config;
+    const LOGIC       = 'logic';
+    const PERFORMANCE = 'performance';
+    const SECURITY    = 'security';
 
-    protected $_environment;
+    public function __construct($extensionName, $directiveName, $type,
+        $directiveActualValue, $directiveSuggestedValue, $comments);
 
-    /**
-     * Class constructor
-     *
-     * @param PhpConfigReport_Config $config Config instance
-     * @return void
-     */
-    public function __construct(PhpConfigReport_Config $config,
-        $environment = self::PRODUCTION)
-    {
-        $this->_config      = $config;
-        $this->_environment = $environment;
-    }
+    public function getComments();
 
-    /**
-     * Generates and returns report
-     *
-     * @return PhpConfigReport_Report Report
-     */
-    public function getReport()
-    {
-        $report = new PhpConfigReport_Report($this->_environment);
+    public function getDirectiveActualValue();
 
-        $extensions = array();
-        $path       = dirname(__FILE__) . '/Analyzer';
-        $iterator   = new DirectoryIterator($path);
-        foreach ($iterator as $item) {
-            if ($item->isFile() && !$item->isDot() &&
-                'Abstract.php' != substr($item->getFilename(), -12)) {
-                $extensions[] = substr($item->getFilename(), 0, -4);
-            }
-        }
-        sort($extensions);
+    public function getDirectiveSuggestedValue();
 
-        foreach ($extensions as $extension) {
-            $class    = "PhpConfigReport_Analyzer_$extension";
-            $instance = new $class($this->_config, $this->_environment);
-            $report->addSection($instance->getReportSection());
-        }
+    public function getDirectiveName();
 
-        return $report;
-    }
+    public function getExtensionName();
+
+    public function getLevel();
+
+    public function getType();
+
+    public function setComments($comments);
+
+    public function setDirectiveActualValue($directiveActualValue);
+
+    public function setDirectiveSuggestedValue($directiveSuggestedValue);
+
+    public function setDirectiveName($directiveName);
+
+    public function setExtensionName($extensionName);
+
+    public function setType($type);
 }

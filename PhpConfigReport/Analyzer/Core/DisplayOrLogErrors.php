@@ -31,47 +31,10 @@
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 
-/**
- * Analyzer for PHP core configuration
- */
-class PhpConfigReport_Analyzer_Extension_Core
-    extends PhpConfigReport_Analyzer_Extension_Abstract
+class PhpConfigReport_Analyzer_Core_DisplayOrLogErrors
+    extends PhpConfigReport_Analyzer_CheckAbstract
 {
-    protected $_extensionName = 'Core';
-
-    public function checkAllowUrlFopen()
-    {
-        if ($this->isDirectiveEnabled('allow_url_fopen')) {
-            $comments = 'If not really needed this directive should be set ' .
-                        'to off for security reasons';
-
-            $this->addWarning(
-                'allow_url_fopen',
-                'on',
-                'off',
-                $comments
-            );
-        }
-    }
-
-    public function checkDisplayErrors()
-    {
-        if ($this->isEnvironment(PhpConfigReport_Analyzer::PRODUCTION) &&
-            $this->isDirectiveEnabled('display_errors')) {
-            $comments = 'Errors can display useful informations to attackers ' .
-                        'and can only confuse legitimate users. In production' .
-                        ', errors should be logged but never displayed.';
-
-            $this->addError(
-                'display_errors',
-                'on',
-                'off',
-                $comments
-            );
-        }
-    }
-
-    public function checkDisplayOrLogErrors()
+    public function check()
     {
         if ($this->isDirectiveDisabled('display_errors') &&
             $this->isDirectiveDisabled('log_errors')) {
@@ -80,39 +43,9 @@ class PhpConfigReport_Analyzer_Extension_Core
 
             $this->addError(
                 'display_errors / log_errors',
+                PhpConfigReport_Issue_Interface::LOGIC,
                 'off',
                 'on',
-                $comments
-            );
-        }
-    }
-
-    public function checkLogErrors()
-    {
-        if ($this->isEnvironment(PhpConfigReport_Analyzer::PRODUCTION) &&
-            $this->isDirectiveDisabled('log_errors')) {
-            $comments = 'Errors should be logged in production so they can ' .
-                        'be analyzed later.';
-
-            $this->addError(
-                'log_errors',
-                'off',
-                'on',
-                $comments
-            );
-        }
-
-        if ($this->isEnvironment(PhpConfigReport_Analyzer::TESTING,
-                PhpConfigReport_Analyzer::DEVELOPMENT) &&
-            $this->isDirectiveEnabled('log_errors')) {
-            $comments = 'Errors should not be logged in ' .
-                        $this->getEnvironment() . ' because it may generate ' .
-                        'huge log files and errors can get unnoticed.';
-
-            $this->addWarning(
-                'log_errors',
-                'on',
-                'off',
                 $comments
             );
         }

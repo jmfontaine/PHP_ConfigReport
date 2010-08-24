@@ -66,17 +66,19 @@ class PhpConfigReport_Renderer_Text
                 $table[0]->format     = 'columnTitle';
                 $table[0][0]->content = 'Directive';
                 $table[0][1]->content = 'Level';
+                $table[0][2]->content = 'Type';
                 $table[0][2]->content = 'Value';
                 $table[0][3]->content = 'Suggested value';
                 $table[0][4]->content = 'Comments';
 
-                foreach ($section->getIssues() as $index => $item) {
-                    $table[$index + 1][0]->content = $item['directiveName'];
-                    $table[$index + 1]->format     = $item['level'];
-                    $table[$index + 1][1]->content = $item['level'];
-                    $table[$index + 1][2]->content = $item['actualValue'];
-                    $table[$index + 1][3]->content = $item['suggestedValue'];
-                    $table[$index + 1][4]->content = $item['comments'];
+                foreach ($section->getIssues() as $index => $issue) {
+                    $table[$index + 1][0]->content = $issue->getDirectiveName();
+                    $table[$index + 1]->format     = $issue->getLevel();
+                    $table[$index + 1][1]->content = $issue->getLevel();
+                    $table[$index + 1][2]->content = $issue->getType();
+                    $table[$index + 1][3]->content = $issue->getDirectiveActualValue();
+                    $table[$index + 1][4]->content = $issue->getDirectiveSuggestedValue();
+                    $table[$index + 1][5]->content = $issue->getComments();
                 }
 
                 $table->outputTable();

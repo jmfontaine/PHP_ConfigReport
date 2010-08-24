@@ -34,67 +34,58 @@
 /**
  * Abstract analyzer for PHP configuration
  */
-abstract class PhpConfigReport_Analyzer_Extension_Abstract
+abstract class PhpConfigReport_Analyzer_CheckAbstract
 {
     protected $_config;
-    protected $_environment;
-    protected $_extensionName = 'This should be set in concrete classes';
-    protected $_reportSection;
+    protected $_extensionCode;
+    protected $_extensionName;
+    protected $_issues = array();
 
-    protected function _populateReportSection()
-    {
-        $classReflection = new ReflectionClass(get_class($this));
-        foreach ($classReflection->getMethods() as $methodReflection) {
-            if ('check' == substr($methodReflection->name, 0, 5)) {
-                $this->{$methodReflection->name}();
-            }
-        }
-    }
-
-    /**
-     * Class constructor
-     *
-     * @param PhpConfigReport_Config $config Config instance
-     * @return void
-     */
     public function __construct(PhpConfigReport_Config $config, $environment,
-        $reportSection = null)
+        $extensionCode, $extensionName)
     {
-        $this->_config      = $config;
-        $this->_environment = $environment;
-
-        if (null === $reportSection) {
-            $reportSection = new PhpConfigReport_Report_Section(
-                $this->getEnvironment()
-            );
-        }
-        $reportSection->setExtensionName($this->getExtensionName());
-        $this->_reportSection = $reportSection;
-
-        $this->_populateReportSection();
+        $this->_config        = $config;
+        $this->_environment   = $environment;
+        $this->_extensionCode = $extensionCode;
+        $this->_extensionName = $extensionName;
     }
 
-    public function addError($directiveName, $actualValue, $expectedValue,
-        $comments)
+    public function addError($directiveName, $type, $directiveActualValue,
+        $directiveSuggestedValue, $comments)
     {
-        $this->getReportSection()->addError(
+        $issue = new PhpConfigReport_Issue_Error(
+            $this->getExtensionName(),
             $directiveName,
-            $actualValue,
-            $expectedValue,
+            $type,
+            $directiveActualValue,
+            $directiveSuggestedValue,
             $comments
         );
+
+        $this->addIssue($issue);
     }
 
-    public function addWarning($directiveName, $actualValue, $expectedValue,
-        $comments)
+    public function addIssue(PhpConfigReport_Issue_Interface $issue)
     {
-        $this->getReportSection()->addWarning(
+        $this->_issues[] = $issue;
+    }
+
+    public function addWarning($directiveName, $type, $directiveActualValue,
+        $directiveSuggestedValue, $comments)
+    {
+        $issue = new PhpConfigReport_Issue_Warning(
+            $this->getExtensionName(),
             $directiveName,
-            $actualValue,
-            $expectedValue,
+            $type,
+            $directiveActualValue,
+            $directiveSuggestedValue,
             $comments
         );
+
+        $this->addIssue($issue);
     }
+
+    abstract public function check();
 
     public function getConfig()
     {
@@ -106,19 +97,19 @@ abstract class PhpConfigReport_Analyzer_Extension_Abstract
         return $this->_environment;
     }
 
+    public function getExtensionCode()
+    {
+        return $this->_extensionCode;
+    }
+
     public function getExtensionName()
     {
         return $this->_extensionName;
     }
 
-    /**
-     * Generates and returns report section for this extension
-     *
-     * @return PhpConfigReport_Section Section
-     */
-    public function getReportSection()
+    public function getIssues()
     {
-        return $this->_reportSection;
+        return $this->_issues;
     }
 
     public function isDirectiveDisabled($directiveName)

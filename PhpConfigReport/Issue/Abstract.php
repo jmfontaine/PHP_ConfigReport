@@ -31,69 +31,46 @@
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 
-/**
- * Report class
- */
-class PhpConfigReport_Report_Section
+abstract class PhpConfigReport_Issue_Abstract
+    implements PhpConfigReport_Issue_Interface
 {
-    protected $_environment;
+    protected $_comments;
+    protected $_directiveActualValue;
+    protected $_directiveSuggestedValue;
+    protected $_directiveName;
     protected $_extensionName;
-    protected $_issues = array();
+    protected $_level;
+    protected $_type;
 
-    public function __construct($environment)
+    public function __construct($extensionName, $directiveName, $type,
+        $directiveActualValue, $directiveSuggestedValue, $comments)
     {
-        $this->_environment = $environment;
+        $this->setComments($comments);
+        $this->setDirectiveActualValue($directiveActualValue);
+        $this->setDirectiveSuggestedValue($directiveSuggestedValue);
+        $this->setDirectiveName($directiveName);
+        $this->setExtensionName($extensionName);
+        $this->setType($type);
     }
 
-    public function addError($directiveName, $type, $directiveActualValue,
-        $directiveSuggestedValue, $comments)
+    public function getComments()
     {
-        $issue = new PhpConfigReport_Issue_Error(
-            $this->getExtensionName(),
-            $directiveName,
-            $type,
-            $directiveActualValue,
-            $directiveSuggestedValue,
-            $comments
-        );
-
-        $this->addIssue($issue);
-        return $this;
+        return $this->_comments;
     }
 
-    public function addIssue(PhpConfigReport_Issue_Abstract $issue)
+    public function getDirectiveActualValue()
     {
-        $this->_issues[] = $issue;
-        return $this;
+        return $this->_directiveActualValue;
     }
 
-    public function addIssues(array $issues)
+    public function getDirectiveSuggestedValue()
     {
-        foreach ($issues as $issue) {
-            $this->addIssue($issue);
-        }
-        return $this;
+        return $this->_directiveSuggestedValue;
     }
 
-    public function addWarning($directiveName, $type, $directiveActualValue,
-        $directiveSuggestedValue, $comments)
+    public function getDirectiveName()
     {
-        $issue = new PhpConfigReport_Issue_Warning(
-            $this->getExtensionName(),
-            $directiveName,
-            $type,
-            $directiveActualValue,
-            $directiveSuggestedValue,
-            $comments
-        );
-
-        $this->addIssue($issue);
-        return $this;
-    }
-
-    public function getEnvironment()
-    {
-        return $this->_environment;
+        return $this->_directiveName;
     }
 
     public function getExtensionName()
@@ -101,19 +78,49 @@ class PhpConfigReport_Report_Section
         return $this->_extensionName;
     }
 
-    public function getIssues()
+    public function getLevel()
     {
-        return $this->_issues;
+        return $this->_level;
     }
 
-    public function hasIssues()
+    public function getType()
     {
-        return !empty($this->_issues);
+        return $this->_type;
+    }
+
+    public function setComments($comments)
+    {
+        $this->_comments = $comments;
+        return $this;
+    }
+
+    public function setDirectiveActualValue($directiveActualValue)
+    {
+        $this->_directiveActualValue = $directiveActualValue;
+        return $this;
+    }
+
+    public function setDirectiveSuggestedValue($directiveSuggestedValue)
+    {
+        $this->_directiveSuggestedValue = $directiveSuggestedValue;
+        return $this;
+    }
+
+    public function setDirectiveName($directiveName)
+    {
+        $this->_directiveName = $directiveName;
+        return $this;
     }
 
     public function setExtensionName($extensionName)
     {
         $this->_extensionName = $extensionName;
+        return $this;
+    }
+
+    public function setType($type)
+    {
+        $this->_type = $type;
         return $this;
     }
 }

@@ -31,64 +31,24 @@
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 
-/**
- * Analyzer for PHP configuration
- */
-class PhpConfigReport_Analyzer
+class PhpConfigReport_Analyzer_Core_DisplayErrors
+    extends PhpConfigReport_Analyzer_CheckAbstract
 {
-    const PRODUCTION  = 'production';
-    const STAGING     = 'staging';
-    const TESTING     = 'testing';
-    const DEVELOPMENT = 'development';
-
-    /**
-     * Config instance
-     *
-     * @var PhpConfigReport_Config
-     */
-    protected $_config;
-
-    protected $_environment;
-
-    /**
-     * Class constructor
-     *
-     * @param PhpConfigReport_Config $config Config instance
-     * @return void
-     */
-    public function __construct(PhpConfigReport_Config $config,
-        $environment = self::PRODUCTION)
+    public function check()
     {
-        $this->_config      = $config;
-        $this->_environment = $environment;
-    }
+        if ($this->isEnvironment(PhpConfigReport_Analyzer::PRODUCTION) &&
+            $this->isDirectiveEnabled('display_errors')) {
+            $comments = 'Errors can display useful informations to attackers ' .
+                        'and can only confuse legitimate users. In production' .
+                        ', errors should be logged but never displayed.';
 
-    /**
-     * Generates and returns report
-     *
-     * @return PhpConfigReport_Report Report
-     */
-    public function getReport()
-    {
-        $report = new PhpConfigReport_Report($this->_environment);
-
-        $extensions = array();
-        $path       = dirname(__FILE__) . '/Analyzer';
-        $iterator   = new DirectoryIterator($path);
-        foreach ($iterator as $item) {
-            if ($item->isFile() && !$item->isDot() &&
-                'Abstract.php' != substr($item->getFilename(), -12)) {
-                $extensions[] = substr($item->getFilename(), 0, -4);
-            }
+            $this->addError(
+                'display_errors',
+                PhpConfigReport_Issue_Interface::SECURITY,
+                'on',
+                'off',
+                $comments
+            );
         }
-        sort($extensions);
-
-        foreach ($extensions as $extension) {
-            $class    = "PhpConfigReport_Analyzer_$extension";
-            $instance = new $class($this->_config, $this->_environment);
-            $report->addSection($instance->getReportSection());
-        }
-
-        return $report;
     }
 }
