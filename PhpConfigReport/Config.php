@@ -46,19 +46,31 @@ class PhpConfigReport_Config
         }
     }
 
-    public function directiveIsSet($name)
+    public function isDirectiveDisabled($directiveName)
     {
-        return '' !== $this->getDirective($name);
+        $directiveValue = $this->getDirectiveValue($directiveName);
+        return 'off' == $directiveValue || 0 == $directiveValue;
     }
 
-    public function getDirective($name)
+    public function isDirectiveEnabled($directiveName)
+    {
+        $directiveValue = $this->getDirectiveValue($directiveName);
+        return 'on' == $directiveValue || 1 == $directiveValue;
+    }
+
+    public function isDirectiveSet($directiveName)
+    {
+        return '' !== $this->getDirectiveValue($directiveName);
+    }
+
+    public function getDirectiveValue($directiveName)
     {
         if ($this->_loadDirectivesFromSystem) {
-            return ini_get($name);
+            return ini_get($directiveName);
         }
 
-        if (array_key_exists($name, $this->_directives)) {
-            return $this->_directives[$name];
+        if (array_key_exists($directiveName, $this->_directives)) {
+            return $this->_directives[$directiveName];
         }
 
         return '';

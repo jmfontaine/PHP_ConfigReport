@@ -36,37 +36,51 @@
  */
 class PhpConfigReport_Report_Section
 {
-    const ERROR   = 'error';
-    const WARNING = 'warning';
-
     protected $_environment;
     protected $_extensionName;
-    protected $_items = array();
+    protected $_issues = array();
 
     public function __construct($environment)
     {
         $this->_environment = $environment;
     }
 
-    public function addError($directive, $message)
+    public function addError($directiveName, $actualValue, $suggestedValue,
+        $comments)
     {
-        return $this->addItem($directive, $message, self::ERROR);
+        return $this->addItem(
+            $directiveName,
+            $actualValue,
+            $suggestedValue,
+            $comments,
+            PhpConfigReport_Analyzer::ERROR
+        );
     }
 
-    public function addItem($directive, $message, $level)
+    public function addIssue($directiveName, $actualValue, $suggestedValue,
+        $comments, $level)
     {
-        $this->_items[] = array(
-            'directive' => $directive,
-            'message'   => $message,
-            'level'     => $level,
+        $this->_issues[] = array(
+            'actualValue'    => $actualValue,
+            'comments'       => $comments,
+            'directiveName'  => $directiveName,
+            'level'          => $level,
+            'suggestedValue' => $suggestedValue,
         );
 
         return $this;
     }
 
-    public function addWarning($directive, $message)
+    public function addWarning($directiveName, $actualValue, $suggestedValue,
+        $comments)
     {
-        return $this->addItem($directive, $message, self::WARNING);
+        return $this->addItem(
+            $directiveName,
+            $actualValue,
+            $suggestedValue,
+            $comments,
+            PhpConfigReport_Analyzer::WARNING
+        );
     }
 
     public function getEnvironment()
@@ -79,9 +93,14 @@ class PhpConfigReport_Report_Section
         return $this->_extensionName;
     }
 
-    public function getItems()
+    public function getIssues()
     {
-        return $this->_items;
+        return $this->_issues;
+    }
+
+    public function hasIssues()
+    {
+        return !empty($this->_issues);
     }
 
     public function setExtensionName($extensionName)

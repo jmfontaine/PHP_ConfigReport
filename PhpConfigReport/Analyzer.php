@@ -36,6 +36,9 @@
  */
 class PhpConfigReport_Analyzer
 {
+    const ERROR   = 'error';
+    const WARNING = 'warning';
+
     const PRODUCTION  = 'production';
     const STAGING     = 'staging';
     const TESTING     = 'testing';
@@ -58,8 +61,6 @@ class PhpConfigReport_Analyzer
      */
     public function __construct(PhpConfigReport_Config $config, $environment = 'production')
     {
-        PhpConfigReport_Runner_Cli::displayMessage('Initializing analyzer');
-
         $this->_config      = $config;
         $this->_environment = $environment;
     }

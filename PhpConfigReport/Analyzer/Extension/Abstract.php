@@ -36,16 +36,20 @@
  */
 abstract class PhpConfigReport_Analyzer_Extension_Abstract
 {
-    /**
-     * Config instance
-     *
-     * @var PhpConfigReport_Config
-     */
     protected $_config;
-
     protected $_environment;
+    protected $_extensionName = 'This should be set in concrete classes';
+    protected $_reportSection;
 
-    protected $_extensionName;
+    protected function _populateReportSection()
+    {
+        $classReflection = new ReflectionClass(get_class($this));
+        foreach ($classReflection->getMethods() as $methodReflection) {
+            if ('check' == substr($methodReflection->name, 0, 5)) {
+                $this->{$methodReflection->name}();
+            }
+        }
+    }
 
     /**
      * Class constructor
@@ -53,10 +57,58 @@ abstract class PhpConfigReport_Analyzer_Extension_Abstract
      * @param PhpConfigReport_Config $config Config instance
      * @return void
      */
-    public function __construct(PhpConfigReport_Config $config, $environment)
+    public function __construct(PhpConfigReport_Config $config, $environment,
+        $reportSection = null)
     {
         $this->_config      = $config;
         $this->_environment = $environment;
+
+        if (null === $reportSection) {
+            $reportSection = new PhpConfigReport_Report_Section(
+                $this->getEnvironment()
+            );
+        }
+        $reportSection->setExtensionName($this->getExtensionName());
+        $this->_reportSection = $reportSection;
+
+        $this->_populateReportSection();
+    }
+
+    public function addError($directiveName, $actualValue, $expectedValue,
+        $comments)
+    {
+        $this->getReportSection()->addError(
+            $directiveName,
+            $actualValue,
+            $expectedValue,
+            $comments
+        );
+    }
+
+    public function addWarning($directiveName, $actualValue, $expectedValue,
+        $comments)
+    {
+        $this->getReportSection()->addWarning(
+            $directiveName,
+            $actualValue,
+            $expectedValue,
+            $comments
+        );
+    }
+
+    public function getConfig()
+    {
+        return $this->_config;
+    }
+
+    public function getEnvironment()
+    {
+        return $this->_environment;
+    }
+
+    public function getExtensionName()
+    {
+        return $this->_extensionName;
     }
 
     /**
@@ -66,20 +118,40 @@ abstract class PhpConfigReport_Analyzer_Extension_Abstract
      */
     public function getReportSection()
     {
-        $section = new PhpConfigReport_Report_Section($this->_environment);
-        $section->setExtensionName($this->_extensionName);
+        return $this->_reportSection;
+    }
 
-        $reflectedClass   = new ReflectionClass($this);
-        $reflectedMethods = $reflectedClass->getMethods(
-            ReflectionMethod::IS_PROTECTED
-        );
-        foreach($reflectedMethods as $reflectedMethod) {
-            $methodName = $reflectedMethod->getName();
-            if ('_check' == substr($methodName, 0, 6)) {
-                $this->$methodName($section);
+    public function isDirectiveDisabled($directiveName)
+    {
+        return $this->getConfig()->isDirectiveDisabled($directiveName);
+    }
+
+    public function isDirectiveEnabled($directiveName)
+    {
+        return $this->getConfig()->isDirectiveEnabled($directiveName);
+    }
+
+    public function isEnvironment()
+    {
+        $environment = $this->getEnvironment();
+        foreach (func_get_args() as $expectedEnvironment) {
+            if ($environment == $expectedEnvironment) {
+                return true;
             }
         }
 
-        return $section;
+        return false;
+    }
+
+    public function isEnvironmentNot()
+    {
+        $environment = $this->getEnvironment();
+        foreach (func_get_args() as $expectedEnvironment) {
+            if ($environment == $expectedEnvironment) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

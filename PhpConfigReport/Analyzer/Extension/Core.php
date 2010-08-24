@@ -39,30 +39,66 @@ class PhpConfigReport_Analyzer_Extension_Core
 {
     protected $_extensionName = 'Core';
 
-    protected function _checkDisplayErrors(&$section)
+    public function checkDisplayErrors()
     {
-        if ('1' === $this->_config->getDirective('display_errors') &&
-            PhpConfigReport_Analyzer::PRODUCTION === $this->_environment) {
-            $section->addError(
+        if ($this->isEnvironment(PhpConfigReport_Analyzer::PRODUCTION) &&
+            $this->isDirectiveEnabled('display_errors')) {
+            $comments = 'Errors can display useful informations to attackers ' .
+                        'and can only confuse legitimate users. In production' .
+                        ', errors should be logged but never displayed.';
+
+            $this->addError(
                 'display_errors',
-                'Should be set to "off"'
+                'on',
+                'off',
+                $comments
             );
         }
     }
 
-    protected function _checkLogErrors(&$section)
+    public function checkDisplayOrLogErrors()
     {
-        if ('1' !== $this->_config->getDirective('log_errors') &&
-            PhpConfigReport_Analyzer::PRODUCTION === $this->_environment) {
-            $section->addError(
-                'log_errors',
-                'Should be set to "on"'
+        if ($this->isDirectiveDisabled('display_errors') &&
+            $this->isDirectiveDisabled('log_errors')) {
+            $comments = 'Errors errors should be either displayed or logged. ' .
+                        'Otherwise they will get unnoticed.';
+
+            $this->addError(
+                'display_errors / log_errors',
+                'off',
+                'on',
+                $comments
             );
-        } elseif ('1' === $this->_config->getDirective('log_errors') &&
-            PhpConfigReport_Analyzer::PRODUCTION !== $this->_environment) {
-            $section->addError(
+        }
+    }
+
+    public function checkLogErrors()
+    {
+        if ($this->isEnvironment(PhpConfigReport_Analyzer::PRODUCTION) &&
+            $this->isDirectiveDisabled('log_errors')) {
+            $comments = 'Errors should be logged in production so they can ' .
+                        'be analyzed later.';
+
+            $this->addError(
                 'log_errors',
-                'Should be set to "off"'
+                'off',
+                'on',
+                $comments
+            );
+        }
+
+        if ($this->isEnvironment(PhpConfigReport_Analyzer::TESTING,
+                PhpConfigReport_Analyzer::DEVELOPMENT) &&
+            $this->isDirectiveEnabled('log_errors')) {
+            $comments = 'Errors should not be logged in ' .
+                        $this->getEnvironment() . ' because it may generate ' .
+                        'huge log files and errors can get unnoticed.';
+
+            $this->addWarning(
+                'log_errors',
+                'on',
+                'off',
+                $comments
             );
         }
     }

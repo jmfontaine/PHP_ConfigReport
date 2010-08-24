@@ -53,25 +53,39 @@ class PhpConfigReport_Renderer_Text
 
         $consoleOutput->outputLine('Environment: ' . $report->getEnvironment());
 
+        $noIssue = true;
         foreach ($report->getSections() as $section) {
-            $consoleOutput->outputLine();
-            $consoleOutput->outputLine($section->getExtensionName(), 'extensionName');
+            if ($section->hasIssues()) {
+                $noIssue = true;
 
-            $table = new ezcConsoleTable($consoleOutput, 80);
+                $consoleOutput->outputLine();
+                $consoleOutput->outputLine($section->getExtensionName(), 'extensionName');
 
-            $table[0]->format     = 'columnTitle';
-            $table[0][0]->content = 'Directive';
-            $table[0][1]->content = 'Level';
-            $table[0][2]->content = 'Message';
+                $table = new ezcConsoleTable($consoleOutput, 80);
 
-            foreach ($section->getItems() as $index => $item) {
-                $table[$index + 1][0]->content = $item['directive'];
-                $table[$index + 1]->format     = $item['level'];
-                $table[$index + 1][1]->content = $item['level'];
-                $table[$index + 1][2]->content = $item['message'];
+                $table[0]->format     = 'columnTitle';
+                $table[0][0]->content = 'Directive';
+                $table[0][1]->content = 'Level';
+                $table[0][2]->content = 'Value';
+                $table[0][3]->content = 'Suggested value';
+                $table[0][4]->content = 'Comments';
+
+                foreach ($section->getIssues() as $index => $item) {
+                    $table[$index + 1][0]->content = $item['directiveName'];
+                    $table[$index + 1]->format     = $item['level'];
+                    $table[$index + 1][1]->content = $item['level'];
+                    $table[$index + 1][2]->content = $item['actualValue'];
+                    $table[$index + 1][3]->content = $item['suggestedValue'];
+                    $table[$index + 1][4]->content = $item['comments'];
+                }
+
+                $table->outputTable();
+                $consoleOutput->outputLine();
             }
+        }
 
-            $table->outputTable();
+        if ($noIssue) {
+            $consoleOutput->outputLine('No issue found.');
             $consoleOutput->outputLine();
         }
     }
