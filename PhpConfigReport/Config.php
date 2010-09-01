@@ -32,59 +32,157 @@
  */
 
 /**
- * PHP configuration bastraction layer
+ * PHP configuration abstraction layer
  */
 class PhpConfigReport_Config
 {
+    /**
+     * Configuration directives
+     * @var array
+     */
     protected $_directives = array();
-    protected $_loadDirectivesFromSystem = true;
 
-    public function __constructor($path = null)
+    /**
+     * Class constructor
+     *
+     * @param string|null $data Path to the configuration file, the
+     * configuration as a string or null which means that configuration will
+     * be loaded for the system.
+     * @return void
+     */
+    public function __construct($data = null)
     {
-        if (is_file($path)) {
-            $this->loadFromFile($path);
+        if (is_file($data)) {
+            $this->loadFromFile($data);
+        } elseif (is_string($data)) {
+            $this->loadFromString($data);
+        } else {
+            $this->loadFromSystem();
         }
     }
 
+    /**
+     * Indicates whether a directive is disabled or not
+     *
+     * @param string $directiveName
+     * @return boolean
+     */
     public function isDirectiveDisabled($directiveName)
     {
-        $directiveValue = $this->getDirectiveValue($directiveName);
-        return 'off' == $directiveValue || 0 == $directiveValue;
+        return !$this->isDirectiveEnabled($directiveName);
     }
 
+    /**
+     * Indicates whether a directive is enabled or not
+     *
+     * @param string $directiveName
+     * @return boolean
+     */
     public function isDirectiveEnabled($directiveName)
     {
-        $directiveValue = $this->getDirectiveValue($directiveName);
-        return 'on' == $directiveValue || 1 == $directiveValue;
+        $directiveValue = $this->getDirective($directiveName);
+
+        // A "0" value is interpreted as "0" and all other ways to disable a
+        // flag directive ("off", "false" and "no") are interpreted as an
+        // empty string.
+        if ('0' === $directiveValue || '' === $directiveValue) {
+            return false;
+        } elseif ('1' === $directiveValue) {
+            return true;
+        } else {
+            $message = 'Value "' . $directiveValue . '" is not a valid flag ' .
+                       'value for directive "' . $directiveName . '"';
+            throw new UnexpectedValueException($message);
+        }
     }
 
+    /**
+     * Indicates whether a directive is set or not
+     *
+     * @param string $directiveName
+     * @return boolean
+     */
     public function isDirectiveSet($directiveName)
     {
-        return '' !== $this->getDirectiveValue($directiveName);
+        return null !== $this->getDirective($directiveName);
     }
 
-    public function getDirectiveValue($directiveName)
+    /**
+     * Returns a directive value if it is set, null otherwise
+     *
+     * @param string $directiveName
+     * @return string|null
+     */
+    public function getDirective($directiveName)
     {
-        if ($this->_loadDirectivesFromSystem) {
-            return ini_get($directiveName);
-        }
-
         if (array_key_exists($directiveName, $this->_directives)) {
             return $this->_directives[$directiveName];
         }
 
-        return '';
+        return null;
     }
 
+    /**
+     * Returns all the directives values as an array
+     *
+     * @return array
+     */
+    public function getDirectives()
+    {
+        return $this->_directives;
+    }
+
+    /**
+     * Loads configuration from a php.ini file
+     *
+     * @param string $path Path to the php.ini file
+     * @throws InvalidArgumentException If php.ini can not be found or be read
+     * @throws UnexpectedValueException If php.ini format is invalid
+     * @return PhpConfigReport_Config Returns self to allow methods chaining
+     */
     public function loadFromFile($path)
     {
         if (!is_readable($path)) {
             throw new InvalidArgumentException('Could not read file');
         }
 
-        $directives = parse_ini_file($path);
+        $directives = @parse_ini_file($path);
         if (false === $directives) {
-            throw new Exception('Invalid file format');
+            throw new UnexpectedValueException('Invalid file format');
+        }
+        $this->_directives = $directives;
+
+        return $this;
+    }
+
+    /**
+     * Loads configuration from a string
+     *
+     * @param string $string Configuration as a string
+     * @throws UnexpectedValueException If string format is invalid
+     * @return PhpConfigReport_Config Returns self to allow methods chaining
+     */
+    public function loadFromString($string)
+    {
+        $directives = @parse_ini_string($string);
+        if (false === $directives) {
+            throw new UnexpectedValueException('Invalid string format');
+        }
+        $this->_directives = $directives;
+
+        return $this;
+    }
+
+    /**
+     * Loads configuration from the system PHP Config Report is run on
+     *
+     * @return PhpConfigReport_Config Returns self to allow methods chaining
+     */
+    public function loadFromSystem()
+    {
+        $directives = array();
+        foreach (ini_get_all() as $name => $data) {
+            $directives[$name] = $data['local_value'];
         }
         $this->_directives = $directives;
 

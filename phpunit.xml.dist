@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit backupGlobals="false"
+         backupStaticAttributes="true"
+         bootstrap="Tests/bootstrap.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="true">
+
+    <testsuites>
+        <testsuite name="php-config-report">
+            <directory suffix="Test.php">./Tests</directory>
+        </testsuite>
+    </testsuites>
+    
+    <filter>
+        <whitelist>
+            <directory suffix=".php">.</directory>
+            <exclude>
+                <directory suffix=".php">./Tests</directory>
+            </exclude>
+        </whitelist>
+    </filter>   
+    
+    <logging>
+        <log type="coverage-html"
+             target="./Tests/_coverage"
+             title="PHP Config Report"
+             charset="UTF-8"
+             yui="true"
+             highlight="true"
+             lowUpperBound="35"
+             highLowerBound="70"/>
+    </logging>
+</phpunit>
