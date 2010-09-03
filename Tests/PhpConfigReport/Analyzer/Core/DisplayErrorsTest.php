@@ -71,16 +71,9 @@ class PhpConfigReport_Analyzer_Core_DisplayErrorsTest
         foreach ($environments as $environment) {
             $this->assertIssuesNotContainError(
                 'display_errors',
-                0,
-                PhpConfigReport_Analyzer::DEVELOPMENT,
-                PhpConfigReport_Issue_Interface::SECURITY
-            );
-
-            $this->assertIssuesNotContainError(
-                'display_errors',
                 1,
-                PhpConfigReport_Analyzer::DEVELOPMENT,
-                PhpConfigReport_Issue_Interface::SECURITY
+                $environment,
+                $environment
             );
         }
     }
