@@ -31,21 +31,21 @@
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 
-class PhpConfigReport_Analyzer_Core_DisplayOrLogErrors
+class PhpConfigReport_Analyzer_Core_RegisterGlobals
     extends PhpConfigReport_Analyzer_CheckAbstract
 {
     public function check()
     {
-        if ($this->isDirectiveDisabled('display_errors') &&
-            $this->isDirectiveDisabled('log_errors')) {
-            $comments = 'Errors errors should be either displayed or logged. ' .
-                        'Otherwise they will get unnoticed.';
+    if ($this->isDirectiveEnabled('register_globals')) {
+            $comments = 'This directive is set to Off by default since PHP ' .
+                        '4.2.0 and it should not be switched to On because ' .
+                        'it may help attackers manipulating variables';
 
-            $this->addError(
-                array('display_errors', 'log_errors'),
-                PhpConfigReport_Issue_Interface::LOGIC,
-                array('off', 'off'),
-                array('on', 'on'),
+            $this->addWarning(
+                'register_globals',
+                PhpConfigReport_Issue_Interface::SECURITY,
+                'on',
+                'off',
                 $comments
             );
         }

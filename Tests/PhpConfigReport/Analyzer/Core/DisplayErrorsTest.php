@@ -25,29 +25,67 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @package PHP Config Report
+ * @package Tests
  * @author Jean-Marc Fontaine <jm@jmfontaine.net>
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 
-class PhpConfigReport_Analyzer_Core_DisplayOrLogErrors
-    extends PhpConfigReport_Analyzer_CheckAbstract
+class PhpConfigReport_Analyzer_Core_DisplayErrorsTest
+    extends PhpConfigReport_Test_CheckTestCase
 {
-    public function check()
-    {
-        if ($this->isDirectiveDisabled('display_errors') &&
-            $this->isDirectiveDisabled('log_errors')) {
-            $comments = 'Errors errors should be either displayed or logged. ' .
-                        'Otherwise they will get unnoticed.';
+    /*
+     * Methods
+     */
 
-            $this->addError(
-                array('display_errors', 'log_errors'),
-                PhpConfigReport_Issue_Interface::LOGIC,
-                array('off', 'off'),
-                array('on', 'on'),
-                $comments
+   /**
+     * @test
+     */
+    public function checksEnabledDirectiveTriggersErrorInProduction()
+    {
+        $this->assertIssuesContainError(
+            'display_errors',
+            1,
+            PhpConfigReport_Analyzer::PRODUCTION,
+            PhpConfigReport_Issue_Interface::SECURITY
+        );
+
+        $this->assertIssuesNotContainError(
+            'display_errors',
+            0,
+            PhpConfigReport_Analyzer::PRODUCTION
+        );
+    }
+
+   /**
+     * @test
+     */
+    public function checksEnabledDirectiveDoesNotTriggerIssueInWhenNotInProduction()
+    {
+        $environments = array(
+            PhpConfigReport_Analyzer::DEVELOPMENT,
+            PhpConfigReport_Analyzer::TESTING,
+            PhpConfigReport_Analyzer::STAGING,
+        );
+
+        foreach ($environments as $environment) {
+            $this->assertIssuesNotContainError(
+                'display_errors',
+                0,
+                PhpConfigReport_Analyzer::DEVELOPMENT,
+                PhpConfigReport_Issue_Interface::SECURITY
+            );
+
+            $this->assertIssuesNotContainError(
+                'display_errors',
+                1,
+                PhpConfigReport_Analyzer::DEVELOPMENT,
+                PhpConfigReport_Issue_Interface::SECURITY
             );
         }
     }
+
+    /*
+     * Bugs
+     */
 }

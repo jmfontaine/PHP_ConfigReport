@@ -87,6 +87,11 @@ class PhpConfigReport_Runner_Cli extends PhpConfigReport_Runner_Abstract
         $debugOption->type = ezcConsoleInput::TYPE_NONE;
         $input->registerOption($debugOption);
 
+        $phpDirectiveOption = new ezcConsoleOption('p', 'php');
+        $phpDirectiveOption->type = ezcConsoleInput::TYPE_STRING;
+        $phpDirectiveOption->multiple = true;
+        $input->registerOption($phpDirectiveOption);
+
         $environmentOption          = new ezcConsoleOption('e', 'environment');
         $environmentOption->type    = ezcConsoleInput::TYPE_STRING;
         $environmentOption->default = 'production';
@@ -119,6 +124,20 @@ class PhpConfigReport_Runner_Cli extends PhpConfigReport_Runner_Abstract
             self::displayVersion();
             exit(0);
         }
+
+        foreach ($input->getOption('php')->value as $directive) {
+            $position = strpos($directive, '=');
+            if (false === $position) {
+                throw new InvalidArgumentException(
+                    "'$directive' is not a valid PHP configuration directive"
+                );
+            }
+
+            $name  = substr($directive, 0, $position);
+            $value = substr($directive, $position + 1);
+            ini_set($name, $value);
+        }
+        unset($name, $value);
 
         // Do the actual work
         self::displayVersion();

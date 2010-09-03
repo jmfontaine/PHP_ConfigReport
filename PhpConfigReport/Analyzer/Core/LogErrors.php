@@ -50,8 +50,8 @@ class PhpConfigReport_Analyzer_Core_LogErrors
             );
         }
 
-        if ($this->isEnvironment(PhpConfigReport_Analyzer::TESTING,
-                PhpConfigReport_Analyzer::DEVELOPMENT) &&
+        if (($this->isEnvironment(PhpConfigReport_Analyzer::TESTING) ||
+            $this->isEnvironment(PhpConfigReport_Analyzer::DEVELOPMENT)) &&
             $this->isDirectiveEnabled('log_errors')) {
             $comments = 'Errors should not be logged in ' .
                         $this->getEnvironment() . ' because it may generate ' .
@@ -59,7 +59,7 @@ class PhpConfigReport_Analyzer_Core_LogErrors
 
             $this->addWarning(
                 'log_errors',
-                PhpConfigReport_Issue_Interface::SECURITY,
+                PhpConfigReport_Issue_Interface::LOGIC,
                 'on',
                 'off',
                 $comments

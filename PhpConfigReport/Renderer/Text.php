@@ -59,7 +59,10 @@ class PhpConfigReport_Renderer_Text
                 $noIssue = false;
 
                 $consoleOutput->outputLine();
-                $consoleOutput->outputLine($section->getExtensionName(), 'extensionName');
+                $consoleOutput->outputLine(
+                    $section->getExtensionName(),
+                    'extensionName'
+                );
 
                 $table = new ezcConsoleTable($consoleOutput, 80);
 
@@ -67,17 +70,40 @@ class PhpConfigReport_Renderer_Text
                 $table[0][0]->content = 'Directive';
                 $table[0][1]->content = 'Level';
                 $table[0][2]->content = 'Type';
-                $table[0][2]->content = 'Value';
-                $table[0][3]->content = 'Suggested value';
-                $table[0][4]->content = 'Comments';
+                $table[0][3]->content = 'Value';
+                $table[0][4]->content = 'Suggested value';
+                $table[0][5]->content = 'Comments';
 
                 foreach ($section->getIssues() as $index => $issue) {
-                    $table[$index + 1][0]->content = $issue->getDirectiveName();
                     $table[$index + 1]->format     = $issue->getLevel();
+
+                    $directiveName = $issue->getDirectiveName();
+                    if (is_array($directiveName)) {
+                        $directiveName = implode(' / ', $directiveName);
+                    }
+                    $table[$index + 1][0]->content = $directiveName;
+
                     $table[$index + 1][1]->content = $issue->getLevel();
                     $table[$index + 1][2]->content = $issue->getType();
-                    $table[$index + 1][3]->content = $issue->getDirectiveActualValue();
-                    $table[$index + 1][4]->content = $issue->getDirectiveSuggestedValue();
+
+                    $directiveActualValue = $issue->getDirectiveActualValue();
+                    if (is_array($directiveActualValue)) {
+                        $directiveActualValue = implode(
+                            ' / ',
+                            $directiveActualValue
+                        );
+                    }
+                    $table[$index + 1][3]->content = $directiveActualValue;
+
+                    $directiveSuggestedValue = $issue->getDirectiveSuggestedValue();
+                    if (is_array($directiveSuggestedValue)) {
+                        $directiveSuggestedValue = implode(
+                            ' / ',
+                            $directiveSuggestedValue
+                        );
+                    }
+                    $table[$index + 1][4]->content = $directiveSuggestedValue;
+
                     $table[$index + 1][5]->content = $issue->getComments();
                 }
 

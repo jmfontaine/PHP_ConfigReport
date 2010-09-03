@@ -36,10 +36,10 @@
  */
 class PhpConfigReport_Analyzer
 {
-    const PRODUCTION  = 'production';
-    const STAGING     = 'staging';
-    const TESTING     = 'testing';
     const DEVELOPMENT = 'development';
+    const TESTING     = 'testing';
+    const STAGING     = 'staging';
+    const PRODUCTION  = 'production';
 
     /**
      * Config instance

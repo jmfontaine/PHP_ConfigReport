@@ -37,6 +37,7 @@
 abstract class PhpConfigReport_Analyzer_CheckAbstract
 {
     protected $_config;
+    protected $_environment;
     protected $_extensionCode;
     protected $_extensionName;
     protected $_issues = array();
@@ -122,27 +123,13 @@ abstract class PhpConfigReport_Analyzer_CheckAbstract
         return $this->getConfig()->isDirectiveEnabled($directiveName);
     }
 
-    public function isEnvironment()
+    public function isEnvironment($expectedEnvironment)
     {
-        $environment = $this->getEnvironment();
-        foreach (func_get_args() as $expectedEnvironment) {
-            if ($environment == $expectedEnvironment) {
-                return true;
-            }
-        }
-
-        return false;
+        return $this->getEnvironment() == $expectedEnvironment;
     }
 
-    public function isEnvironmentNot()
+    public function isEnvironmentNot($expectedEnvironment)
     {
-        $environment = $this->getEnvironment();
-        foreach (func_get_args() as $expectedEnvironment) {
-            if ($environment == $expectedEnvironment) {
-                return false;
-            }
-        }
-
-        return true;
+        return $this->getEnvironment() == $expectedEnvironment;
     }
 }
