@@ -198,11 +198,12 @@ Usage:
   phpcr [options] <path>
 
 Options:
-  -d    --debug         Display debug informations
-  -e    --environment   Define PHP environment (default: production)
-  -h    --help          Display this message
-  -v    --verbose       Display processing informations
-        --version       Display the version
+  -d    --debug             Display debug informations
+  -e    --environment       Define PHP environment (default: production)
+  -h    --help              Display this message
+  -p    --php name=value    Set PHP configuration directive
+  -v    --verbose           Display processing informations
+        --version           Display the version
 
 
 EOT;
