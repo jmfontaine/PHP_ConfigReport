@@ -129,6 +129,8 @@ class PhpConfigReport_Runner_Cli extends PhpConfigReport_Runner_Abstract
             exit(0);
         }
 
+        self::displayVersion();
+
         if (false !== $input->getOption('php')->value) {
             foreach ($input->getOption('php')->value as $directive) {
                 $position = strpos($directive, '=');
@@ -140,23 +142,35 @@ class PhpConfigReport_Runner_Cli extends PhpConfigReport_Runner_Abstract
 
                 $name  = substr($directive, 0, $position);
                 $value = substr($directive, $position + 1);
-                ini_set($name, $value);
+                if (false === ini_set($name, $value)) {
+                    self::displayError(
+                        "PHP directive $name could not be defined to $value"
+                    );
+                }
             }
             unset($name, $value);
         }
 
         // Do the actual work
-        self::displayVersion();
-
         try {
             $arguments = $input->getArguments();
             $path      = !empty($arguments[0]) ? $arguments[0] : null;
             $config    = new PhpConfigReport_Config($path);
+            if (false === $input->getOption('environment')->value) {
+                $environment = null;
+            } else {
+                $environment = $input->getOption('environment')->value;
+            }
+            if (false === $input->getOption('php-version')->value) {
+                $phpVersion = null;
+            } else {
+                $phpVersion = $input->getOption('php-version')->value;
+            }
 
             $analyzer = new PhpConfigReport_Analyzer(
                 $config,
-                $input->getOption('environment')->value,
-                $input->getOption('php-version')->value
+                $environment,
+                $phpVersion
             );
             $report = $analyzer->getReport();
 
