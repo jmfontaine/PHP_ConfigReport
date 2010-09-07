@@ -78,6 +78,21 @@ abstract class PhpConfigReport_Analyzer_CheckAbstract
         $this->_addIssue($issue);
     }
 
+    protected function _comparePhpVersion($submittedVersion,
+        $operator = '=', $strict = false)
+    {
+        // Allow check when PHP version is unknown
+        if (false === $strict && null === $this->_getPhpVersion()) {
+            return true;
+        }
+
+        return version_compare(
+            $this->_getPhpVersion(),
+            $submittedVersion,
+            $operator
+        );
+    }
+
     abstract protected function _doCheck();
 
     protected function _getConfig()
@@ -123,6 +138,33 @@ abstract class PhpConfigReport_Analyzer_CheckAbstract
     protected function _isEnvironmentNot($expectedEnvironment)
     {
         return $this->_getEnvironment() == $expectedEnvironment;
+    }
+
+    protected function _isPhpVersionEqualTo($version, $strict = false)
+    {
+        return $this->_comparePhpVersion($version, '=', $strict);
+    }
+
+    protected function _isPhpVersionGreaterThan($version, $strict = false)
+    {
+        return $this->_comparePhpVersion($version, '>', $strict);
+    }
+
+    protected function _isPhpVersionGreaterThanOrEqualTo($version,
+        $strict = false)
+    {
+        return $this->_comparePhpVersion($version, '>=', $strict);
+    }
+
+    protected function _isPhpVersionLessThan($version, $strict = false)
+    {
+        return $this->_comparePhpVersion($version, '<', $strict);
+    }
+
+    protected function _isPhpVersionLessThanOrEqualTo($version,
+        $strict = false)
+    {
+        return $this->_comparePhpVersion($version, '<=', $strict);
     }
 
     public function __construct(PhpConfigReport_Config $config, $environment,

@@ -34,7 +34,6 @@
 class PhpConfigReport_Analyzer_Core_AllowUrlFopen
     extends PhpConfigReport_Analyzer_CheckAbstract
 {
-
     protected function _doCheck()
     {
         if ($this->_isDirectiveEnabled('allow_url_fopen')) {
@@ -53,13 +52,8 @@ class PhpConfigReport_Analyzer_Core_AllowUrlFopen
 
     public function isTestable()
     {
-        // Allow check when PHP version is unknown
-        if (null === $this->_getPhpVersion()) {
-            return true;
-        }
-
         // This directive was introduced immediately after the release of
         // version 4.0.3.
-        return version_compare($this->_getPhpVersion(), '4.0.3', '<=');
+        return $this->_isPhpVersionGreaterThan('4.0.3');
     }
 }
