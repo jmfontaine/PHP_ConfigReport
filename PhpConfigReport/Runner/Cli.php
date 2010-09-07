@@ -129,19 +129,21 @@ class PhpConfigReport_Runner_Cli extends PhpConfigReport_Runner_Abstract
             exit(0);
         }
 
-        foreach ($input->getOption('php')->value as $directive) {
-            $position = strpos($directive, '=');
-            if (false === $position) {
-                throw new InvalidArgumentException(
-                    "'$directive' is not a valid PHP configuration directive"
-                );
-            }
+        if (false !== $input->getOption('php')->value) {
+            foreach ($input->getOption('php')->value as $directive) {
+                $position = strpos($directive, '=');
+                if (false === $position) {
+                    throw new InvalidArgumentException(
+                        "'$directive' is not a valid PHP configuration directive"
+                    );
+                }
 
-            $name  = substr($directive, 0, $position);
-            $value = substr($directive, $position + 1);
-            ini_set($name, $value);
+                $name  = substr($directive, 0, $position);
+                $value = substr($directive, $position + 1);
+                ini_set($name, $value);
+            }
+            unset($name, $value);
         }
-        unset($name, $value);
 
         // Do the actual work
         self::displayVersion();
