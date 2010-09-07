@@ -41,71 +41,105 @@ abstract class PhpConfigReport_Analyzer_CheckAbstract
     protected $_extensionCode;
     protected $_extensionName;
     protected $_issues = array();
+    protected $_phpVersion;
+
+    protected function _addError($directiveName, $type, $directiveActualValue,
+        $directiveSuggestedValue, $comments)
+    {
+        $issue = new PhpConfigReport_Issue_Error(
+            $this->_getExtensionName(),
+            $directiveName,
+            $type,
+            $directiveActualValue,
+            $directiveSuggestedValue,
+            $comments
+        );
+
+        $this->_addIssue($issue);
+    }
+
+    protected function _addIssue(PhpConfigReport_Issue_Interface $issue)
+    {
+        $this->_issues[] = $issue;
+    }
+
+    protected function _addWarning($directiveName, $type, $directiveActualValue,
+        $directiveSuggestedValue, $comments)
+    {
+        $issue = new PhpConfigReport_Issue_Warning(
+            $this->_getExtensionName(),
+            $directiveName,
+            $type,
+            $directiveActualValue,
+            $directiveSuggestedValue,
+            $comments
+        );
+
+        $this->_addIssue($issue);
+    }
+
+    abstract protected function _doCheck();
+
+    protected function _getConfig()
+    {
+        return $this->_config;
+    }
+
+    protected function _getEnvironment()
+    {
+        return $this->_environment;
+    }
+
+    protected function _getExtensionCode()
+    {
+        return $this->_extensionCode;
+    }
+
+    protected function _getExtensionName()
+    {
+        return $this->_extensionName;
+    }
+
+    protected function _getPhpVersion()
+    {
+        return $this->_phpVersion;
+    }
+
+    protected function _isDirectiveDisabled($directiveName)
+    {
+        return $this->_getConfig()->isDirectiveDisabled($directiveName);
+    }
+
+    protected function _isDirectiveEnabled($directiveName)
+    {
+        return $this->_getConfig()->isDirectiveEnabled($directiveName);
+    }
+
+    protected function _isEnvironment($expectedEnvironment)
+    {
+        return $this->_getEnvironment() == $expectedEnvironment;
+    }
+
+    protected function _isEnvironmentNot($expectedEnvironment)
+    {
+        return $this->_getEnvironment() == $expectedEnvironment;
+    }
 
     public function __construct(PhpConfigReport_Config $config, $environment,
-        $extensionCode, $extensionName)
+        $phpVersion, $extensionCode, $extensionName)
     {
         $this->_config        = $config;
         $this->_environment   = $environment;
         $this->_extensionCode = $extensionCode;
         $this->_extensionName = $extensionName;
+        $this->_phpVersion    = $phpVersion;
     }
 
-    public function addError($directiveName, $type, $directiveActualValue,
-        $directiveSuggestedValue, $comments)
+    public function check()
     {
-        $issue = new PhpConfigReport_Issue_Error(
-            $this->getExtensionName(),
-            $directiveName,
-            $type,
-            $directiveActualValue,
-            $directiveSuggestedValue,
-            $comments
-        );
-
-        $this->addIssue($issue);
-    }
-
-    public function addIssue(PhpConfigReport_Issue_Interface $issue)
-    {
-        $this->_issues[] = $issue;
-    }
-
-    public function addWarning($directiveName, $type, $directiveActualValue,
-        $directiveSuggestedValue, $comments)
-    {
-        $issue = new PhpConfigReport_Issue_Warning(
-            $this->getExtensionName(),
-            $directiveName,
-            $type,
-            $directiveActualValue,
-            $directiveSuggestedValue,
-            $comments
-        );
-
-        $this->addIssue($issue);
-    }
-
-    abstract public function check();
-
-    public function getConfig()
-    {
-        return $this->_config;
-    }
-
-    public function getEnvironment()
-    {
-        return $this->_environment;
-    }
-
-    public function getExtensionCode()
-    {
-        return $this->_extensionCode;
-    }
-
-    public function getExtensionName()
-    {
-        return $this->_extensionName;
+        if ($this->isTestable()) {
+            $this->_doCheck();
+        }
     }
 
     public function getIssues()
@@ -113,23 +147,8 @@ abstract class PhpConfigReport_Analyzer_CheckAbstract
         return $this->_issues;
     }
 
-    public function isDirectiveDisabled($directiveName)
+    public function isTestable()
     {
-        return $this->getConfig()->isDirectiveDisabled($directiveName);
-    }
-
-    public function isDirectiveEnabled($directiveName)
-    {
-        return $this->getConfig()->isDirectiveEnabled($directiveName);
-    }
-
-    public function isEnvironment($expectedEnvironment)
-    {
-        return $this->getEnvironment() == $expectedEnvironment;
-    }
-
-    public function isEnvironmentNot($expectedEnvironment)
-    {
-        return $this->getEnvironment() == $expectedEnvironment;
+        return true;
     }
 }

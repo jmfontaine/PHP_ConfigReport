@@ -50,6 +50,8 @@ class PhpConfigReport_Analyzer
 
     protected $_environment;
 
+    protected $_phpVersion;
+
     /**
      * Class constructor
      *
@@ -57,10 +59,11 @@ class PhpConfigReport_Analyzer
      * @return void
      */
     public function __construct(PhpConfigReport_Config $config,
-        $environment = self::PRODUCTION)
+        $environment = self::PRODUCTION, $phpVersion = null)
     {
         $this->_config      = $config;
         $this->_environment = $environment;
+        $this->_phpVersion  = $phpVersion;
     }
 
     /**
@@ -85,7 +88,11 @@ class PhpConfigReport_Analyzer
 
         foreach ($extensions as $extension) {
             $class    = "PhpConfigReport_Analyzer_$extension";
-            $instance = new $class($this->_config, $this->_environment);
+            $instance = new $class(
+                $this->_config,
+                $this->_environment,
+                $this->_phpVersion
+            );
             $report->addSection($instance->getReportSection());
         }
 

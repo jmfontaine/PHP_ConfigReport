@@ -34,14 +34,14 @@
 class PhpConfigReport_Analyzer_Core_RegisterGlobals
     extends PhpConfigReport_Analyzer_CheckAbstract
 {
-    public function check()
+    protected function _doCheck()
     {
-    if ($this->isDirectiveEnabled('register_globals')) {
+        if ($this->_isDirectiveEnabled('register_globals')) {
             $comments = 'This directive is set to Off by default since PHP ' .
                         '4.2.0 and it should not be switched to On because ' .
                         'it may help attackers manipulating variables';
 
-            $this->addWarning(
+            $this->_addWarning(
                 'register_globals',
                 PhpConfigReport_Issue_Interface::SECURITY,
                 'on',

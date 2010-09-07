@@ -87,11 +87,6 @@ class PhpConfigReport_Runner_Cli extends PhpConfigReport_Runner_Abstract
         $debugOption->type = ezcConsoleInput::TYPE_NONE;
         $input->registerOption($debugOption);
 
-        $phpDirectiveOption = new ezcConsoleOption('p', 'php');
-        $phpDirectiveOption->type = ezcConsoleInput::TYPE_STRING;
-        $phpDirectiveOption->multiple = true;
-        $input->registerOption($phpDirectiveOption);
-
         $environmentOption          = new ezcConsoleOption('e', 'environment');
         $environmentOption->type    = ezcConsoleInput::TYPE_STRING;
         $environmentOption->default = 'production';
@@ -100,6 +95,15 @@ class PhpConfigReport_Runner_Cli extends PhpConfigReport_Runner_Abstract
         $helpOption = new ezcConsoleOption('h', 'help');
         $helpOption->type = ezcConsoleInput::TYPE_NONE;
         $input->registerOption($helpOption);
+
+        $phpDirectiveOption = new ezcConsoleOption('p', 'php');
+        $phpDirectiveOption->type = ezcConsoleInput::TYPE_STRING;
+        $phpDirectiveOption->multiple = true;
+        $input->registerOption($phpDirectiveOption);
+
+        $phpVersionOption = new ezcConsoleOption(null, 'php-version');
+        $phpVersionOption->type = ezcConsoleInput::TYPE_STRING;
+        $input->registerOption($phpVersionOption);
 
         $verboseOption = new ezcConsoleOption('v', 'verbose');
         $verboseOption->type = ezcConsoleInput::TYPE_NONE;
@@ -149,7 +153,8 @@ class PhpConfigReport_Runner_Cli extends PhpConfigReport_Runner_Abstract
 
             $analyzer = new PhpConfigReport_Analyzer(
                 $config,
-                $input->getOption('environment')->value
+                $input->getOption('environment')->value,
+                $input->getOption('php-version')->value
             );
             $report = $analyzer->getReport();
 
@@ -198,12 +203,13 @@ Usage:
   phpcr [options] <path>
 
 Options:
-  -d    --debug             Display debug informations
-  -e    --environment       Define PHP environment (default: production)
-  -h    --help              Display this message
-  -p    --php name=value    Set PHP configuration directive
-  -v    --verbose           Display processing informations
-        --version           Display the version
+  -d    --debug                 Display debug informations
+  -e    --environment           Define PHP environment (default: production)
+  -h    --help                  Display this message
+  -p    --php NAME=VALUE        Set PHP configuration directive
+        --php-version VERSION   Set PHP version
+  -v    --verbose               Display processing informations
+        --version               Display the version of PHP Config Report
 
 
 EOT;

@@ -34,14 +34,14 @@
 class PhpConfigReport_Analyzer_Core_DisplayOrLogErrors
     extends PhpConfigReport_Analyzer_CheckAbstract
 {
-    public function check()
+    protected function _doCheck()
     {
-        if ($this->isDirectiveDisabled('display_errors') &&
-            $this->isDirectiveDisabled('log_errors')) {
+        if ($this->_isDirectiveDisabled('display_errors') &&
+            $this->_isDirectiveDisabled('log_errors')) {
             $comments = 'Errors errors should be either displayed or logged. ' .
                         'Otherwise they will get unnoticed.';
 
-            $this->addError(
+            $this->_addError(
                 array('display_errors', 'log_errors'),
                 PhpConfigReport_Issue_Interface::LOGIC,
                 array('off', 'off'),

@@ -34,14 +34,14 @@
 class PhpConfigReport_Analyzer_Core_LogErrors
     extends PhpConfigReport_Analyzer_CheckAbstract
 {
-    public function check()
+    protected function _doCheck()
     {
-        if ($this->isEnvironment(PhpConfigReport_Analyzer::PRODUCTION) &&
-            $this->isDirectiveDisabled('log_errors')) {
+        if ($this->_isEnvironment(PhpConfigReport_Analyzer::PRODUCTION) &&
+            $this->_isDirectiveDisabled('log_errors')) {
             $comments = 'Errors should be logged in production so they can ' .
                         'be analyzed later.';
 
-            $this->addError(
+            $this->_addError(
                 'log_errors',
                 PhpConfigReport_Issue_Interface::LOGIC,
                 'off',
@@ -50,14 +50,14 @@ class PhpConfigReport_Analyzer_Core_LogErrors
             );
         }
 
-        if (($this->isEnvironment(PhpConfigReport_Analyzer::TESTING) ||
-            $this->isEnvironment(PhpConfigReport_Analyzer::DEVELOPMENT)) &&
-            $this->isDirectiveEnabled('log_errors')) {
+        if (($this->_isEnvironment(PhpConfigReport_Analyzer::TESTING) ||
+            $this->_isEnvironment(PhpConfigReport_Analyzer::DEVELOPMENT)) &&
+            $this->_isDirectiveEnabled('log_errors')) {
             $comments = 'Errors should not be logged in ' .
-                        $this->getEnvironment() . ' because it may generate ' .
+                        $this->_getEnvironment() . ' because it may generate ' .
                         'huge log files and errors can get unnoticed.';
 
-            $this->addWarning(
+            $this->_addWarning(
                 'log_errors',
                 PhpConfigReport_Issue_Interface::LOGIC,
                 'on',

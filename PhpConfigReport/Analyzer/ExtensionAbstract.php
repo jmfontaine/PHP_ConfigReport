@@ -40,6 +40,7 @@ abstract class PhpConfigReport_Analyzer_ExtensionAbstract
     protected $_environment;
     protected $_extensionCode = 'This should be set in concrete classes';
     protected $_extensionName = 'This should be set in concrete classes';
+    protected $_phpVersion;
     protected $_reportSection;
 
     protected function _checkRequirements()
@@ -75,6 +76,7 @@ abstract class PhpConfigReport_Analyzer_ExtensionAbstract
             $instance = new $class(
                 $this->_config,
                 $this->_environment,
+                $this->_phpVersion,
                 $this->_extensionCode,
                 $this->_extensionName
             );
@@ -90,10 +92,11 @@ abstract class PhpConfigReport_Analyzer_ExtensionAbstract
      * @return void
      */
     public function __construct(PhpConfigReport_Config $config, $environment,
-        $reportSection = null)
+        $phpVersion = null, $reportSection = null)
     {
         $this->_config      = $config;
         $this->_environment = $environment;
+        $this->_phpVersion  = $phpVersion;
 
         if (null === $reportSection) {
             $reportSection = new PhpConfigReport_Report_Section(

@@ -39,7 +39,8 @@ class PhpConfigReport_Test_CheckTestCase
     protected $_extensionName;
 
     protected function _getIssues($config,
-        $environment = PhpConfigReport_Analyzer::PRODUCTION)
+        $environment = PhpConfigReport_Analyzer::PRODUCTION,
+        $phpVersion = null)
     {
         if (is_string($config)) {
             $config = new PhpConfigReport_Config($config);
@@ -54,9 +55,15 @@ class PhpConfigReport_Test_CheckTestCase
         $check = new $className(
             $config,
             $environment,
+            $phpVersion,
             $this->_extensionCode,
             $this->_extensionName
         );
+
+        if (false === $check->isTestable()) {
+            $this->markTestSkipped();
+        }
+
         $check->check();
 
         return $check->getIssues();
@@ -85,7 +92,8 @@ class PhpConfigReport_Test_CheckTestCase
     }
 
     public function assertIssuesContainError($directiveName,
-        $directiveValue, $environments = null, $type = null, $message = '')
+        $directiveValue, $environments = null, $type = null,
+        $phpVersion = null, $message = '')
     {
         $this->assertIssuesContainLevel(
             'PhpConfigReport_Issue_Error',
@@ -93,12 +101,14 @@ class PhpConfigReport_Test_CheckTestCase
             $directiveValue,
             $environments,
             $type,
+            $phpVersion,
             $message
         );
     }
 
     public function assertIssuesContainLevel($level, $directiveName,
-        $directiveValue, $environments = null, $type = null, $message = '')
+        $directiveValue, $environments = null, $type = null,
+        $phpVersion = null, $message = '')
     {
         if (is_array($directiveName) && is_array($directiveValue)) {
             $config = '';
@@ -121,7 +131,7 @@ class PhpConfigReport_Test_CheckTestCase
             $environments = (array) $environments;
         }
         foreach ($environments as $environment) {
-            $issues = $this->_getIssues($config, $environment);
+            $issues = $this->_getIssues($config, $environment, $phpVersion);
 
             $count = 0;
             foreach ($issues as $issue) {
@@ -148,7 +158,8 @@ class PhpConfigReport_Test_CheckTestCase
     }
 
     public function assertIssuesContainWarning($directiveName,
-        $directiveValue, $environments = null, $type = null, $message = '')
+        $directiveValue, $environments = null, $type = null,
+        $phpVersion = null, $message = '')
     {
         $this->assertIssuesContainLevel(
             'PhpConfigReport_Issue_Warning',
@@ -156,12 +167,14 @@ class PhpConfigReport_Test_CheckTestCase
             $directiveValue,
             $environments,
             $type,
+            $phpVersion,
             $message
         );
     }
 
     public function assertIssuesNotContainError($directiveName,
-        $directiveValue, $environment = null, $type = null, $message = '')
+        $directiveValue, $environment = null, $type = null,
+        $phpVersion = null, $message = '')
     {
         $this->assertIssuesNotContainLevel(
             'PhpConfigReport_Issue_Error',
@@ -169,12 +182,14 @@ class PhpConfigReport_Test_CheckTestCase
             $directiveValue,
             $environment,
             $type,
+            $phpVersion,
             $message
         );
     }
 
     public function assertIssuesNotContainLevel($level, $directiveName,
-        $directiveValue, $environments = null, $type = null, $message = '')
+        $directiveValue, $environments = null, $type = null,
+        $phpVersion = null, $message = '')
     {
         if (is_array($directiveName) && is_array($directiveValue)) {
             $config = '';
@@ -197,7 +212,7 @@ class PhpConfigReport_Test_CheckTestCase
             $environments = (array) $environments;
         }
         foreach ($environments as $environment) {
-            $issues = $this->_getIssues($config, $environment);
+            $issues = $this->_getIssues($config, $environment, $phpVersion);
 
             $count = 0;
             foreach ($issues as $issue) {
@@ -224,7 +239,8 @@ class PhpConfigReport_Test_CheckTestCase
     }
 
     public function assertIssuesNotContainWarning($directiveName,
-        $directiveValue, $environments = null, $type = null, $message = '')
+        $directiveValue, $environments = null, $type = null,
+        $phpVersion = null, $message = '')
     {
         $this->assertIssuesNotContainLevel(
             'PhpConfigReport_Issue_Warning',
@@ -232,6 +248,7 @@ class PhpConfigReport_Test_CheckTestCase
             $directiveValue,
             $environments,
             $type,
+            $phpVersion,
             $message
         );
     }

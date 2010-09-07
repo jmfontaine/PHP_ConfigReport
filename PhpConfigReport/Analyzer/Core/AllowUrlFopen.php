@@ -34,13 +34,14 @@
 class PhpConfigReport_Analyzer_Core_AllowUrlFopen
     extends PhpConfigReport_Analyzer_CheckAbstract
 {
-    public function check()
+
+    protected function _doCheck()
     {
-    if ($this->isDirectiveEnabled('allow_url_fopen')) {
+        if ($this->_isDirectiveEnabled('allow_url_fopen')) {
             $comments = 'If not really needed this directive should be set ' .
                         'to off for security reasons';
 
-            $this->addWarning(
+            $this->_addWarning(
                 'allow_url_fopen',
                 PhpConfigReport_Issue_Interface::SECURITY,
                 'on',
@@ -48,5 +49,17 @@ class PhpConfigReport_Analyzer_Core_AllowUrlFopen
                 $comments
             );
         }
+    }
+
+    public function isTestable()
+    {
+        // Allow check when PHP version is unknown
+        if (null === $this->_getPhpVersion()) {
+            return true;
+        }
+
+        // This directive was introduced immediately after the release of
+        // version 4.0.3.
+        return version_compare($this->_getPhpVersion(), '4.0.3', '<=');
     }
 }

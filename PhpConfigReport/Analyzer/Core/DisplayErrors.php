@@ -34,15 +34,15 @@
 class PhpConfigReport_Analyzer_Core_DisplayErrors
     extends PhpConfigReport_Analyzer_CheckAbstract
 {
-    public function check()
+    protected function _doCheck()
     {
-        if ($this->isEnvironment(PhpConfigReport_Analyzer::PRODUCTION) &&
-            $this->isDirectiveEnabled('display_errors')) {
+        if ($this->_isEnvironment(PhpConfigReport_Analyzer::PRODUCTION) &&
+            $this->_isDirectiveEnabled('display_errors')) {
             $comments = 'Errors can display useful informations to attackers ' .
                         'and can only confuse legitimate users. In production' .
                         ', errors should be logged but never displayed.';
 
-            $this->addError(
+            $this->_addError(
                 'display_errors',
                 PhpConfigReport_Issue_Interface::SECURITY,
                 'on',
