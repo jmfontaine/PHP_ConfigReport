@@ -162,7 +162,7 @@ class PhpConfigReport_Runner_Cli extends PhpConfigReport_Runner_Abstract
                 $environment = $input->getOption('environment')->value;
             }
             if (false === $input->getOption('php-version')->value) {
-                $phpVersion = null;
+                $phpVersion = PHP_VERSION;
             } else {
                 $phpVersion = $input->getOption('php-version')->value;
             }

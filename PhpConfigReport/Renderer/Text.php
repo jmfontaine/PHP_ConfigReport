@@ -51,6 +51,7 @@ class PhpConfigReport_Renderer_Text
         $consoleOutput->formats->error->bgcolor       = 'red';
         $consoleOutput->formats->warning->bgcolor     = 'yellow';
 
+        $consoleOutput->outputLine('PHP version: ' . $report->getPhpVersion());
         $consoleOutput->outputLine('Environment: ' . $report->getEnvironment());
 
         $noIssue = true;

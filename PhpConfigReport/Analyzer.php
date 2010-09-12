@@ -73,7 +73,10 @@ class PhpConfigReport_Analyzer
      */
     public function getReport()
     {
-        $report = new PhpConfigReport_Report($this->_environment);
+        $report = new PhpConfigReport_Report(
+            $this->_environment,
+            $this->_phpVersion
+        );
 
         $extensions = array();
         $path       = dirname(__FILE__) . '/Analyzer';

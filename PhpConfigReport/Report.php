@@ -37,11 +37,13 @@
 class PhpConfigReport_Report
 {
     protected $_environment;
+    protected $_phpVersion;
     protected $_sections = array();
 
-    public function __construct($environment)
+    public function __construct($environment, $phpVersion)
     {
         $this->_environment = $environment;
+        $this->_phpVersion  = $phpVersion;
     }
 
     public function addSection(PhpConfigReport_Report_Section $section)
@@ -53,6 +55,11 @@ class PhpConfigReport_Report
     public function getEnvironment()
     {
         return $this->_environment;
+    }
+
+    public function getPhpVersion()
+    {
+        return $this->_phpVersion;
     }
 
     public function getSections()
