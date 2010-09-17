@@ -52,7 +52,9 @@ class PhpConfigReport_Config
      */
     public function __construct($data = null)
     {
-        if (is_file($data)) {
+        if (is_array($data)) {
+            $this->loadFromArray($data);
+        } elseif (is_file($data)) {
             $this->loadFromFile($data);
         } elseif (is_string($data)) {
             $this->loadFromString($data);
@@ -130,6 +132,23 @@ class PhpConfigReport_Config
     public function getDirectives()
     {
         return $this->_directives;
+    }
+
+    /**
+     * Loads configuration from an array
+     *
+     * @param array $array PHP configuration directives
+     * @return PhpConfigReport_Config Returns self to allow methods chaining
+     */
+    public function loadFromArray($array)
+    {
+        $string = '';
+        foreach ($array as $key => $value) {
+            $string .= "$key=$value\n";
+        }
+        $this->loadFromString($string);
+
+        return $this;
     }
 
     /**
