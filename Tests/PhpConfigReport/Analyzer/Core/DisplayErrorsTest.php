@@ -43,17 +43,16 @@ class PhpConfigReport_Analyzer_Core_DisplayErrorsTest
      */
     public function checksEnabledDirectiveTriggersErrorInProduction()
     {
-        $this->assertIssuesContainError(
+        $this->assertIssuesContainErrorOnly(
+            'display_errors=1',
             'display_errors',
-            1,
             PhpConfigReport_Analyzer::PRODUCTION,
             PhpConfigReport_Issue_Interface::SECURITY
         );
 
-        $this->assertIssuesNotContainError(
-            'display_errors',
-            0,
-            PhpConfigReport_Analyzer::PRODUCTION
+        $this->assertIssuesEmpty(
+            'display_errors=0',
+            'display_errors'
         );
     }
 
@@ -69,10 +68,9 @@ class PhpConfigReport_Analyzer_Core_DisplayErrorsTest
         );
 
         foreach ($environments as $environment) {
-            $this->assertIssuesNotContainError(
+            $this->assertIssuesEmpty(
+                'display_errors=1',
                 'display_errors',
-                1,
-                $environment,
                 $environment
             );
         }

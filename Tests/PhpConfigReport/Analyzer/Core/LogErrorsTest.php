@@ -44,15 +44,15 @@ class PhpConfigReport_Analyzer_Core_LogErrorsTest
     public function checksDisabledDirectiveTriggersErrorInProduction()
     {
         $this->assertIssuesContainError(
+            'log_errors=0',
             'log_errors',
-            0,
             PhpConfigReport_Analyzer::PRODUCTION,
             PhpConfigReport_Issue_Interface::LOGIC
         );
 
         $this->assertIssuesNotContainError(
+            'log_errors=1',
             'log_errors',
-            1,
             PhpConfigReport_Analyzer::PRODUCTION
         );
     }
@@ -62,16 +62,16 @@ class PhpConfigReport_Analyzer_Core_LogErrorsTest
      */
     public function checksDisabledDirectiveTriggersWarningInTestingAndDevelopment()
     {
-        $this->assertIssuesContainWarning(
+        $this->assertIssuesContainWarningOnly(
+            'log_errors=1',
             'log_errors',
-            1,
             PhpConfigReport_Analyzer::TESTING,
             PhpConfigReport_Issue_Interface::LOGIC
         );
 
-        $this->assertIssuesContainWarning(
+        $this->assertIssuesContainWarningOnly(
+            'log_errors=1',
             'log_errors',
-            1,
             PhpConfigReport_Analyzer::DEVELOPMENT,
             PhpConfigReport_Issue_Interface::LOGIC
         );

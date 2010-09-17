@@ -42,7 +42,7 @@ class PhpConfigReport_Test_CheckTestCase
         $environment = PhpConfigReport_Analyzer::PRODUCTION,
         $phpVersion = null)
     {
-        if (is_string($config)) {
+        if (!$config instanceof PhpConfigReport_Config) {
             $config = new PhpConfigReport_Config($config);
         }
 
@@ -91,35 +91,40 @@ class PhpConfigReport_Test_CheckTestCase
         $this->_initialize();
     }
 
-    public function assertIssuesContainError($directiveName,
-        $directiveValue, $environments = null, $type = null,
-        $phpVersion = null, $message = '')
+    public function assertIssuesContainError($config, $directiveName = null,
+        $environments = null, $type = null, $phpVersion = null, $message = '')
     {
         $this->assertIssuesContainLevel(
             'PhpConfigReport_Issue_Error',
+            $config,
             $directiveName,
-            $directiveValue,
             $environments,
             $type,
             $phpVersion,
+            false,
             $message
         );
     }
 
-    public function assertIssuesContainLevel($level, $directiveName,
-        $directiveValue, $environments = null, $type = null,
-        $phpVersion = null, $message = '')
+    public function assertIssuesContainErrorOnly($config, $directiveName = null,
+        $environments = null, $type = null, $phpVersion = null, $message = '')
     {
-        if (is_array($directiveName) && is_array($directiveValue)) {
-            $config = '';
-            $count = count($directiveName);
-            for ($i = 0; $i < $count; $i++) {
-                $config .= "$directiveName[$i]=$directiveValue[$i]\n";
-            }
-        } else {
-            $config = "$directiveName = $directiveValue";
-        }
+        $this->assertIssuesContainLevel(
+            'PhpConfigReport_Issue_Error',
+            $config,
+            $directiveName,
+            $environments,
+            $type,
+            $phpVersion,
+            true,
+            $message
+        );
+    }
 
+    public function assertIssuesContainLevel($level, $config,
+        $directiveName = null, $environments = null, $type = null,
+        $phpVersion = null, $strict = false, $message = '')
+    {
         if (null === $environments) {
             $environments = array(
                 PhpConfigReport_Analyzer::DEVELOPMENT,
@@ -135,51 +140,104 @@ class PhpConfigReport_Test_CheckTestCase
 
             $count = 0;
             foreach ($issues as $issue) {
-                $ok = true;
+                $countIssue = true;
 
                 if ($issue instanceof $level) {
                     if (null !== $directiveName &&
                         $issue->getDirectiveName() != $directiveName) {
-                        $ok = false;
+                        $countIssue = false;
                     }
 
                     if (null !== $type && $type != $issue->getType()) {
-                        $ok = false;
+                        $countIssue = false;
                     }
                 }
 
-                if (true === $ok) {
+                if (true === $countIssue) {
                     $count++;
                 }
             }
 
-            $this->assertTrue(0 < $count, $message);
+            if (true === $strict) {
+                $this->assertTrue(1 === $count, $message);
+            } else {
+                $this->assertTrue(0 < $count, $message);
+            }
         }
     }
 
-    public function assertIssuesContainWarning($directiveName,
-        $directiveValue, $environments = null, $type = null,
+    public function assertIssuesEmpty($config, $directiveName = null,
+        $environments = null, $phpVersion = null, $message = '')
+    {
+        if (null === $environments) {
+            $environments = array(
+                PhpConfigReport_Analyzer::DEVELOPMENT,
+                PhpConfigReport_Analyzer::TESTING,
+                PhpConfigReport_Analyzer::STAGING,
+                PhpConfigReport_Analyzer::PRODUCTION,
+            );
+        } else {
+            $environments = (array) $environments;
+        }
+        foreach ($environments as $environment) {
+            $issues = $this->_getIssues($config, $environment, $phpVersion);
+
+            $count = 0;
+            foreach ($issues as $issue) {
+                if (null !== $directiveName) {
+                    if ($issue->getDirectiveName() == $directiveName) {
+                        $count++;
+                    }
+                } else {
+                    $count++;
+                }
+            }
+
+            $this->assertTrue(0 === $count, $message);
+        }
+    }
+
+    public function assertIssuesContainWarning($config,
+        $directiveName = null, $environments = null, $type = null,
         $phpVersion = null, $message = '')
     {
         $this->assertIssuesContainLevel(
             'PhpConfigReport_Issue_Warning',
+            $config,
             $directiveName,
-            $directiveValue,
             $environments,
             $type,
             $phpVersion,
+            false,
             $message
         );
     }
 
-    public function assertIssuesNotContainError($directiveName,
-        $directiveValue, $environment = null, $type = null,
+    public function assertIssuesContainWarningOnly($config,
+        $directiveName = null, $environments = null, $type = null,
+        $phpVersion = null, $message = '')
+    {
+        $this->assertIssuesContainLevel(
+            'PhpConfigReport_Issue_Warning',
+            $config,
+            $directiveName,
+            $environments,
+            $type,
+            $phpVersion,
+            true,
+            $message
+        );
+    }
+
+
+    public function assertIssuesNotContainError($config,
+        $directiveName = null, $environment = null, $type = null,
         $phpVersion = null, $message = '')
     {
         $this->assertIssuesNotContainLevel(
             'PhpConfigReport_Issue_Error',
+            $config,
             $directiveName,
-            $directiveValue,
             $environment,
             $type,
             $phpVersion,
@@ -187,20 +245,10 @@ class PhpConfigReport_Test_CheckTestCase
         );
     }
 
-    public function assertIssuesNotContainLevel($level, $directiveName,
-        $directiveValue, $environments = null, $type = null,
+    public function assertIssuesNotContainLevel($level, $config,
+        $directiveName = null, $environments = null, $type = null,
         $phpVersion = null, $message = '')
     {
-        if (is_array($directiveName) && is_array($directiveValue)) {
-            $config = '';
-            $count = count($directiveName);
-            for ($i = 0; $i < $count; $i++) {
-                $config .= "$directiveName[$i]=$directiveValue[$i]\n";
-            }
-        } else {
-            $config = "$directiveName = $directiveValue";
-        }
-
         if (null === $environments) {
             $environments = array(
                 PhpConfigReport_Analyzer::DEVELOPMENT,
@@ -216,20 +264,22 @@ class PhpConfigReport_Test_CheckTestCase
 
             $count = 0;
             foreach ($issues as $issue) {
-                $ok = true;
+                $countIssue = false;
 
                 if ($issue instanceof $level) {
+                    $countIssue = true;
+
                     if (null !== $directiveName &&
                         $issue->getDirectiveName() != $directiveName) {
-                        $ok = false;
+                        $countIssue = false;
                     }
 
                     if (null !== $type && $type != $issue->getType()) {
-                        $ok = false;
+                        $countIssue = false;
                     }
                 }
 
-                if (true === $ok) {
+                if (true === $countIssue) {
                     $count++;
                 }
             }
@@ -238,14 +288,14 @@ class PhpConfigReport_Test_CheckTestCase
         }
     }
 
-    public function assertIssuesNotContainWarning($directiveName,
-        $directiveValue, $environments = null, $type = null,
+    public function assertIssuesNotContainWarning($config,
+        $directiveName = null, $environments = null, $type = null,
         $phpVersion = null, $message = '')
     {
         $this->assertIssuesNotContainLevel(
             'PhpConfigReport_Issue_Warning',
+            $config,
             $directiveName,
-            $directiveValue,
             $environments,
             $type,
             $phpVersion,

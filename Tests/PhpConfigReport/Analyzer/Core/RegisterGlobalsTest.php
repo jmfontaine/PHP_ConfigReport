@@ -43,9 +43,9 @@ class PhpConfigReport_Analyzer_Core_RegisterGlobalsTest
      */
     public function checksEnabledDirectiveTriggersError()
     {
-        $this->assertIssuesContainError(
+        $this->assertIssuesContainErrorOnly(
+            'register_globals=1',
             'register_globals',
-            1,
             null,
             PhpConfigReport_Issue_Interface::SECURITY
         );

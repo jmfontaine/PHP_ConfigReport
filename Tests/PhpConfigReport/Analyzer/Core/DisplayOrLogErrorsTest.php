@@ -43,9 +43,11 @@ class PhpConfigReport_Analyzer_Core_DisplayOrLogErrorsTest
      */
     public function checksBothDisabledDirectivesTriggersError()
     {
-        $this->assertIssuesContainError(
-            array('display_errors', 'log_errors'),
-            array(0, 0)
+        $this->assertIssuesContainErrorOnly(
+            array(
+                'display_errors' => 0,
+                'log_errors'     => 0,
+            )
         );
     }
 
@@ -54,14 +56,18 @@ class PhpConfigReport_Analyzer_Core_DisplayOrLogErrorsTest
      */
     public function checksOneDisabledDirectiveDoesNotTriggersError()
     {
-        $this->assertIssuesNotContainError(
-            array('display_errors', 'log_errors'),
-            array(1, 0)
+        $this->assertIssuesEmpty(
+            array(
+                'display_errors' => 1,
+                'log_errors'     => 0,
+            )
         );
 
-        $this->assertIssuesNotContainError(
-            array('display_errors', 'log_errors'),
-            array(0, 1)
+        $this->assertIssuesEmpty(
+            array(
+                'display_errors' => 0,
+                'log_errors'     => 1,
+            )
         );
     }
 
