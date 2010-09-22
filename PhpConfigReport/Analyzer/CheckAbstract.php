@@ -100,6 +100,11 @@ abstract class PhpConfigReport_Analyzer_CheckAbstract
         return $this->_config;
     }
 
+    protected function _getDirective($directiveName)
+    {
+        return $this->_getConfig()->getDirective($directiveName);
+    }
+
     protected function _getEnvironment()
     {
         return $this->_environment;
@@ -118,6 +123,64 @@ abstract class PhpConfigReport_Analyzer_CheckAbstract
     protected function _getPhpVersion()
     {
         return $this->_phpVersion;
+    }
+
+    protected function _getSizeDirective($directiveName,
+        $targetUnit = PhpConfigReport_Config::MEGA_BYTES)
+    {
+        return $this->_getConfig()->getSizeDirective(
+            $directiveName,
+            $targetUnit
+        );
+    }
+
+    protected function _isSizeDirectiveDifferentFrom($directiveName, $treshold)
+    {
+        return $this->_getConfig()->isSizeDirectiveDifferentFrom(
+            $directiveName,
+            $treshold
+        );
+    }
+
+    protected function _isSizeDirectiveEqualTo($directiveName, $treshold)
+    {
+        return $this->_getConfig()->isSizeDirectiveEqualTo(
+            $directiveName,
+            $treshold
+        );
+    }
+
+    protected function _isSizeDirectiveGreaterThan($directiveName, $treshold)
+    {
+        return $this->_getConfig()->isSizeDirectiveGreaterThan(
+            $directiveName,
+            $treshold
+        );
+    }
+
+    protected function _isSizeDirectiveGreaterThanOrEqualTo($directiveName,
+        $treshold)
+    {
+        return $this->_getConfig()->isSizeDirectiveGreaterThanOrEqual(
+            $directiveName,
+            $treshold
+        );
+    }
+
+    protected function _isSizeDirectiveLessThan($directiveName, $treshold)
+    {
+        return $this->_getConfig()->isSizeDirectiveLessThan(
+            $directiveName,
+            $treshold
+        );
+    }
+
+    protected function _isSizeDirectiveLessThanOrEqual($directiveName, $treshold)
+    {
+        return $this->_getConfig()->isSizeDirectiveLessThanOrEqual(
+            $directiveName,
+            $treshold
+        );
     }
 
     protected function _isDirectiveDisabled($directiveName)

@@ -36,11 +36,81 @@
  */
 class PhpConfigReport_Config
 {
+    const BYTES      = 'B';
+    const KILO_BYTES = 'K';
+    const MEGA_BYTES = 'M';
+    const GIGA_BYTES = 'G';
+
     /**
      * Configuration directives
      * @var array
      */
     protected $_directives = array();
+
+    /**
+     * Converts size values to the specified unit
+     *
+     * @param string|int $value Value to convert
+     * @param string $targetUnit Target unit
+     * @throws InvalidArgumentException
+     * @return string|int Converted value
+     */
+    protected function _convertSizeValue($value, $targetUnit)
+    {
+        $sourceUnit = substr($value, -1);
+        if (is_numeric($sourceUnit)) {
+            $sourceUnit = self::BYTES;
+        }
+
+        // If source and target units are identical there is no need
+        // to convert the value...
+        if ($targetUnit == $sourceUnit) {
+            return $value;
+        } else {
+            // ...else remove unit from value
+            $value = substr($value, 0, -1);
+        }
+
+        // Convert value to bytes and then to the target unit
+        switch ($sourceUnit) {
+            case self::BYTES:
+                // Do nothing
+                break;
+            case self::KILO_BYTES:
+                $value = $value * 1024;
+                break;
+            case self::MEGA_BYTES:
+                $value = $value * 1024 * 1024;
+                break;
+            case self::GIGA_BYTES:
+                $value = $value * 1024 * 1024 * 1024;
+                break;
+            default:
+              throw new InvalidArgumentException(
+                    "Source unit '$sourceUnit' is not valid"
+                );
+        }
+        switch ($targetUnit) {
+            case self::BYTES:
+                // Do nothing
+                break;
+            case self::KILO_BYTES:
+                $value = ($value / 1024) . 'K';
+                break;
+            case self::MEGA_BYTES:
+                $value = ($value / 1024 / 1024) . 'M';
+                break;
+            case self::GIGA_BYTES:
+                $value = ($value / 1024 / 1024 / 1024) . 'G';
+                break;
+            default:
+              throw new InvalidArgumentException(
+                    "Target unit '$targetUnit' is not valid"
+                );
+        }
+
+        return $value;
+    }
 
     /**
      * Class constructor
@@ -132,6 +202,147 @@ class PhpConfigReport_Config
     public function getDirectives()
     {
         return $this->_directives;
+    }
+
+    /**
+     * Returns size directive values in specified unit
+     *
+     * @param string    $directiveName  Directive name
+     * @param string    $targetUnit     Target unit
+     * @return string|int Formated directive value
+     */
+    public function getSizeDirective($directiveName,
+        $targetUnit = self::MEGA_BYTES)
+    {
+        $value = $this->getDirective($directiveName);
+
+        if (null === $value) {
+            return null;
+        }
+
+        return $this->_convertSizeValue($value, $targetUnit);
+    }
+
+    /**
+     * Checks the value regarding to the given treshold depending
+     * on the supplied operator
+     *
+     * @param string        $directiveName  Directive name
+     * @param string|int    $treshold       Treshold value
+     * @param string        $operator       Comparison operator
+     * @throws InvalidArgumentException
+     * @return bool
+     */
+    public function isSizeDirective($directiveName, $treshold,
+        $operator = '=')
+    {
+        $value = $this->getDirective($directiveName);
+        if (null === $value) {
+            return null;
+        }
+
+        $value    = $this->getSizeDirective($directiveName, self::BYTES);
+        $treshold = $this->_convertSizeValue($treshold, self::BYTES);
+
+        switch ($operator) {
+            case '=':
+                $result = $value == $treshold;
+                break;
+            case '!=':
+                $result = $value != $treshold;
+            break;
+                case '>':
+                $result = $value > $treshold;
+                break;
+            case '>=':
+                $result = $value >= $treshold;
+                break;
+            case '<':
+                $result = $value < $treshold;
+                break;
+            case '<=':
+                $result = $value <= $treshold;
+                break;
+            default:
+                throw new InvalidArgumentException(
+                    "Operator '$operator' is not valid"
+                );
+        }
+
+        return $result;
+    }
+
+    /**
+     * Checks if the directive value is different from a given value
+     *
+     * @param string        $directiveName  Directive name
+     * @param string|int    $value          Value to compare directive value to
+     * @return bool
+     */
+    public function isSizeDirectiveDifferentFrom($directiveName, $value)
+    {
+        return $this->isSizeDirective($directiveName, $value, '!=');
+    }
+
+    /**
+     * Checks is the directive value is equal to a given value
+     *
+     * @param string        $directiveName  Directive name
+     * @param string|int    $treshold       Treshold value
+     * @return bool
+     */
+    public function isSizeDirectiveEqualTo($directiveName, $treshold)
+    {
+        return $this->isSizeDirective($directiveName, $treshold, '=');
+    }
+
+    /**
+     * Checks is the directive value is greater than a given value
+     *
+     * @param string        $directiveName  Directive name
+     * @param string|int    $treshold       Treshold value
+     * @return bool
+     */
+    public function isSizeDirectiveGreaterThan($directiveName, $treshold)
+    {
+        return $this->isSizeDirective($directiveName, $treshold, '>');
+    }
+
+    /**
+     * Checks is the directive value is greater than or equal to a given value
+     *
+     * @param string        $directiveName  Directive name
+     * @param string|int    $treshold       Treshold value
+     * @return bool
+     */
+    public function isSizeDirectiveGreaterThanOrEqual($directiveName,
+        $treshold)
+    {
+        return $this->isSizeDirective($directiveName, $treshold, '>=');
+    }
+
+    /**
+     * Checks is the directive value is less than a given value
+     *
+     * @param string        $directiveName  Directive name
+     * @param string|int    $treshold       Treshold value
+     * @return bool
+     */
+    public function isSizeDirectiveLessThan($directiveName, $treshold)
+    {
+        return $this->isSizeDirective($directiveName, $treshold, '<');
+    }
+
+    /**
+     * Checks is the directive value is less than or equal tot a given value
+     *
+     * @param string        $directiveName  Directive name
+     * @param string|int    $treshold       Treshold value
+     * @return bool
+     */
+    public function isSizeDirectiveLessThanOrEqual($directiveName, $treshold)
+    {
+        return $this->isSizeDirective($directiveName, $treshold, '<=');
     }
 
     /**
