@@ -37,6 +37,20 @@
 class PhpConfigReport_Renderer_Text
     implements PhpConfigReport_Renderer_Interface
 {
+    protected $_width = 80;
+
+    public function __construct($width = null)
+    {
+        if (null !== $width) {
+            $this->setWidth($width);
+        }
+    }
+
+    public function getWidth()
+    {
+        return $this->_width;
+    }
+
     /**
      * Displays report or generates its files
      *
@@ -65,7 +79,7 @@ class PhpConfigReport_Renderer_Text
                     'extensionName'
                 );
 
-                $table = new ezcConsoleTable($consoleOutput, 80);
+                $table = new ezcConsoleTable($consoleOutput, $this->_width);
 
                 $table[0]->format     = 'columnTitle';
                 $table[0][0]->content = 'Directive';
@@ -117,5 +131,17 @@ class PhpConfigReport_Renderer_Text
             $consoleOutput->outputLine('No issue found.');
             $consoleOutput->outputLine();
         }
+    }
+
+    public function setWidth($width)
+    {
+        $width = (int) $width;
+        if (0 >= $width) {
+            throw new InvalidArgumentException(
+            	'Report width must be a positive integer'
+            );
+        }
+
+        $this->_width = $width;
     }
 }

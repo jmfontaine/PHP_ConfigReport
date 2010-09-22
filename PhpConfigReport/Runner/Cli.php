@@ -109,6 +109,10 @@ class PhpConfigReport_Runner_Cli extends PhpConfigReport_Runner_Abstract
         $verboseOption->type = ezcConsoleInput::TYPE_NONE;
         $input->registerOption($verboseOption);
 
+        $widthOption = new ezcConsoleOption(null, 'width');
+        $widthOption->type = ezcConsoleInput::TYPE_INT;
+        $input->registerOption($widthOption);
+
         $versionOption = new ezcConsoleOption(null, 'version');
         $versionOption->type = ezcConsoleInput::TYPE_NONE;
         $input->registerOption($versionOption);
@@ -174,7 +178,12 @@ class PhpConfigReport_Runner_Cli extends PhpConfigReport_Runner_Abstract
             );
             $report = $analyzer->getReport();
 
-            $renderer = new PhpConfigReport_Renderer_Text();
+            if (false !== $input->getOption('width')->value) {
+                $reportWidth = $input->getOption('width')->value;
+            } else {
+                $reportWidth = null;
+            }
+            $renderer = new PhpConfigReport_Renderer_Text($reportWidth);
             $renderer->render($report);
         } catch (Exception $exception) {
             self::displayError($exception->getMessage());
@@ -219,12 +228,13 @@ Usage:
   phpcr [options] <path>
 
 Options:
-  -d    --debug                 Display debug informations
+  -d	--debug                 Display debug informations
   -e    --environment           Define PHP environment (default: production)
   -h    --help                  Display this message
   -p    --php NAME=VALUE        Set PHP configuration directive
-        --php-version VERSION   Set PHP version
-  -v    --verbose               Display processing informations
+        --php-version VERSION	Set PHP version
+  -v    --verbose           	Display processing informations
+        --width=VALUE       	Set texte report width (default: 80)
         --version               Display the version of PHP Config Report
 
 
