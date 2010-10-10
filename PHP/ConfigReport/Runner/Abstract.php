@@ -1,4 +1,3 @@
-#!/usr/bin/env php
 <?php
 /**
  * Copyright (c) 2010, Jean-Marc Fontaine
@@ -31,7 +30,35 @@
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
-set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
 
-require_once 'PHP/ConfigReport/Runner/Cli.php';
-PHP_ConfigReport_Runner_Cli::run();
+/**
+ * This is necessary since the autoloader is not configured yet when this
+ * interface is used.
+ */
+require_once 'PHP/ConfigReport/Runner/Interface.php';
+
+/**
+ * Runner abstract class
+ */
+abstract class PHP_ConfigReport_Runner_Abstract
+    implements PHP_ConfigReport_Runner_Interface
+{
+    /**
+     * Made private to inforce use of static run() method by disallowing cloning
+     *
+     * @return void
+     */
+    private final function __clone()
+    {
+    }
+
+    /**
+     * Made private to inforce use of static run() method by disallowing
+     * instanciation
+     *
+     * @return void
+     */
+    private final function __construct()
+    {
+    }
+}

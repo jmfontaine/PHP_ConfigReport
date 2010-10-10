@@ -1,4 +1,3 @@
-#!/usr/bin/env php
 <?php
 /**
  * Copyright (c) 2010, Jean-Marc Fontaine
@@ -26,12 +25,58 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @package PHP Config Report
+ * @package Tests
  * @author Jean-Marc Fontaine <jm@jmfontaine.net>
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
-set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
 
-require_once 'PHP/ConfigReport/Runner/Cli.php';
-PHP_ConfigReport_Runner_Cli::run();
+class PHP_ConfigReport_Analyzer_Core_DisplayErrorsTest
+    extends PHP_ConfigReport_Test_CheckTestCase
+{
+    /*
+     * Methods
+     */
+
+   /**
+     * @test
+     */
+    public function checksEnabledDirectiveTriggersErrorInProduction()
+    {
+        $this->assertIssuesContainErrorOnly(
+            'display_errors=1',
+            'display_errors',
+            PHP_ConfigReport_Analyzer::PRODUCTION,
+            PHP_ConfigReport_Issue_Interface::SECURITY
+        );
+
+        $this->assertIssuesEmpty(
+            'display_errors=0',
+            'display_errors'
+        );
+    }
+
+   /**
+     * @test
+     */
+    public function checksEnabledDirectiveDoesNotTriggerIssueInWhenNotInProduction()
+    {
+        $environments = array(
+            PHP_ConfigReport_Analyzer::DEVELOPMENT,
+            PHP_ConfigReport_Analyzer::TESTING,
+            PHP_ConfigReport_Analyzer::STAGING,
+        );
+
+        foreach ($environments as $environment) {
+            $this->assertIssuesEmpty(
+                'display_errors=1',
+                'display_errors',
+                $environment
+            );
+        }
+    }
+
+    /*
+     * Bugs
+     */
+}

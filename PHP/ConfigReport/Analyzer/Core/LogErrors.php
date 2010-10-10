@@ -1,4 +1,3 @@
-#!/usr/bin/env php
 <?php
 /**
  * Copyright (c) 2010, Jean-Marc Fontaine
@@ -31,7 +30,40 @@
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
-set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
 
-require_once 'PHP/ConfigReport/Runner/Cli.php';
-PHP_ConfigReport_Runner_Cli::run();
+class PHP_ConfigReport_Analyzer_Core_LogErrors
+    extends PHP_ConfigReport_Analyzer_CheckAbstract
+{
+    protected function _doCheck()
+    {
+        if ($this->_isEnvironment(PHP_ConfigReport_Analyzer::PRODUCTION) &&
+            $this->_isDirectiveDisabled('log_errors')) {
+            $comments = 'Errors should be logged in production so they can ' .
+                        'be analyzed later.';
+
+            $this->_addError(
+                'log_errors',
+                PHP_ConfigReport_Issue_Interface::LOGIC,
+                'off',
+                'on',
+                $comments
+            );
+        }
+
+        if (($this->_isEnvironment(PHP_ConfigReport_Analyzer::TESTING) ||
+            $this->_isEnvironment(PHP_ConfigReport_Analyzer::DEVELOPMENT)) &&
+            $this->_isDirectiveEnabled('log_errors')) {
+            $comments = 'Errors should not be logged in ' .
+                        $this->_getEnvironment() . ' because it may generate ' .
+                        'huge log files and errors can get unnoticed.';
+
+            $this->_addWarning(
+                'log_errors',
+                PHP_ConfigReport_Issue_Interface::LOGIC,
+                'on',
+                'off',
+                $comments
+            );
+        }
+    }
+}

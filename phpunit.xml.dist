@@ -16,16 +16,16 @@
             <directory suffix="Test.php">./Tests</directory>
         </testsuite>
     </testsuites>
-    
+
     <filter>
         <whitelist>
             <directory suffix=".php">.</directory>
             <exclude>
-                <directory suffix=".php">./Tests</directory>
+                <directory>./Tests</directory>
             </exclude>
         </whitelist>
-    </filter>   
-    
+    </filter>
+
     <logging>
         <log type="coverage-html"
              target="./Tests/_coverage"

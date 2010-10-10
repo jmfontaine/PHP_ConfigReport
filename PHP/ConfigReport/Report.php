@@ -1,4 +1,3 @@
-#!/usr/bin/env php
 <?php
 /**
  * Copyright (c) 2010, Jean-Marc Fontaine
@@ -31,7 +30,40 @@
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
-set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
 
-require_once 'PHP/ConfigReport/Runner/Cli.php';
-PHP_ConfigReport_Runner_Cli::run();
+/**
+ * Report class
+ */
+class PHP_ConfigReport_Report
+{
+    protected $_environment;
+    protected $_phpVersion;
+    protected $_sections = array();
+
+    public function __construct($environment, $phpVersion)
+    {
+        $this->_environment = $environment;
+        $this->_phpVersion  = $phpVersion;
+    }
+
+    public function addSection(PHP_ConfigReport_Report_Section $section)
+    {
+        $this->_sections[] = $section;
+        return $this;
+    }
+
+    public function getEnvironment()
+    {
+        return $this->_environment;
+    }
+
+    public function getPhpVersion()
+    {
+        return $this->_phpVersion;
+    }
+
+    public function getSections()
+    {
+        return $this->_sections;
+    }
+}

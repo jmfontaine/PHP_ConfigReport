@@ -1,4 +1,3 @@
-#!/usr/bin/env php
 <?php
 /**
  * Copyright (c) 2010, Jean-Marc Fontaine
@@ -31,7 +30,25 @@
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
-set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
 
-require_once 'PHP/ConfigReport/Runner/Cli.php';
-PHP_ConfigReport_Runner_Cli::run();
+class PHP_ConfigReport_Analyzer_Core_DisplayErrors
+    extends PHP_ConfigReport_Analyzer_CheckAbstract
+{
+    protected function _doCheck()
+    {
+        if ($this->_isEnvironment(PHP_ConfigReport_Analyzer::PRODUCTION) &&
+            $this->_isDirectiveEnabled('display_errors')) {
+            $comments = 'Errors can display useful informations to attackers ' .
+                        'and can only confuse legitimate users. In production' .
+                        ', errors should be logged but never displayed.';
+
+            $this->_addError(
+                'display_errors',
+                PHP_ConfigReport_Issue_Interface::SECURITY,
+                'on',
+                'off',
+                $comments
+            );
+        }
+    }
+}

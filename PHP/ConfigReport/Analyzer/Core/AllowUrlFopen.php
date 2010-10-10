@@ -1,4 +1,3 @@
-#!/usr/bin/env php
 <?php
 /**
  * Copyright (c) 2010, Jean-Marc Fontaine
@@ -31,7 +30,30 @@
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
-set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
 
-require_once 'PHP/ConfigReport/Runner/Cli.php';
-PHP_ConfigReport_Runner_Cli::run();
+class PHP_ConfigReport_Analyzer_Core_AllowUrlFopen
+    extends PHP_ConfigReport_Analyzer_CheckAbstract
+{
+    protected function _doCheck()
+    {
+        if ($this->_isDirectiveEnabled('allow_url_fopen')) {
+            $comments = 'If not really needed this directive should be set ' .
+                        'to off for security reasons';
+
+            $this->_addWarning(
+                'allow_url_fopen',
+                PHP_ConfigReport_Issue_Interface::SECURITY,
+                'on',
+                'off',
+                $comments
+            );
+        }
+    }
+
+    public function isTestable()
+    {
+        // This directive was introduced immediately after the release of
+        // version 4.0.3.
+        return $this->_isPhpVersionGreaterThan('4.0.3');
+    }
+}

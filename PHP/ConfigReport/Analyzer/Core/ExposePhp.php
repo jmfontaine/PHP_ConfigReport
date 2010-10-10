@@ -1,4 +1,3 @@
-#!/usr/bin/env php
 <?php
 /**
  * Copyright (c) 2010, Jean-Marc Fontaine
@@ -31,7 +30,23 @@
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
-set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
 
-require_once 'PHP/ConfigReport/Runner/Cli.php';
-PHP_ConfigReport_Runner_Cli::run();
+class PHP_ConfigReport_Analyzer_Core_ExposePhp
+    extends PHP_ConfigReport_Analyzer_CheckAbstract
+{
+    protected function _doCheck()
+    {
+        if ($this->_isDirectiveEnabled('expose_php')) {
+            $comments = 'Exposing PHP version can help attacker targeting ' .
+                        'known vulnerabilities';
+
+            $this->_addError(
+                'expose_php',
+                PHP_ConfigReport_Issue_Interface::SECURITY,
+                'on',
+                'off',
+                $comments
+            );
+        }
+    }
+}

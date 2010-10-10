@@ -1,4 +1,3 @@
-#!/usr/bin/env php
 <?php
 /**
  * Copyright (c) 2010, Jean-Marc Fontaine
@@ -31,7 +30,42 @@
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
-set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
 
-require_once 'PHP/ConfigReport/Runner/Cli.php';
-PHP_ConfigReport_Runner_Cli::run();
+interface PHP_ConfigReport_Issue_Interface
+{
+    const ERROR   = 'error';
+    const WARNING = 'warning';
+
+    const LOGIC       = 'logic';
+    const PERFORMANCE = 'performance';
+    const SECURITY    = 'security';
+
+    public function __construct($extensionName, $directiveName, $type,
+        $directiveActualValue, $directiveSuggestedValue, $comments);
+
+    public function getComments();
+
+    public function getDirectiveActualValue();
+
+    public function getDirectiveSuggestedValue();
+
+    public function getDirectiveName();
+
+    public function getExtensionName();
+
+    public function getLevel();
+
+    public function getType();
+
+    public function setComments($comments);
+
+    public function setDirectiveActualValue($directiveActualValue);
+
+    public function setDirectiveSuggestedValue($directiveSuggestedValue);
+
+    public function setDirectiveName($directiveName);
+
+    public function setExtensionName($extensionName);
+
+    public function setType($type);
+}

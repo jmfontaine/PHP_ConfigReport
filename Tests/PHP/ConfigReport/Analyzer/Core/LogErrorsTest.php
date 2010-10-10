@@ -1,4 +1,3 @@
-#!/usr/bin/env php
 <?php
 /**
  * Copyright (c) 2010, Jean-Marc Fontaine
@@ -26,12 +25,59 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @package PHP Config Report
+ * @package Tests
  * @author Jean-Marc Fontaine <jm@jmfontaine.net>
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
-set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
 
-require_once 'PHP/ConfigReport/Runner/Cli.php';
-PHP_ConfigReport_Runner_Cli::run();
+class PHP_ConfigReport_Analyzer_Core_LogErrorsTest
+    extends PHP_ConfigReport_Test_CheckTestCase
+{
+    /*
+     * Methods
+     */
+
+   /**
+     * @test
+     */
+    public function checksDisabledDirectiveTriggersErrorInProduction()
+    {
+        $this->assertIssuesContainError(
+            'log_errors=0',
+            'log_errors',
+            PHP_ConfigReport_Analyzer::PRODUCTION,
+            PHP_ConfigReport_Issue_Interface::LOGIC
+        );
+
+        $this->assertIssuesNotContainError(
+            'log_errors=1',
+            'log_errors',
+            PHP_ConfigReport_Analyzer::PRODUCTION
+        );
+    }
+
+   /**
+     * @test
+     */
+    public function checksDisabledDirectiveTriggersWarningInTestingAndDevelopment()
+    {
+        $this->assertIssuesContainWarningOnly(
+            'log_errors=1',
+            'log_errors',
+            PHP_ConfigReport_Analyzer::TESTING,
+            PHP_ConfigReport_Issue_Interface::LOGIC
+        );
+
+        $this->assertIssuesContainWarningOnly(
+            'log_errors=1',
+            'log_errors',
+            PHP_ConfigReport_Analyzer::DEVELOPMENT,
+            PHP_ConfigReport_Issue_Interface::LOGIC
+        );
+    }
+
+    /*
+     * Bugs
+     */
+}

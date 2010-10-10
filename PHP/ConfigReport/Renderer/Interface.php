@@ -1,4 +1,3 @@
-#!/usr/bin/env php
 <?php
 /**
  * Copyright (c) 2010, Jean-Marc Fontaine
@@ -31,7 +30,17 @@
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
-set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
 
-require_once 'PHP/ConfigReport/Runner/Cli.php';
-PHP_ConfigReport_Runner_Cli::run();
+/**
+ * Interface for renderers
+ */
+interface PHP_ConfigReport_Renderer_Interface
+{
+    /**
+     * Generate report output
+     *
+     * @param PHP_ConfigReport_Report $report Report
+     * @return void
+     */
+    public function render(PHP_ConfigReport_Report $report);
+}

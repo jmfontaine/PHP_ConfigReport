@@ -1,4 +1,3 @@
-#!/usr/bin/env php
 <?php
 /**
  * Copyright (c) 2010, Jean-Marc Fontaine
@@ -31,7 +30,27 @@
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
-set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
 
-require_once 'PHP/ConfigReport/Runner/Cli.php';
-PHP_ConfigReport_Runner_Cli::run();
+/**
+ * Class loader
+ */
+class PHP_ConfigReport_Loader
+{
+    /**
+     * Tries to load the file containing the specified class.
+     * This method is to be used with spl_autoload_register() function.
+     *
+     * @param string $class name of the class to load
+     * @return bool Whether the class was found or not
+     */
+    public static function autoload($class)
+    {
+        $path = str_replace('_', '/', $class) . '.php';
+        if (file_exists($path)) {
+            require_once $path;
+            return true;
+        } else {
+            return false;
+        }
+    }
+}

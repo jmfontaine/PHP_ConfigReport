@@ -1,4 +1,3 @@
-#!/usr/bin/env php
 <?php
 /**
  * Copyright (c) 2010, Jean-Marc Fontaine
@@ -31,7 +30,37 @@
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
-set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
 
-require_once 'PHP/ConfigReport/Runner/Cli.php';
-PHP_ConfigReport_Runner_Cli::run();
+class PHP_ConfigReport_Analyzer_Core_MemoryLimit
+    extends PHP_ConfigReport_Analyzer_CheckAbstract
+{
+    protected function _doCheck()
+    {
+        $actualValue = $this->_getSizeDirective(
+            'memory_limit',
+            PHP_ConfigReport_Config::MEGA_BYTES
+        );
+
+        if ($this->_isSizeDirectiveGreaterThan('memory_limit', '256M')) {
+            $comments = '256M or less should be a enough value for most uses';
+
+            $this->_addError(
+                'memory_limit',
+                PHP_ConfigReport_Issue_Interface::PERFORMANCE,
+                $actualValue,
+                '256M',
+                $comments
+            );
+        } elseif ($this->_isSizeDirectiveGreaterThan('memory_limit', '128M')) {
+            $comments = '128M or less should be a enough value for most uses';
+
+            $this->_addWarning(
+                'memory_limit',
+                PHP_ConfigReport_Issue_Interface::PERFORMANCE,
+                $actualValue,
+                '128M',
+                $comments
+            );
+        }
+    }
+}

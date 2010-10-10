@@ -1,4 +1,3 @@
-#!/usr/bin/env php
 <?php
 /**
  * Copyright (c) 2010, Jean-Marc Fontaine
@@ -26,12 +25,45 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @package PHP Config Report
+ * @package Tests
  * @author Jean-Marc Fontaine <jm@jmfontaine.net>
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
-set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
 
-require_once 'PHP/ConfigReport/Runner/Cli.php';
-PHP_ConfigReport_Runner_Cli::run();
+class PHP_ConfigReport_Analyzer_Core_AllowUrlIncludeTest
+    extends PHP_ConfigReport_Test_CheckTestCase
+{
+    /*
+     * Methods
+     */
+
+   /**
+     * @test
+     */
+    public function checksEnabledDirectiveTriggersError()
+    {
+        $this->assertIssuesContainErrorOnly(
+            'allow_url_include=1',
+            'allow_url_include',
+            null,
+            PHP_ConfigReport_Issue_Interface::SECURITY
+        );
+    }
+
+   /**
+     * @test
+     */
+    public function checksDisabledDirectiveDoesNotTriggersIssue()
+    {
+        $this->assertIssuesEmpty(
+            'allow_url_include=0',
+            null,
+            'allow_url_include'
+        );
+    }
+
+    /*
+     * Bugs
+     */
+}
