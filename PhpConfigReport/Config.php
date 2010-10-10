@@ -169,6 +169,33 @@ class PhpConfigReport_Config
     }
 
     /**
+     * Indicates whether a directive is numeric or not
+     *
+     * @param string $directiveName
+     * @return boolean
+     */
+    public function isDirectiveNumeric($directiveName)
+    {
+        $value = $this->getDirective($directiveName);
+        if (null === $value) {
+            return false;
+        }
+
+        // A "0" value is interpreted as "0" and all other ways to disable a
+        // flag directive ("off", "false" and "no") are interpreted as an
+        // empty string.
+        if ('0' === $directiveValue || '' === $directiveValue) {
+            return false;
+        } elseif ('1' === $directiveValue) {
+            return true;
+        } else {
+            $message = 'Value "' . $directiveValue . '" is not a valid flag ' .
+                       'value for directive "' . $directiveName . '"';
+            throw new UnexpectedValueException($message);
+        }
+    }
+
+    /**
      * Indicates whether a directive is set or not
      *
      * @param string $directiveName

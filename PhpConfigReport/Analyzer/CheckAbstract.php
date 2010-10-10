@@ -193,6 +193,11 @@ abstract class PhpConfigReport_Analyzer_CheckAbstract
         return $this->_getConfig()->isDirectiveEnabled($directiveName);
     }
 
+    protected function _isDirectiveNumeric($directiveName)
+    {
+        return $this->_getConfig()->isDirectiveNumeric($directiveName);
+    }
+
     protected function _isEnvironment($expectedEnvironment)
     {
         return $this->_getEnvironment() == $expectedEnvironment;
