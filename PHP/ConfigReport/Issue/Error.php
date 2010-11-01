@@ -26,11 +26,21 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @package PHP_ConfigReport
+ * @subpackage Issue
  * @author Jean-Marc Fontaine <jm@jmfontaine.net>
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 
+/**
+ * Error issue
+ *
+ * @package PHP_ConfigReport
+ * @subpackage Issue
+ * @author Jean-Marc Fontaine <jm@jmfontaine.net>
+ * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
+ * @license http://www.opensource.org/licenses/bsd-license.php BSD License
+ */
 class PHP_ConfigReport_Issue_Error extends PHP_ConfigReport_Issue_Abstract
 {
     protected $_level = PHP_ConfigReport_Issue_Abstract::ERROR;

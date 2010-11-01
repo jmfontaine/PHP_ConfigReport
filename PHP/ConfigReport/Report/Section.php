@@ -26,13 +26,20 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @package PHP_ConfigReport
+ * @subpackage Report
  * @author Jean-Marc Fontaine <jm@jmfontaine.net>
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 
 /**
- * Report class
+ * Report section
+ *
+ * @package PHP_ConfigReport
+ * @subpackage Report
+ * @author Jean-Marc Fontaine <jm@jmfontaine.net>
+ * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
+ * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 class PHP_ConfigReport_Report_Section
 {

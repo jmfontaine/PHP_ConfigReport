@@ -26,6 +26,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @package PHP_ConfigReport
+ * @subpackage Renderer
  * @author Jean-Marc Fontaine <jm@jmfontaine.net>
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
@@ -33,6 +34,12 @@
 
 /**
  * Text renderer
+ *
+ * @package PHP_ConfigReport
+ * @subpackage Renderer
+ * @author Jean-Marc Fontaine <jm@jmfontaine.net>
+ * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
+ * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 class PHP_ConfigReport_Renderer_Text
     implements PHP_ConfigReport_Renderer_Interface
@@ -138,7 +145,7 @@ class PHP_ConfigReport_Renderer_Text
         $width = (int) $width;
         if (0 >= $width) {
             throw new InvalidArgumentException(
-            	'Report width must be a positive integer'
+                'Report width must be a positive integer'
             );
         }
 

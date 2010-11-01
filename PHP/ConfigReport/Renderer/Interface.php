@@ -26,6 +26,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @package PHP_ConfigReport
+ * @subpackage Renderer
  * @author Jean-Marc Fontaine <jm@jmfontaine.net>
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
@@ -33,6 +34,12 @@
 
 /**
  * Interface for renderers
+ *
+ * @package PHP_ConfigReport
+ * @subpackage Renderer
+ * @author Jean-Marc Fontaine <jm@jmfontaine.net>
+ * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
+ * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 interface PHP_ConfigReport_Renderer_Interface
 {

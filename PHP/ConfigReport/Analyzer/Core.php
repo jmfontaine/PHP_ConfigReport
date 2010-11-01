@@ -26,11 +26,21 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @package PHP_ConfigReport
+ * @subpackage Analyzer
  * @author Jean-Marc Fontaine <jm@jmfontaine.net>
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 
+/**
+ * Core extension analyzer
+ *
+ * @package PHP_ConfigReport
+ * @subpackage Analyzer
+ * @author Jean-Marc Fontaine <jm@jmfontaine.net>
+ * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
+ * @license http://www.opensource.org/licenses/bsd-license.php BSD License
+ */
 class PHP_ConfigReport_Analyzer_Core
     extends PHP_ConfigReport_Analyzer_ExtensionAbstract
 {

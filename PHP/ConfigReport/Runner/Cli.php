@@ -26,12 +26,13 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @package PHP_ConfigReport
+ * @subpackage Runner
  * @author Jean-Marc Fontaine <jm@jmfontaine.net>
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 
-/**
+/*
  * This is necessary since the autoloader is not configured yet when this class
  * is used.
  */
@@ -39,13 +40,19 @@ require_once 'PHP/ConfigReport/Runner/Abstract.php';
 
 /**
  * Command line runner
+ *
+ * @package PHP_ConfigReport
+ * @subpackage Runner
+ * @author Jean-Marc Fontaine <jm@jmfontaine.net>
+ * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
+ * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 class PHP_ConfigReport_Runner_Cli extends PHP_ConfigReport_Runner_Abstract
 {
     /**
      * Command line argument parser
      *
-     * @var ezcConsoleInput
+     * @param ezcConsoleInput
      * @see http://ezcomponents.org/docs/api/trunk/ConsoleTools/ezcConsoleInput.html
      */
     protected static $_consoleInput;
@@ -53,7 +60,7 @@ class PHP_ConfigReport_Runner_Cli extends PHP_ConfigReport_Runner_Abstract
     /**
      * Object used for display in command line
      *
-     * @var ezcConsoleOutput
+     * @param ezcConsoleOutput
      * @see http://ezcomponents.org/docs/api/trunk/ConsoleTools/ezcConsoleOutput.html
      */
     protected static $_consoleOutput;
@@ -194,7 +201,7 @@ class PHP_ConfigReport_Runner_Cli extends PHP_ConfigReport_Runner_Abstract
     /**
      * Displays debug informations
      *
-     * @var string $message Message to display
+     * @param string $message Message to display
      * @return void
      */
     public static function displayDebug($message)
@@ -205,7 +212,7 @@ class PHP_ConfigReport_Runner_Cli extends PHP_ConfigReport_Runner_Abstract
     /**
      * Displays errors
      *
-     * @var string $message Message to display
+     * @param string $message Message to display
      * @return void
      */
     public static function displayError($message)
@@ -244,8 +251,8 @@ EOT;
     /**
      * Displays messages
      *
-     * @var string $message Message to display
-     * @var string $type    Type of the message
+     * @param string $message Message to display
+     * @param string $type    Type of the message
      * @return void
      */
     public static function displayMessage($message, $type = 'info')

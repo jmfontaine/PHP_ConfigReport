@@ -25,12 +25,22 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @package Tests
+ * @package   PHP_ConfigReport
+ * @subpackage Test
  * @author Jean-Marc Fontaine <jm@jmfontaine.net>
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 
+/**
+ * PHPUnit test case specialized for testing PHP_ConfigReport checks
+ *
+ * @package PHP_ConfigReport
+ * @subpackage Test
+ * @author Jean-Marc Fontaine <jm@jmfontaine.net>
+ * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
+ * @license http://www.opensource.org/licenses/bsd-license.php BSD License
+ */
 class PHP_ConfigReport_Test_CheckTestCase
     extends PHPUnit_Framework_TestCase
 {
