@@ -69,7 +69,11 @@
     <!-- Generate API documentation -->
     <target name="phpdoc">
         <exec executable="/usr/local/zend/bin/phpdoc">
-            <arg line="-d ${basedir}/PHP -t ${basedir}/build/api" />
+            <arg line="-d ${basedir}/PHP
+                       -t ${basedir}/build/api
+                       -o HTML:frames:earthli
+                       -ti 'PHP_ConfigReport'
+                       -ue on" />
         </exec>
     </target>
 
