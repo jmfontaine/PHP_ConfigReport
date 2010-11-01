@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+$path = realpath(dirname(__FILE__) . '/..');
+
+$command  = 'phpdoc';
+$command .= ' --title "PHP_ConfigReport"';
+$command .= " -d \"$path/PHP\"";
+$command .= ' -o HTML:frames:earthli';
+$command .= " -t \"$path/docs\"";
+$command .= ' --undocumentedelements';
+passthru($command, $returnCode);
+exit($returnCode);
