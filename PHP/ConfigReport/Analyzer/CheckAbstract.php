@@ -25,7 +25,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @package PHP Config Report
+ * @package PHP_ConfigReport
  * @author Jean-Marc Fontaine <jm@jmfontaine.net>
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License

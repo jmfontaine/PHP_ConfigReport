@@ -25,7 +25,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @package PHP Config Report
+ * @package PHP_ConfigReport
  * @author Jean-Marc Fontaine <jm@jmfontaine.net>
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
@@ -235,7 +235,7 @@ Options:
         --php-version VERSION	Set PHP version
   -v    --verbose           	Display processing informations
         --width=VALUE       	Set texte report width (default: 80)
-        --version               Display the version of PHP Config Report
+        --version               Display the version of PHP_ConfigReport
 
 
 EOT;
@@ -269,7 +269,7 @@ EOT;
     public static function displayVersion()
     {
         self::getConsoleOutput()->outputLine(
-            'PHP Config Report 0.1-dev by Jean-Marc Fontaine',
+            'PHP_ConfigReport 0.1-dev by Jean-Marc Fontaine',
             'version'
         );
         self::getConsoleOutput()->outputLine();

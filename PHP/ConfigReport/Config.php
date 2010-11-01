@@ -25,7 +25,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @package PHP Config Report
+ * @package PHP_ConfigReport
  * @author Jean-Marc Fontaine <jm@jmfontaine.net>
  * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
@@ -431,7 +431,7 @@ class PHP_ConfigReport_Config
     }
 
     /**
-     * Loads configuration from the system PHP Config Report is run on
+     * Loads configuration from the system PHP_ConfigReport is run on
      *
      * @return PHP_ConfigReport_Config Returns self to allow methods chaining
      */

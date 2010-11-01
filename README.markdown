@@ -1,10 +1,10 @@
-PHP Config Report
+PHP_ConfigReport
 ==================
 
-**PHP Config Report** is a tool that analyzes PHP configuration looking for
+**PHP_ConfigReport** is a tool that analyzes PHP configuration looking for
 security and performance problems.
 
-**PHP Config Report** is not a replacement for secure coding practices or code
+**PHP_ConfigReport** is not a replacement for secure coding practices or code
 audits. It identifies *potential* problems and offers suggestions for
 improvement. Your environment may require settings that trigger errors or
 warnings.
@@ -12,10 +12,10 @@ warnings.
 Usage
 -----
 
-Launch **PHP Config Report** for the command line. See __phpcr -h__ for details.
+Launch **PHP_ConfigReport** for the command line. See __phpcr -h__ for details.
 
 License
 -------
 
-**PHP Config Report** is distributed under BSD License
+**PHP_ConfigReport** is distributed under BSD License
 (http://www.opensource.org/licenses/bsd-license.php).
