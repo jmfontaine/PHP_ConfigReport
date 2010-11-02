@@ -1,0 +1,55 @@
+#!/usr/bin/env php
+<?php
+// Gestion des options
+$shortOptions   = 'hnv';
+$longOptions = array(
+    'extensions::',
+    'help::',
+    'report::',
+    'report-file::',
+    'report-width::',
+);
+$defaultOptions = array(
+    'extensions' => 'php',
+    'report'     => 'full',
+);
+$options = array_merge($defaultOptions, getopt($shortOptions, $longOptions));
+$options['standard']   = 'Zend';
+
+// Affichage de l'aide si nécessaire
+if (array_key_exists('h', $options) || array_key_exists('help', $options)) {
+    echo <<<EOL
+
+Usage: check-coding-standard [options]
+
+    --extensions    A comma separated list of file extensions to check
+-h  --help          Display this message
+-n                  Do not display warnings
+    --report        Print either the "full", "xml", "checkstyle",
+                    "csv", "emacs", "source", "summary",
+                    "svnblame" or "gitblame" report
+                    (the "full" report is printed by default)
+    --report-file   Write the report to the specified file path
+    --report-width  How many columns wide screen reports should be printed
+-v                  Verbose
+
+
+EOL;
+    exit(0);
+}
+
+$command = 'phpcs';
+
+foreach ($options as $name => $value) {
+    if (false === $value) {
+        $command .= " -$name";
+    } else {
+        $command .= " --$name=$value";
+    }
+}
+
+$path     = realpath(__DIR__ . '/..');
+$command .= " $path/build-tools $path/PHP $path/Tests $path/phpcr";
+
+passthru($command, $returnCode);
+exit($returnCode);
