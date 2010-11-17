@@ -46,7 +46,7 @@ class PHP_ConfigReport_Analyzer_Apc_Enabled
 {
     protected function _doCheck()
     {
-        if ($this->_isDirectiveDIsabled('apc.enabled')) {
+        if ($this->_isDirectiveDisabled('apc.enabled')) {
             $comments = 'APC should be enabled to improve performance';
 
             $this->_addWarning(
