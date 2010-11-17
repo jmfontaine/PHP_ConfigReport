@@ -57,6 +57,8 @@ class PHP_ConfigReport_Analyzer
 
     protected $_environment;
 
+    protected $_loadedExtensions;
+
     protected $_phpVersion;
 
     /**
@@ -66,11 +68,13 @@ class PHP_ConfigReport_Analyzer
      * @return void
      */
     public function __construct(PHP_ConfigReport_Config $config,
-        $environment = self::PRODUCTION, $phpVersion = null)
+        $environment = self::PRODUCTION, $phpVersion = null,
+        $loadedExtensions = array())
     {
-        $this->_config      = $config;
-        $this->_environment = $environment;
-        $this->_phpVersion  = $phpVersion;
+        $this->_config           = $config;
+        $this->_environment      = $environment;
+        $this->_loadedExtensions = $loadedExtensions;
+        $this->_phpVersion       = $phpVersion;
     }
 
     /**
@@ -101,7 +105,8 @@ class PHP_ConfigReport_Analyzer
             $instance = new $class(
                 $this->_config,
                 $this->_environment,
-                $this->_phpVersion
+                $this->_phpVersion,
+                $this->_loadedExtensions
             );
             $report->addSection($instance->getReportSection());
         }

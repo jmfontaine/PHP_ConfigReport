@@ -47,6 +47,7 @@ abstract class PHP_ConfigReport_Analyzer_ExtensionAbstract
     protected $_environment;
     protected $_extensionCode = 'This should be set in concrete classes';
     protected $_extensionName = 'This should be set in concrete classes';
+    protected $_loadedExtensions = array();
     protected $_phpVersion;
     protected $_reportSection;
 
@@ -84,6 +85,7 @@ abstract class PHP_ConfigReport_Analyzer_ExtensionAbstract
                 $this->_config,
                 $this->_environment,
                 $this->_phpVersion,
+                $this->_loadedExtensions,
                 $this->_extensionCode,
                 $this->_extensionName
             );
@@ -98,12 +100,14 @@ abstract class PHP_ConfigReport_Analyzer_ExtensionAbstract
      * @param PHP_ConfigReport_Config $config Config instance
      * @return void
      */
-    public function __construct(PHP_ConfigReport_Config $config, $environment,
-        $phpVersion = null, $reportSection = null)
+    public function __construct(PHP_ConfigReport_Config $config,
+        $environment, $phpVersion = null, $loadedExtensions = array(),
+        $reportSection = null)
     {
-        $this->_config      = $config;
-        $this->_environment = $environment;
-        $this->_phpVersion  = $phpVersion;
+        $this->_config           = $config;
+        $this->_environment      = $environment;
+        $this->_loadedExtensions = $loadedExtensions;
+        $this->_phpVersion       = $phpVersion;
 
         if (null === $reportSection) {
             $reportSection = new PHP_ConfigReport_Report_Section(
@@ -123,7 +127,6 @@ abstract class PHP_ConfigReport_Analyzer_ExtensionAbstract
         return $this->_config;
     }
 
-
     public function getEnvironment()
     {
         return $this->_environment;
@@ -137,6 +140,11 @@ abstract class PHP_ConfigReport_Analyzer_ExtensionAbstract
     public function getExtensionName()
     {
         return $this->_extensionName;
+    }
+
+    public function getLoadedExtensions()
+    {
+        return $this->_loadedExtensions;
     }
 
     /**

@@ -50,7 +50,7 @@ class PHP_ConfigReport_Test_CheckTestCase
 
     protected function _getIssues($config,
         $environment = PHP_ConfigReport_Analyzer::PRODUCTION,
-        $phpVersion = null)
+        $phpVersion = null, $loadedExtensions = array())
     {
         if (!$config instanceof PHP_ConfigReport_Config) {
             $config = new PHP_ConfigReport_Config($config);
@@ -66,6 +66,7 @@ class PHP_ConfigReport_Test_CheckTestCase
             $config,
             $environment,
             $phpVersion,
+            $loadedExtensions,
             $this->_extensionCode,
             $this->_extensionName
         );
@@ -99,6 +100,41 @@ class PHP_ConfigReport_Test_CheckTestCase
         parent::__construct($name, $data, $dataName);
 
         $this->_initialize();
+    }
+
+    protected function assertCheckIsTestable(
+        $environment = PHP_ConfigReport_Analyzer::PRODUCTION,
+        $phpVersion = null, $loadedExtensions = array())
+    {
+        $config = new PHP_ConfigReport_Config();
+
+        $className = sprintf(
+            'PHP_ConfigReport_Analyzer_%s_%s',
+            $this->_extensionCode,
+            $this->_checkCode
+        );
+
+        $check = new $className(
+            $config,
+            $environment,
+            $phpVersion,
+            $loadedExtensions,
+            $this->_extensionCode,
+            $this->_extensionName
+        );
+
+        return $check->isTestable();
+    }
+
+    protected function assertCheckIsNotTestable(
+        $environment = PHP_ConfigReport_Analyzer::PRODUCTION,
+        $phpVersion = null, $loadedExtensions = array())
+    {
+        return !$this->assertCheckIsTestable(
+            $environment,
+            $phpVersion,
+            $loadedExtensions
+        );
     }
 
     public function assertIssuesContainError($config, $directiveName = null,
@@ -177,7 +213,8 @@ class PHP_ConfigReport_Test_CheckTestCase
     }
 
     public function assertIssuesEmpty($config, $directiveName = null,
-        $environments = null, $phpVersion = null, $message = '')
+        $environments = null, $phpVersion = null, $loadedExtensions = array(),
+        $message = '')
     {
         if (null === $environments) {
             $environments = array(
@@ -190,7 +227,12 @@ class PHP_ConfigReport_Test_CheckTestCase
             $environments = (array) $environments;
         }
         foreach ($environments as $environment) {
-            $issues = $this->_getIssues($config, $environment, $phpVersion);
+            $issues = $this->_getIssues(
+                $config,
+                $environment,
+                $phpVersion,
+                $loadedExtensions
+            );
 
             $count = 0;
             foreach ($issues as $issue) {

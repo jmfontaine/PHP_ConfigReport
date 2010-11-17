@@ -116,6 +116,10 @@ class PHP_ConfigReport_Runner_Cli extends PHP_ConfigReport_Runner_Abstract
         $verboseOption->type = ezcConsoleInput::TYPE_NONE;
         $input->registerOption($verboseOption);
 
+        $loadedExtensionsOption = new ezcConsoleOption('x', 'extensions');
+        $loadedExtensionsOption->type = ezcConsoleInput::TYPE_STRING;
+        $input->registerOption($loadedExtensionsOption);
+
         $widthOption = new ezcConsoleOption(null, 'width');
         $widthOption->type = ezcConsoleInput::TYPE_INT;
         $input->registerOption($widthOption);
@@ -172,6 +176,11 @@ class PHP_ConfigReport_Runner_Cli extends PHP_ConfigReport_Runner_Abstract
             } else {
                 $environment = $input->getOption('environment')->value;
             }
+            if (false === $input->getOption('extensions')->value) {
+                $loadedExtensions = get_loaded_extensions(true);
+            } else {
+                $loadedExtensions = $input->getOption('extensions')->value;
+            }
             if (false === $input->getOption('php-version')->value) {
                 $phpVersion = PHP_VERSION;
             } else {
@@ -181,7 +190,8 @@ class PHP_ConfigReport_Runner_Cli extends PHP_ConfigReport_Runner_Abstract
             $analyzer = new PHP_ConfigReport_Analyzer(
                 $config,
                 $environment,
-                $phpVersion
+                $phpVersion,
+                $loadedExtensions
             );
             $report = $analyzer->getReport();
 
@@ -235,14 +245,15 @@ Usage:
   phpcr [options] <path>
 
 Options:
-  -d	--debug                 Display debug informations
-  -e    --environment           Define PHP environment (default: production)
-  -h    --help                  Display this message
-  -p    --php NAME=VALUE        Set PHP configuration directive
-        --php-version VERSION	Set PHP version
-  -v    --verbose           	Display processing informations
-        --width=VALUE       	Set texte report width (default: 80)
-        --version               Display the version of PHP_ConfigReport
+  -d	--debug                 	Display debug informations
+  -e    --environment           	Define PHP environment (default: production)
+  -h    --help                  	Display this message
+  -x    --extensions EXT1[,EXT2]	Set a comma separated list of loaded PHP extensions
+  -p    --php NAME=VALUE        	Set PHP configuration directive
+        --php-version VERSION		Set PHP version
+  -v    --verbose           		Display processing informations
+        --width=VALUE       		Set texte report width (default: 80)
+        --version               	Display the version of PHP_ConfigReport
 
 
 EOT;

@@ -48,6 +48,7 @@ abstract class PHP_ConfigReport_Analyzer_CheckAbstract
     protected $_extensionCode;
     protected $_extensionName;
     protected $_issues = array();
+    protected $_loadedExtensions = array();
     protected $_phpVersion;
 
     protected function _addError($directiveName, $type, $directiveActualValue,
@@ -139,6 +140,11 @@ abstract class PHP_ConfigReport_Analyzer_CheckAbstract
             $directiveName,
             $targetUnit
         );
+    }
+
+    protected function _isExtensionLoaded($name)
+    {
+        return extension_loaded($name);
     }
 
     protected function _isSizeDirectiveDifferentFrom($directiveName, $treshold)
@@ -243,13 +249,14 @@ abstract class PHP_ConfigReport_Analyzer_CheckAbstract
     }
 
     public function __construct(PHP_ConfigReport_Config $config, $environment,
-        $phpVersion, $extensionCode, $extensionName)
+        $phpVersion, $loadedExtensions, $extensionCode, $extensionName)
     {
-        $this->_config        = $config;
-        $this->_environment   = $environment;
-        $this->_extensionCode = $extensionCode;
-        $this->_extensionName = $extensionName;
-        $this->_phpVersion    = $phpVersion;
+        $this->_config           = $config;
+        $this->_environment      = $environment;
+        $this->_extensionCode    = $extensionCode;
+        $this->_extensionName    = $extensionName;
+        $this->_loadedExtensions = $loadedExtensions;
+        $this->_phpVersion       = $phpVersion;
     }
 
     public function check()
