@@ -211,7 +211,7 @@ class PHP_ConfigReport_ConfigTest
 
         $config = new PHP_ConfigReport_Config($string);
 
-        $this->assertFalse($config->isDirectiveNumeric('display_errors'));
+        $this->assertFalse($config->isDirectiveNumeric('memory_limit'));
         $this->assertTrue($config->isDirectiveNumeric('max_execution_time'));
     }
 
@@ -306,6 +306,338 @@ class PHP_ConfigReport_ConfigTest
         );
 
         $this->assertEquals($expectedDirectives, $config->getDirectives());
+    }
+
+    /**
+     * @test
+     */
+    public function canRetrieveASizeDirectiveExpressedInBytesInDifferentFormats()
+    {
+        $config = new PHP_ConfigReport_Config('memory_limit = 134217728');
+
+        // Check bytes
+        $this->assertSame(
+        	'134217728',
+            $config->getSizeDirective(
+            	'memory_limit',
+                PHP_ConfigReport_Config::BYTES
+            )
+        );
+
+        // Check kilo bytes
+        $this->assertSame(
+        	'131072K',
+            $config->getSizeDirective(
+            	'memory_limit',
+                PHP_ConfigReport_Config::KILO_BYTES
+            )
+        );
+
+        // Check mega bytes
+        $this->assertSame(
+        	'128M',
+            $config->getSizeDirective(
+            	'memory_limit',
+                PHP_ConfigReport_Config::MEGA_BYTES
+            )
+        );
+
+        // Check giga bytes
+        $this->assertSame(
+        	'0.125G',
+            $config->getSizeDirective(
+            	'memory_limit',
+                PHP_ConfigReport_Config::GIGA_BYTES
+            )
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function canRetrieveASizeDirectiveExpressedInKiloBytesInDifferentFormats()
+    {
+        $config = new PHP_ConfigReport_Config('memory_limit = 131072K');
+
+        // Check bytes
+        $this->assertSame(
+        	'134217728',
+            $config->getSizeDirective(
+            	'memory_limit',
+                PHP_ConfigReport_Config::BYTES
+            )
+        );
+
+        // Check kilo bytes
+        $this->assertSame(
+        	'131072K',
+            $config->getSizeDirective(
+            	'memory_limit',
+                PHP_ConfigReport_Config::KILO_BYTES
+            )
+        );
+
+        // Check mega bytes
+        $this->assertSame(
+        	'128M',
+            $config->getSizeDirective(
+            	'memory_limit',
+                PHP_ConfigReport_Config::MEGA_BYTES
+            )
+        );
+
+        // Check giga bytes
+        $this->assertSame(
+        	'0.125G',
+            $config->getSizeDirective(
+            	'memory_limit',
+                PHP_ConfigReport_Config::GIGA_BYTES
+            )
+        );
+    }
+
+
+    /**
+     * @test
+     */
+    public function canRetrieveASizeDirectiveExpressedInMegaBytesInDifferentFormats()
+    {
+        $config = new PHP_ConfigReport_Config('memory_limit = 128M');
+
+        // Check default unit (mega bytes)
+        $this->assertSame('128M', $config->getSizeDirective('memory_limit'));
+
+        // Check bytes
+        $this->assertSame(
+        	'134217728',
+            $config->getSizeDirective(
+            	'memory_limit',
+                PHP_ConfigReport_Config::BYTES
+            )
+        );
+
+        // Check kilo bytes
+        $this->assertSame(
+        	'131072K',
+            $config->getSizeDirective(
+            	'memory_limit',
+                PHP_ConfigReport_Config::KILO_BYTES
+            )
+        );
+
+        // Check mega bytes
+        $this->assertSame(
+        	'128M',
+            $config->getSizeDirective(
+            	'memory_limit',
+                PHP_ConfigReport_Config::MEGA_BYTES
+            )
+        );
+
+        // Check giga bytes
+        $this->assertSame(
+        	'0.125G',
+            $config->getSizeDirective(
+            	'memory_limit',
+                PHP_ConfigReport_Config::GIGA_BYTES
+            )
+        );
+    }
+
+ 	/**
+     * @test
+     */
+    public function canRetrieveASizeDirectiveExpressedInGigaBytesInDifferentFormats()
+    {
+        $config = new PHP_ConfigReport_Config('memory_limit = 0.125G');
+
+        // Check bytes
+        $this->assertSame(
+        	'134217728',
+            $config->getSizeDirective(
+            	'memory_limit',
+                PHP_ConfigReport_Config::BYTES
+            )
+        );
+
+        // Check kilo bytes
+        $this->assertSame(
+        	'131072K',
+            $config->getSizeDirective(
+            	'memory_limit',
+                PHP_ConfigReport_Config::KILO_BYTES
+            )
+        );
+
+        // Check mega bytes
+        $this->assertSame(
+        	'128M',
+            $config->getSizeDirective(
+            	'memory_limit',
+                PHP_ConfigReport_Config::MEGA_BYTES
+            )
+        );
+
+        // Check giga bytes
+        $this->assertSame(
+        	'0.125G',
+            $config->getSizeDirective(
+            	'memory_limit',
+                PHP_ConfigReport_Config::GIGA_BYTES
+            )
+        );
+    }
+
+    /**
+     * @test
+     * @expectedException InvalidArgumentException
+     */
+    public function retrievingAUnknownSizeDirectiveThrowsAInvalidArgumentException()
+    {
+        $config = new PHP_ConfigReport_Config();
+        $config->getSizeDirective('unknown_directive');
+    }
+
+    /**
+     * @test
+     */
+    public function retrievingASizeDirectiveExpressedInBytesCanBeOptimized()
+    {
+        $config = new PHP_ConfigReport_Config('memory_limit = 134217728');
+
+        $this->assertSame(
+            '134217728',
+            $config->getSizeDirective(
+            	'memory_limit',
+                PHP_ConfigReport_Config::BYTES
+            )
+        );
+    }
+
+ 	/**
+     * @test
+     * @expectedException InvalidArgumentException
+     */
+    public function retrievingASizeDirectiveExpressedInAnInvalidUnitThrowsAInvalidArgumentException()
+    {
+        $config = new PHP_ConfigReport_Config('memory_limit = 128Z');
+
+        $config->getSizeDirective(
+            	'memory_limit',
+                PHP_ConfigReport_Config::BYTES
+        );
+    }
+
+ 	/**
+     * @test
+     * @expectedException InvalidArgumentException
+     */
+    public function retrievingASizeDirectiveInAnInvalidUnitThrowsAInvalidArgumentException()
+    {
+        $config = new PHP_ConfigReport_Config('memory_limit = 128M');
+
+        $config->getSizeDirective('memory_limit', 'Z');
+    }
+
+    /**
+     * @test
+     * @expectedException InvalidArgumentException
+     */
+    public function comparingANullSizeDirectiveThrowsAInvalidArgumentException()
+    {
+        $config = new PHP_ConfigReport_Config();
+        $config->compareSizeDirective('unknown_directive', 10, '=');
+    }
+
+ 	/**
+     * @test
+     * @expectedException InvalidArgumentException
+     */
+    public function comparingASizeDirectiveWithAnInvalidOperatorThrowsAInvalidArgumentException()
+    {
+        $config = new PHP_ConfigReport_Config('memory_limit = 128M');
+
+        $config->compareSizeDirective('memory_limit', '20', '%');
+    }
+
+ 	/**
+     * @test
+     */
+    public function canCheckIfASizeDirectiveIsDifferentFromAValue()
+    {
+        $config = new PHP_ConfigReport_Config('max_execution_time = 30');
+
+        $this->assertTrue(
+            $config->isSizeDirectiveDifferentFrom('max_execution_time', '20')
+        );
+    }
+
+ 	/**
+     * @test
+     */
+    public function canCheckIfASizeDirectiveIsEqualToAValue()
+    {
+        $config = new PHP_ConfigReport_Config('max_execution_time = 30');
+
+        $this->assertTrue(
+            $config->isSizeDirectiveEqualTo('max_execution_time', '30')
+        );
+    }
+
+ 	/**
+     * @test
+     */
+    public function canCheckIfASizeDirectiveIsGreaterThanAValue()
+    {
+        $config = new PHP_ConfigReport_Config('max_execution_time = 30');
+
+        $this->assertTrue(
+            $config->isSizeDirectiveGreaterThan('max_execution_time', '20')
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function canCheckIfASizeDirectiveIsGreaterThanOrEqualToAValue()
+    {
+        $config = new PHP_ConfigReport_Config('max_execution_time = 30');
+
+        $this->assertTrue(
+            $config->isSizeDirectiveGreaterThanOrEqualTo('max_execution_time', '20')
+        );
+
+        $this->assertTrue(
+            $config->isSizeDirectiveGreaterThanOrEqualTo('max_execution_time', '30')
+        );
+    }
+
+ 	/**
+     * @test
+     */
+    public function canCheckIfASizeDirectiveIsLessThanAValue()
+    {
+        $config = new PHP_ConfigReport_Config('max_execution_time = 30');
+
+        $this->assertTrue(
+            $config->isSizeDirectiveLessThan('max_execution_time', '40')
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function canCheckIfASizeDirectiveIsLessThanOrEqualToAValue()
+    {
+        $config = new PHP_ConfigReport_Config('max_execution_time = 30');
+
+        $this->assertTrue(
+            $config->isSizeDirectiveLessThanOrEqualTo('max_execution_time', '40')
+        );
+
+        $this->assertTrue(
+            $config->isSizeDirectiveLessThanOrEqualTo('max_execution_time', '30')
+        );
     }
 
     /*
