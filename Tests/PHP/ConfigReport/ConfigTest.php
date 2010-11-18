@@ -45,8 +45,14 @@ class PHP_ConfigReport_ConfigTest
     {
         $config = new PHP_ConfigReport_Config(FILES_PATH . '/valid.ini');
 
-        $this->assertSame('test_value_1', $config->getDirective('display_errors'));
-        $this->assertSame('test_value_2', $config->getDirective('log_errors'));
+        $this->assertSame(
+            'test_value_1',
+            $config->getDirective('display_errors')
+        );
+        $this->assertSame(
+            'test_value_2',
+            $config->getDirective('log_errors')
+        );
     }
 
    /**
@@ -60,8 +66,14 @@ class PHP_ConfigReport_ConfigTest
 
         $config = new PHP_ConfigReport_Config($string);
 
-        $this->assertSame('test_value_1', $config->getDirective('display_errors'));
-        $this->assertSame('test_value_2', $config->getDirective('log_errors'));
+        $this->assertSame(
+        	'test_value_1',
+            $config->getDirective('display_errors')
+        );
+        $this->assertSame(
+        	'test_value_2',
+            $config->getDirective('log_errors')
+        );
     }
 
    /**
@@ -74,8 +86,14 @@ class PHP_ConfigReport_ConfigTest
 
         $config = new PHP_ConfigReport_Config();
 
-        $this->assertSame('test_value_1', $config->getDirective('display_errors'));
-        $this->assertSame('test_value_2', $config->getDirective('log_errors'));
+        $this->assertSame(
+        	'test_value_1',
+            $config->getDirective('display_errors')
+        );
+        $this->assertSame(
+        	'test_value_2',
+            $config->getDirective('log_errors')
+        );
 
         if (false !== $oldDisplayErrors) {
             ini_set('display_errors', $oldDisplayErrors);
@@ -93,8 +111,14 @@ class PHP_ConfigReport_ConfigTest
         $config = new PHP_ConfigReport_Config();
         $config->loadFromFile(FILES_PATH . '/valid.ini');
 
-        $this->assertSame('test_value_1', $config->getDirective('display_errors'));
-        $this->assertSame('test_value_2', $config->getDirective('log_errors'));
+        $this->assertSame(
+        	'test_value_1',
+            $config->getDirective('display_errors')
+        );
+        $this->assertSame(
+        	'test_value_2',
+            $config->getDirective('log_errors')
+        );
     }
 
    /**
@@ -129,8 +153,14 @@ class PHP_ConfigReport_ConfigTest
         $config = new PHP_ConfigReport_Config();
         $config->loadFromString($string);
 
-        $this->assertSame('test_value_1', $config->getDirective('display_errors'));
-        $this->assertSame('test_value_2', $config->getDirective('log_errors'));
+        $this->assertSame(
+        	'test_value_1',
+            $config->getDirective('display_errors')
+        );
+        $this->assertSame(
+        	'test_value_2',
+            $config->getDirective('log_errors')
+        );
     }
 
     /**
@@ -159,8 +189,14 @@ class PHP_ConfigReport_ConfigTest
         $config = new PHP_ConfigReport_Config();
         $config->loadFromSystem();
 
-        $this->assertSame('test_value_1', $config->getDirective('display_errors'));
-        $this->assertSame('test_value_2', $config->getDirective('log_errors'));
+        $this->assertSame(
+        	'test_value_1',
+            $config->getDirective('display_errors')
+        );
+        $this->assertSame(
+        	'test_value_2',
+            $config->getDirective('log_errors')
+        );
 
         if (false !== $oldDisplayErrors) {
             ini_set('display_errors', $oldDisplayErrors);
@@ -381,7 +417,7 @@ class PHP_ConfigReport_ConfigTest
         $this->assertSame(
         	'128M',
             $config->getSizeDirective(
-            	'memory_limit',
+                'memory_limit',
                 PHP_ConfigReport_Config::MEGA_BYTES
             )
         );
@@ -390,7 +426,7 @@ class PHP_ConfigReport_ConfigTest
         $this->assertSame(
         	'0.125G',
             $config->getSizeDirective(
-            	'memory_limit',
+                'memory_limit',
                 PHP_ConfigReport_Config::GIGA_BYTES
             )
         );
@@ -411,7 +447,7 @@ class PHP_ConfigReport_ConfigTest
         $this->assertSame(
         	'134217728',
             $config->getSizeDirective(
-            	'memory_limit',
+                'memory_limit',
                 PHP_ConfigReport_Config::BYTES
             )
         );
@@ -420,7 +456,7 @@ class PHP_ConfigReport_ConfigTest
         $this->assertSame(
         	'131072K',
             $config->getSizeDirective(
-            	'memory_limit',
+                'memory_limit',
                 PHP_ConfigReport_Config::KILO_BYTES
             )
         );
@@ -429,16 +465,16 @@ class PHP_ConfigReport_ConfigTest
         $this->assertSame(
         	'128M',
             $config->getSizeDirective(
-            	'memory_limit',
+                'memory_limit',
                 PHP_ConfigReport_Config::MEGA_BYTES
             )
         );
 
         // Check giga bytes
         $this->assertSame(
-        	'0.125G',
+            '0.125G',
             $config->getSizeDirective(
-            	'memory_limit',
+                'memory_limit',
                 PHP_ConfigReport_Config::GIGA_BYTES
             )
         );
@@ -453,36 +489,36 @@ class PHP_ConfigReport_ConfigTest
 
         // Check bytes
         $this->assertSame(
-        	'134217728',
+            '134217728',
             $config->getSizeDirective(
-            	'memory_limit',
+                'memory_limit',
                 PHP_ConfigReport_Config::BYTES
             )
         );
 
         // Check kilo bytes
         $this->assertSame(
-        	'131072K',
+            '131072K',
             $config->getSizeDirective(
-            	'memory_limit',
+                'memory_limit',
                 PHP_ConfigReport_Config::KILO_BYTES
             )
         );
 
         // Check mega bytes
         $this->assertSame(
-        	'128M',
+            '128M',
             $config->getSizeDirective(
-            	'memory_limit',
+                'memory_limit',
                 PHP_ConfigReport_Config::MEGA_BYTES
             )
         );
 
         // Check giga bytes
         $this->assertSame(
-        	'0.125G',
+            '0.125G',
             $config->getSizeDirective(
-            	'memory_limit',
+                'memory_limit',
                 PHP_ConfigReport_Config::GIGA_BYTES
             )
         );
@@ -508,13 +544,13 @@ class PHP_ConfigReport_ConfigTest
         $this->assertSame(
             '134217728',
             $config->getSizeDirective(
-            	'memory_limit',
+                'memory_limit',
                 PHP_ConfigReport_Config::BYTES
             )
         );
     }
 
- 	/**
+    /**
      * @test
      * @expectedException InvalidArgumentException
      */
@@ -523,12 +559,12 @@ class PHP_ConfigReport_ConfigTest
         $config = new PHP_ConfigReport_Config('memory_limit = 128Z');
 
         $config->getSizeDirective(
-            	'memory_limit',
-                PHP_ConfigReport_Config::BYTES
+            'memory_limit',
+            PHP_ConfigReport_Config::BYTES
         );
     }
 
- 	/**
+    /**
      * @test
      * @expectedException InvalidArgumentException
      */
@@ -549,7 +585,7 @@ class PHP_ConfigReport_ConfigTest
         $config->compareSizeDirective('unknown_directive', 10, '=');
     }
 
- 	/**
+    /**
      * @test
      * @expectedException InvalidArgumentException
      */
@@ -560,7 +596,7 @@ class PHP_ConfigReport_ConfigTest
         $config->compareSizeDirective('memory_limit', '20', '%');
     }
 
- 	/**
+    /**
      * @test
      */
     public function canCheckIfASizeDirectiveIsDifferentFromAValue()
@@ -572,7 +608,7 @@ class PHP_ConfigReport_ConfigTest
         );
     }
 
- 	/**
+    /**
      * @test
      */
     public function canCheckIfASizeDirectiveIsEqualToAValue()
@@ -584,7 +620,7 @@ class PHP_ConfigReport_ConfigTest
         );
     }
 
- 	/**
+    /**
      * @test
      */
     public function canCheckIfASizeDirectiveIsGreaterThanAValue()
@@ -604,15 +640,21 @@ class PHP_ConfigReport_ConfigTest
         $config = new PHP_ConfigReport_Config('max_execution_time = 30');
 
         $this->assertTrue(
-            $config->isSizeDirectiveGreaterThanOrEqualTo('max_execution_time', '20')
+            $config->isSizeDirectiveGreaterThanOrEqualTo(
+                'max_execution_time',
+                '20'
+            )
         );
 
         $this->assertTrue(
-            $config->isSizeDirectiveGreaterThanOrEqualTo('max_execution_time', '30')
+            $config->isSizeDirectiveGreaterThanOrEqualTo(
+                'max_execution_time',
+                '30'
+            )
         );
     }
 
- 	/**
+    /**
      * @test
      */
     public function canCheckIfASizeDirectiveIsLessThanAValue()
@@ -632,11 +674,17 @@ class PHP_ConfigReport_ConfigTest
         $config = new PHP_ConfigReport_Config('max_execution_time = 30');
 
         $this->assertTrue(
-            $config->isSizeDirectiveLessThanOrEqualTo('max_execution_time', '40')
+            $config->isSizeDirectiveLessThanOrEqualTo(
+                'max_execution_time',
+                '40'
+            )
         );
 
         $this->assertTrue(
-            $config->isSizeDirectiveLessThanOrEqualTo('max_execution_time', '30')
+            $config->isSizeDirectiveLessThanOrEqualTo(
+                'max_execution_time',
+                '30'
+            )
         );
     }
 

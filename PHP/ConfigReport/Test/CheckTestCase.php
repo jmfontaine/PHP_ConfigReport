@@ -95,7 +95,8 @@ class PHP_ConfigReport_Test_CheckTestCase
         $this->_extensionName = $extension->getExtensionName();
     }
 
-    public function __construct($name = null, array $data = array(), $dataName = '')
+    public function __construct($name = null, array $data = array(),
+        $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
 
@@ -152,8 +153,9 @@ class PHP_ConfigReport_Test_CheckTestCase
         );
     }
 
-    public function assertIssuesContainErrorOnly($config, $directiveName = null,
-        $environments = null, $type = null, $phpVersion = null, $message = '')
+    public function assertIssuesContainErrorOnly($config,
+        $directiveName = null, $environments = null, $type = null,
+        $phpVersion = null, $message = '')
     {
         $this->assertIssuesContainLevel(
             'PHP_ConfigReport_Issue_Error',

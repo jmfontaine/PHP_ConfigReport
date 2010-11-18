@@ -151,7 +151,8 @@ class PHP_ConfigReport_Runner_Cli extends PHP_ConfigReport_Runner_Abstract
                 $position = strpos($directive, '=');
                 if (false === $position) {
                     throw new InvalidArgumentException(
-                        "'$directive' is not a valid PHP configuration directive"
+                        "'$directive' is not a valid PHP configuration " .
+                        "directive"
                     );
                 }
 

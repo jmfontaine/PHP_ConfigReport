@@ -73,7 +73,7 @@ class PHP_ConfigReport_Config
         // to convert the value...
         if ($targetUnit == $sourceUnit) {
             return $value;
-        } elseif(self::BYTES !== $sourceUnit) {
+        } elseif (self::BYTES !== $sourceUnit) {
             // ...else remove unit from value except for byte values
             $value = substr($value, 0, -1);
         }
@@ -164,8 +164,8 @@ class PHP_ConfigReport_Config
                 break;
             case '!=':
                 $result = $value != $treshold;
-            break;
-                case '>':
+                break;
+            case '>':
                 $result = $value > $treshold;
                 break;
             case '>=':

@@ -51,8 +51,8 @@ abstract class PHP_ConfigReport_Analyzer_CheckAbstract
     protected $_loadedExtensions = array();
     protected $_phpVersion;
 
-    protected function _addError($directiveName, $type, $directiveActualValue,
-        $directiveSuggestedValue, $comments)
+    protected function _addError($directiveName, $type,
+        $directiveActualValue, $directiveSuggestedValue, $comments)
     {
         $issue = new PHP_ConfigReport_Issue_Error(
             $this->_getExtensionName(),
@@ -71,8 +71,8 @@ abstract class PHP_ConfigReport_Analyzer_CheckAbstract
         $this->_issues[] = $issue;
     }
 
-    protected function _addWarning($directiveName, $type, $directiveActualValue,
-        $directiveSuggestedValue, $comments)
+    protected function _addWarning($directiveName, $type,
+        $directiveActualValue, $directiveSuggestedValue, $comments)
     {
         $issue = new PHP_ConfigReport_Issue_Warning(
             $this->_getExtensionName(),
@@ -188,7 +188,8 @@ abstract class PHP_ConfigReport_Analyzer_CheckAbstract
         );
     }
 
-    protected function _isSizeDirectiveLessThanOrEqual($directiveName, $treshold)
+    protected function _isSizeDirectiveLessThanOrEqual($directiveName,
+        $treshold)
     {
         return $this->_getConfig()->isSizeDirectiveLessThanOrEqual(
             $directiveName,
