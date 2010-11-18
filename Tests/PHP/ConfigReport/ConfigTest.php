@@ -203,6 +203,21 @@ class PHP_ConfigReport_ConfigTest
     /**
      * @test
      */
+    public function canCheckIfADirectiveIsNumeric()
+    {
+        $string = "
+        memory_limit = 128M\n
+        max_execution_time = 30";
+
+        $config = new PHP_ConfigReport_Config($string);
+
+        $this->assertFalse($config->isDirectiveNumeric('display_errors'));
+        $this->assertTrue($config->isDirectiveNumeric('max_execution_time'));
+    }
+
+    /**
+     * @test
+     */
     public function canCheckIfADirectiveIsSet()
     {
         $string = "
