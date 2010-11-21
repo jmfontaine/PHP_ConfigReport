@@ -67,11 +67,11 @@ class PHP_ConfigReport_ConfigTest
         $config = new PHP_ConfigReport_Config($string);
 
         $this->assertSame(
-        	'test_value_1',
+            'test_value_1',
             $config->getDirective('display_errors')
         );
         $this->assertSame(
-        	'test_value_2',
+            'test_value_2',
             $config->getDirective('log_errors')
         );
     }
@@ -82,16 +82,16 @@ class PHP_ConfigReport_ConfigTest
     public function passingNothingToConstructorloadsConfigurationFromSystem()
     {
         $oldDisplayErrors = ini_set('display_errors', 'test_value_1');
-        $oldLogErrors     = ini_set('log_errors'    , 'test_value_2');
+        $oldLogErrors     = ini_set('log_errors', 'test_value_2');
 
         $config = new PHP_ConfigReport_Config();
 
         $this->assertSame(
-        	'test_value_1',
+            'test_value_1',
             $config->getDirective('display_errors')
         );
         $this->assertSame(
-        	'test_value_2',
+            'test_value_2',
             $config->getDirective('log_errors')
         );
 
@@ -112,11 +112,11 @@ class PHP_ConfigReport_ConfigTest
         $config->loadFromFile(FILES_PATH . '/valid.ini');
 
         $this->assertSame(
-        	'test_value_1',
+            'test_value_1',
             $config->getDirective('display_errors')
         );
         $this->assertSame(
-        	'test_value_2',
+            'test_value_2',
             $config->getDirective('log_errors')
         );
     }
@@ -154,11 +154,11 @@ class PHP_ConfigReport_ConfigTest
         $config->loadFromString($string);
 
         $this->assertSame(
-        	'test_value_1',
+            'test_value_1',
             $config->getDirective('display_errors')
         );
         $this->assertSame(
-        	'test_value_2',
+            'test_value_2',
             $config->getDirective('log_errors')
         );
     }
@@ -184,17 +184,17 @@ class PHP_ConfigReport_ConfigTest
     public function loadsConfigurationFromSystem()
     {
         $oldDisplayErrors = ini_set('display_errors', 'test_value_1');
-        $oldLogErrors     = ini_set('log_errors'    , 'test_value_2');
+        $oldLogErrors     = ini_set('log_errors', 'test_value_2');
 
         $config = new PHP_ConfigReport_Config();
         $config->loadFromSystem();
 
         $this->assertSame(
-        	'test_value_1',
+            'test_value_1',
             $config->getDirective('display_errors')
         );
         $this->assertSame(
-        	'test_value_2',
+            'test_value_2',
             $config->getDirective('log_errors')
         );
 
@@ -304,7 +304,10 @@ class PHP_ConfigReport_ConfigTest
         $config = new PHP_ConfigReport_Config($string);
 
         for ($i = 1; $i < 9; $i++) {
-            $this->assertTrue($config->isDirectiveEnabled('dummy' . $i), 'dummy' . $i);
+            $this->assertTrue(
+                $config->isDirectiveEnabled('dummy' . $i),
+                'dummy' . $i
+            );
         }
 
         for ($i = 9; $i < 18; $i++) {
@@ -353,36 +356,36 @@ class PHP_ConfigReport_ConfigTest
 
         // Check bytes
         $this->assertSame(
-        	'134217728',
+            '134217728',
             $config->getSizeDirective(
-            	'memory_limit',
+                'memory_limit',
                 PHP_ConfigReport_Config::BYTES
             )
         );
 
         // Check kilo bytes
         $this->assertSame(
-        	'131072K',
+            '131072K',
             $config->getSizeDirective(
-            	'memory_limit',
+                'memory_limit',
                 PHP_ConfigReport_Config::KILO_BYTES
             )
         );
 
         // Check mega bytes
         $this->assertSame(
-        	'128M',
+            '128M',
             $config->getSizeDirective(
-            	'memory_limit',
+                'memory_limit',
                 PHP_ConfigReport_Config::MEGA_BYTES
             )
         );
 
         // Check giga bytes
         $this->assertSame(
-        	'0.125G',
+            '0.125G',
             $config->getSizeDirective(
-            	'memory_limit',
+                'memory_limit',
                 PHP_ConfigReport_Config::GIGA_BYTES
             )
         );
@@ -397,25 +400,25 @@ class PHP_ConfigReport_ConfigTest
 
         // Check bytes
         $this->assertSame(
-        	'134217728',
+            '134217728',
             $config->getSizeDirective(
-            	'memory_limit',
+                'memory_limit',
                 PHP_ConfigReport_Config::BYTES
             )
         );
 
         // Check kilo bytes
         $this->assertSame(
-        	'131072K',
+            '131072K',
             $config->getSizeDirective(
-            	'memory_limit',
+                'memory_limit',
                 PHP_ConfigReport_Config::KILO_BYTES
             )
         );
 
         // Check mega bytes
         $this->assertSame(
-        	'128M',
+            '128M',
             $config->getSizeDirective(
                 'memory_limit',
                 PHP_ConfigReport_Config::MEGA_BYTES
@@ -424,7 +427,7 @@ class PHP_ConfigReport_ConfigTest
 
         // Check giga bytes
         $this->assertSame(
-        	'0.125G',
+            '0.125G',
             $config->getSizeDirective(
                 'memory_limit',
                 PHP_ConfigReport_Config::GIGA_BYTES
@@ -445,7 +448,7 @@ class PHP_ConfigReport_ConfigTest
 
         // Check bytes
         $this->assertSame(
-        	'134217728',
+            '134217728',
             $config->getSizeDirective(
                 'memory_limit',
                 PHP_ConfigReport_Config::BYTES
@@ -454,7 +457,7 @@ class PHP_ConfigReport_ConfigTest
 
         // Check kilo bytes
         $this->assertSame(
-        	'131072K',
+            '131072K',
             $config->getSizeDirective(
                 'memory_limit',
                 PHP_ConfigReport_Config::KILO_BYTES
@@ -463,7 +466,7 @@ class PHP_ConfigReport_ConfigTest
 
         // Check mega bytes
         $this->assertSame(
-        	'128M',
+            '128M',
             $config->getSizeDirective(
                 'memory_limit',
                 PHP_ConfigReport_Config::MEGA_BYTES
@@ -480,7 +483,7 @@ class PHP_ConfigReport_ConfigTest
         );
     }
 
- 	/**
+    /**
      * @test
      */
     public function canRetrieveASizeDirectiveExpressedInGigaBytesInDifferentFormats()
