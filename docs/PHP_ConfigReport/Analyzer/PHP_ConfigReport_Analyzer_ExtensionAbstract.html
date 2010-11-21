@@ -71,6 +71,18 @@
 											Core extension analyzer
 										</td>
 				</tr>
+								<tr>
+					<td style="padding-right: 2em; white-space: nowrap">
+						<img src="../../media/images/Class.png"
+								 alt=" class"
+								 title=" class"
+								 style="vertical-align: center"/>
+						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc.html">PHP_ConfigReport_Analyzer_Apc</a>
+					</td>
+					<td>
+											APC extension analyzer
+										</td>
+				</tr>
 							</table>
 		</div>
 	</div>
@@ -89,7 +101,7 @@
 								</div>
 		<div class="info-box-body">
 			<div class="var-summary">
-																																																																<div class="var-title">
+																																																																								<div class="var-title">
 					<img src="../../media/images/Variable.png" alt=" " />
 					<span class="var-type">mixed</span>
 					<a href="#$_config" title="details" class="var-name">$_config</a>
@@ -108,6 +120,11 @@
 					<img src="../../media/images/Variable.png" alt=" " />
 					<span class="var-type">mixed</span>
 					<a href="#$_extensionName" title="details" class="var-name">$_extensionName</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$_loadedExtensions" title="details" class="var-name">$_loadedExtensions</a>
 				</div>
 																<div class="var-title">
 					<img src="../../media/images/Variable.png" alt=" " />
@@ -136,11 +153,11 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																																																																<div class="method-definition">
+																																																																																								<div class="method-definition">
 					<img src="../../media/images/Constructor.png" alt=" "/>
 											<span class="method-result">void</span>
 										<a href="#__construct" title="details" class="method-name">__construct</a>
-											(<span class="var-type"><a href="../../PHP_ConfigReport/Config/PHP_ConfigReport_Config.html">PHP_ConfigReport_Config</a></span>&nbsp;<span class="var-name">$config</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$environment</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$phpVersion</span> = <span class="var-default">null</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$reportSection</span> = <span class="var-default">null</span>])
+											(<span class="var-type"><a href="../../PHP_ConfigReport/Config/PHP_ConfigReport_Config.html">PHP_ConfigReport_Config</a></span>&nbsp;<span class="var-name">$config</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$environment</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$phpVersion</span> = <span class="var-default">null</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$loadedExtensions</span> = <span class="var-default">array()</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$reportSection</span> = <span class="var-default">null</span>])
 									</div>
 																<div class="method-definition">
 					<img src="../../media/images/Method.png" alt=" "/>
@@ -164,6 +181,12 @@
 					<img src="../../media/images/Method.png" alt=" "/>
 											<span class="method-result">void</span>
 										<a href="#getExtensionName" title="details" class="method-name">getExtensionName</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#getLoadedExtensions" title="details" class="method-name">getLoadedExtensions</a>
 										()
 									</div>
 																<div class="method-definition">
@@ -204,7 +227,7 @@
 		<div class="info-box-body">
 			
 <a name="var$_config" id="$_config"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
 		<img src="../../media/images/Variable.png" />
@@ -226,7 +249,7 @@
 
 </div>
 <a name="var$_environment" id="$_environment"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
 		<img src="../../media/images/Variable.png" />
@@ -248,7 +271,7 @@
 
 </div>
 <a name="var$_extensionCode" id="$_extensionCode"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
 		<img src="../../media/images/Variable.png" />
@@ -272,12 +295,15 @@
 					<li>
 				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core.html#var$_extensionCode">PHP_ConfigReport_Analyzer_Core::$_extensionCode</a>
 							</li>
+					<li>
+				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc.html#var$_extensionCode">PHP_ConfigReport_Analyzer_Apc::$_extensionCode</a>
+							</li>
 				</ul>
 		
 
 </div>
 <a name="var$_extensionName" id="$_extensionName"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
 		<img src="../../media/images/Variable.png" />
@@ -301,7 +327,32 @@
 					<li>
 				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core.html#var$_extensionName">PHP_ConfigReport_Analyzer_Core::$_extensionName</a>
 							</li>
+					<li>
+				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc.html#var$_extensionName">PHP_ConfigReport_Analyzer_Apc::$_extensionName</a>
+							</li>
 				</ul>
+		
+
+</div>
+<a name="var$_loadedExtensions" id="$_loadedExtensions"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$_loadedExtensions</span>
+			 = <span class="var-default">array()</span>			(line <span class="line-number">50</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
 		
 
 </div>
@@ -313,7 +364,7 @@
 		<span class="var-title">
 			<span class="var-type">mixed</span>
 			<span class="var-name">$_phpVersion</span>
-						(line <span class="line-number">50</span>)
+						(line <span class="line-number">51</span>)
 		</span>
 	</div>
 
@@ -335,7 +386,7 @@
 		<span class="var-title">
 			<span class="var-type">mixed</span>
 			<span class="var-name">$_reportSection</span>
-						(line <span class="line-number">51</span>)
+						(line <span class="line-number">52</span>)
 		</span>
 	</div>
 
@@ -370,7 +421,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Constructor.png" />
-		<span class="method-title">Constructor __construct</span> (line <span class="line-number">101</span>)
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">103</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -384,7 +435,7 @@
 		<span class="method-name">
 			__construct
 		</span>
-					(<span class="var-type"><a href="../../PHP_ConfigReport/Config/PHP_ConfigReport_Config.html">PHP_ConfigReport_Config</a></span>&nbsp;<span class="var-name">$config</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$environment</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$phpVersion</span> = <span class="var-default">null</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$reportSection</span> = <span class="var-default">null</span>])
+					(<span class="var-type"><a href="../../PHP_ConfigReport/Config/PHP_ConfigReport_Config.html">PHP_ConfigReport_Config</a></span>&nbsp;<span class="var-name">$config</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$environment</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$phpVersion</span> = <span class="var-default">null</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$loadedExtensions</span> = <span class="var-default">array()</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$reportSection</span> = <span class="var-default">null</span>])
 			</div>
 	
 			<ul class="parameters">
@@ -399,6 +450,9 @@
 				<span class="var-name">$phpVersion</span>			</li>
 					<li>
 				<span class="var-type"></span>
+				<span class="var-name">$loadedExtensions</span>			</li>
+					<li>
+				<span class="var-type"></span>
 				<span class="var-name">$reportSection</span>			</li>
 				</ul>
 		
@@ -409,7 +463,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">getConfig</span> (line <span class="line-number">121</span>)
+		<span class="method-title">getConfig</span> (line <span class="line-number">125</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -433,7 +487,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">getEnvironment</span> (line <span class="line-number">127</span>)
+		<span class="method-title">getEnvironment</span> (line <span class="line-number">130</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -457,7 +511,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">getExtensionCode</span> (line <span class="line-number">132</span>)
+		<span class="method-title">getExtensionCode</span> (line <span class="line-number">135</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -481,7 +535,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">getExtensionName</span> (line <span class="line-number">137</span>)
+		<span class="method-title">getExtensionName</span> (line <span class="line-number">140</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -500,12 +554,36 @@
 		
 			
 	</div>
-<a name="methodgetReportSection" id="getReportSection"><!-- --></a>
+<a name="methodgetLoadedExtensions" id="getLoadedExtensions"><!-- --></a>
 <div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">getReportSection</span> (line <span class="line-number">147</span>)
+		<span class="method-title">getLoadedExtensions</span> (line <span class="line-number">145</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getLoadedExtensions
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetReportSection" id="getReportSection"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">getReportSection</span> (line <span class="line-number">155</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -527,11 +605,11 @@
 			
 	</div>
 <a name="method_checkRequirements" id="_checkRequirements"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_checkRequirements</span> (line <span class="line-number">53</span>)
+		<span class="method-title">_checkRequirements</span> (line <span class="line-number">54</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -551,11 +629,11 @@
 			
 	</div>
 <a name="method_populateReportSection" id="_populateReportSection"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_populateReportSection</span> (line <span class="line-number">67</span>)
+		<span class="method-title">_populateReportSection</span> (line <span class="line-number">68</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -580,7 +658,7 @@
 
 	
 	<p class="notes" id="credit">
-		Documentation generated on Mon, 01 Nov 2010 20:52:20 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Sun, 21 Nov 2010 22:41:29 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>

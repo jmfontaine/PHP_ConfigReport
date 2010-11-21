@@ -65,6 +65,30 @@
 								 alt=" class"
 								 title=" class"
 								 style="vertical-align: center"/>
+						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Stat.html">PHP_ConfigReport_Analyzer_Apc_Stat</a>
+					</td>
+					<td>
+											apc.enabled check
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; white-space: nowrap">
+						<img src="../../media/images/Class.png"
+								 alt=" class"
+								 title=" class"
+								 style="vertical-align: center"/>
+						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Enabled.html">PHP_ConfigReport_Analyzer_Apc_Enabled</a>
+					</td>
+					<td>
+											apc.enabled check
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; white-space: nowrap">
+						<img src="../../media/images/Class.png"
+								 alt=" class"
+								 title=" class"
+								 style="vertical-align: center"/>
 						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_DisplayOrLogErrors.html">PHP_ConfigReport_Analyzer_Core_DisplayOrLogErrors</a>
 					</td>
 					<td>
@@ -197,7 +221,7 @@
 								</div>
 		<div class="info-box-body">
 			<div class="var-summary">
-																																																																<div class="var-title">
+																																																																								<div class="var-title">
 					<img src="../../media/images/Variable.png" alt=" " />
 					<span class="var-type">mixed</span>
 					<a href="#$_config" title="details" class="var-name">$_config</a>
@@ -225,6 +249,11 @@
 																<div class="var-title">
 					<img src="../../media/images/Variable.png" alt=" " />
 					<span class="var-type">mixed</span>
+					<a href="#$_loadedExtensions" title="details" class="var-name">$_loadedExtensions</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
 					<a href="#$_phpVersion" title="details" class="var-name">$_phpVersion</a>
 				</div>
 											</div>
@@ -244,11 +273,11 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																																																																																																																																																																																																																																																																<div class="method-definition">
+																																																																																																																																																																																																																																																																																								<div class="method-definition">
 					<img src="../../media/images/Constructor.png" alt=" "/>
 											<span class="method-result">PHP_ConfigReport_Analyzer_CheckAbstract</span>
 										<a href="#__construct" title="details" class="method-name">__construct</a>
-											(<span class="var-type"><a href="../../PHP_ConfigReport/Config/PHP_ConfigReport_Config.html">PHP_ConfigReport_Config</a></span>&nbsp;<span class="var-name">$config</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$environment</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$phpVersion</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$extensionCode</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$extensionName</span>)
+											(<span class="var-type"><a href="../../PHP_ConfigReport/Config/PHP_ConfigReport_Config.html">PHP_ConfigReport_Config</a></span>&nbsp;<span class="var-name">$config</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$environment</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$phpVersion</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$loadedExtensions</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$extensionCode</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$extensionName</span>)
 									</div>
 																<div class="method-definition">
 					<img src="../../media/images/Method.png" alt=" "/>
@@ -373,6 +402,12 @@
 																<div class="method-definition">
 					<img src="../../media/images/Method.png" alt=" "/>
 											<span class="method-result">void</span>
+										<a href="#_isExtensionLoaded" title="details" class="method-name">_isExtensionLoaded</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
 										<a href="#_isPhpVersionEqualTo" title="details" class="method-name">_isPhpVersionEqualTo</a>
 											(<span class="var-type"></span>&nbsp;<span class="var-name">$version</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$strict</span> = <span class="var-default">false</span>])
 									</div>
@@ -456,7 +491,7 @@
 		<div class="info-box-body">
 			
 <a name="var$_config" id="$_config"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
 		<img src="../../media/images/Variable.png" />
@@ -478,7 +513,7 @@
 
 </div>
 <a name="var$_environment" id="$_environment"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
 		<img src="../../media/images/Variable.png" />
@@ -500,7 +535,7 @@
 
 </div>
 <a name="var$_extensionCode" id="$_extensionCode"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
 		<img src="../../media/images/Variable.png" />
@@ -522,7 +557,7 @@
 
 </div>
 <a name="var$_extensionName" id="$_extensionName"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
 		<img src="../../media/images/Variable.png" />
@@ -544,7 +579,7 @@
 
 </div>
 <a name="var$_issues" id="$_issues"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
 		<img src="../../media/images/Variable.png" />
@@ -552,6 +587,28 @@
 			<span class="var-type">mixed</span>
 			<span class="var-name">$_issues</span>
 			 = <span class="var-default">array()</span>			(line <span class="line-number">50</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_loadedExtensions" id="$_loadedExtensions"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$_loadedExtensions</span>
+			 = <span class="var-default">array()</span>			(line <span class="line-number">51</span>)
 		</span>
 	</div>
 
@@ -573,7 +630,7 @@
 		<span class="var-title">
 			<span class="var-type">mixed</span>
 			<span class="var-name">$_phpVersion</span>
-						(line <span class="line-number">51</span>)
+						(line <span class="line-number">52</span>)
 		</span>
 	</div>
 
@@ -608,7 +665,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Constructor.png" />
-		<span class="method-title">Constructor __construct</span> (line <span class="line-number">245</span>)
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">252</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -621,7 +678,7 @@
 		<span class="method-name">
 			__construct
 		</span>
-					(<span class="var-type"><a href="../../PHP_ConfigReport/Config/PHP_ConfigReport_Config.html">PHP_ConfigReport_Config</a></span>&nbsp;<span class="var-name">$config</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$environment</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$phpVersion</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$extensionCode</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$extensionName</span>)
+					(<span class="var-type"><a href="../../PHP_ConfigReport/Config/PHP_ConfigReport_Config.html">PHP_ConfigReport_Config</a></span>&nbsp;<span class="var-name">$config</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$environment</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$phpVersion</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$loadedExtensions</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$extensionCode</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$extensionName</span>)
 			</div>
 	
 			<ul class="parameters">
@@ -634,6 +691,9 @@
 					<li>
 				<span class="var-type"></span>
 				<span class="var-name">$phpVersion</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$loadedExtensions</span>			</li>
 					<li>
 				<span class="var-type"></span>
 				<span class="var-name">$extensionCode</span>			</li>
@@ -649,7 +709,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">check</span> (line <span class="line-number">255</span>)
+		<span class="method-title">check</span> (line <span class="line-number">263</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -673,7 +733,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">getIssues</span> (line <span class="line-number">262</span>)
+		<span class="method-title">getIssues</span> (line <span class="line-number">270</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -697,7 +757,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">isTestable</span> (line <span class="line-number">267</span>)
+		<span class="method-title">isTestable</span> (line <span class="line-number">275</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -719,6 +779,12 @@
 		<div class="notes">Redefined in descendants as:</div>
 		<ul class="redefinitions">
 					<li>
+				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Stat.html#methodisTestable">PHP_ConfigReport_Analyzer_Apc_Stat::isTestable()</a>
+							</li>
+					<li>
+				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Enabled.html#methodisTestable">PHP_ConfigReport_Analyzer_Apc_Enabled::isTestable()</a>
+							</li>
+					<li>
 				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_AllowUrlFopen.html#methodisTestable">PHP_ConfigReport_Analyzer_Core_AllowUrlFopen::isTestable()</a>
 							</li>
 					<li>
@@ -731,7 +797,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_addError</span> (line <span class="line-number">53</span>)
+		<span class="method-title">_addError</span> (line <span class="line-number">54</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -772,7 +838,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_addIssue</span> (line <span class="line-number">68</span>)
+		<span class="method-title">_addIssue</span> (line <span class="line-number">69</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -801,7 +867,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_addWarning</span> (line <span class="line-number">73</span>)
+		<span class="method-title">_addWarning</span> (line <span class="line-number">74</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -842,7 +908,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_comparePhpVersion</span> (line <span class="line-number">88</span>)
+		<span class="method-title">_comparePhpVersion</span> (line <span class="line-number">89</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -877,7 +943,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/AbstractMethod.png" />
-		<span class="method-title">_doCheck</span> (line <span class="line-number">103</span>)
+		<span class="method-title">_doCheck</span> (line <span class="line-number">104</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -899,6 +965,12 @@
 			<hr class="separator" />
 		<div class="notes">Redefined in descendants as:</div>
 		<ul class="redefinitions">
+					<li>
+				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Stat.html#method_doCheck">PHP_ConfigReport_Analyzer_Apc_Stat::_doCheck()</a>
+							</li>
+					<li>
+				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Enabled.html#method_doCheck">PHP_ConfigReport_Analyzer_Apc_Enabled::_doCheck()</a>
+							</li>
 					<li>
 				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_DisplayOrLogErrors.html#method_doCheck">PHP_ConfigReport_Analyzer_Core_DisplayOrLogErrors::_doCheck()</a>
 							</li>
@@ -936,7 +1008,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_getConfig</span> (line <span class="line-number">105</span>)
+		<span class="method-title">_getConfig</span> (line <span class="line-number">106</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -960,7 +1032,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_getDirective</span> (line <span class="line-number">110</span>)
+		<span class="method-title">_getDirective</span> (line <span class="line-number">111</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -989,7 +1061,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_getEnvironment</span> (line <span class="line-number">115</span>)
+		<span class="method-title">_getEnvironment</span> (line <span class="line-number">116</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1013,7 +1085,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_getExtensionCode</span> (line <span class="line-number">120</span>)
+		<span class="method-title">_getExtensionCode</span> (line <span class="line-number">121</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1037,7 +1109,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_getExtensionName</span> (line <span class="line-number">125</span>)
+		<span class="method-title">_getExtensionName</span> (line <span class="line-number">126</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1061,7 +1133,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_getPhpVersion</span> (line <span class="line-number">130</span>)
+		<span class="method-title">_getPhpVersion</span> (line <span class="line-number">131</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1085,7 +1157,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_getSizeDirective</span> (line <span class="line-number">135</span>)
+		<span class="method-title">_getSizeDirective</span> (line <span class="line-number">136</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1117,7 +1189,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_isDirectiveDisabled</span> (line <span class="line-number">193</span>)
+		<span class="method-title">_isDirectiveDisabled</span> (line <span class="line-number">200</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1146,7 +1218,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_isDirectiveEnabled</span> (line <span class="line-number">198</span>)
+		<span class="method-title">_isDirectiveEnabled</span> (line <span class="line-number">205</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1175,7 +1247,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_isDirectiveNumeric</span> (line <span class="line-number">203</span>)
+		<span class="method-title">_isDirectiveNumeric</span> (line <span class="line-number">210</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1204,7 +1276,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_isEnvironment</span> (line <span class="line-number">208</span>)
+		<span class="method-title">_isEnvironment</span> (line <span class="line-number">215</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1233,7 +1305,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_isEnvironmentNot</span> (line <span class="line-number">213</span>)
+		<span class="method-title">_isEnvironmentNot</span> (line <span class="line-number">220</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1257,12 +1329,41 @@
 		
 			
 	</div>
-<a name="method_isPhpVersionEqualTo" id="_isPhpVersionEqualTo"><!-- --></a>
+<a name="method_isExtensionLoaded" id="_isExtensionLoaded"><!-- --></a>
 <div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_isPhpVersionEqualTo</span> (line <span class="line-number">218</span>)
+		<span class="method-title">_isExtensionLoaded</span> (line <span class="line-number">145</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_isExtensionLoaded
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$name</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_isPhpVersionEqualTo" id="_isPhpVersionEqualTo"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">_isPhpVersionEqualTo</span> (line <span class="line-number">225</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1290,11 +1391,11 @@
 			
 	</div>
 <a name="method_isPhpVersionGreaterThan" id="_isPhpVersionGreaterThan"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_isPhpVersionGreaterThan</span> (line <span class="line-number">223</span>)
+		<span class="method-title">_isPhpVersionGreaterThan</span> (line <span class="line-number">230</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1322,11 +1423,11 @@
 			
 	</div>
 <a name="method_isPhpVersionGreaterThanOrEqualTo" id="_isPhpVersionGreaterThanOrEqualTo"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_isPhpVersionGreaterThanOrEqualTo</span> (line <span class="line-number">228</span>)
+		<span class="method-title">_isPhpVersionGreaterThanOrEqualTo</span> (line <span class="line-number">235</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1354,11 +1455,11 @@
 			
 	</div>
 <a name="method_isPhpVersionLessThan" id="_isPhpVersionLessThan"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_isPhpVersionLessThan</span> (line <span class="line-number">234</span>)
+		<span class="method-title">_isPhpVersionLessThan</span> (line <span class="line-number">241</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1386,11 +1487,11 @@
 			
 	</div>
 <a name="method_isPhpVersionLessThanOrEqualTo" id="_isPhpVersionLessThanOrEqualTo"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_isPhpVersionLessThanOrEqualTo</span> (line <span class="line-number">239</span>)
+		<span class="method-title">_isPhpVersionLessThanOrEqualTo</span> (line <span class="line-number">246</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1418,11 +1519,11 @@
 			
 	</div>
 <a name="method_isSizeDirectiveDifferentFrom" id="_isSizeDirectiveDifferentFrom"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_isSizeDirectiveDifferentFrom</span> (line <span class="line-number">144</span>)
+		<span class="method-title">_isSizeDirectiveDifferentFrom</span> (line <span class="line-number">150</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1450,11 +1551,11 @@
 			
 	</div>
 <a name="method_isSizeDirectiveEqualTo" id="_isSizeDirectiveEqualTo"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_isSizeDirectiveEqualTo</span> (line <span class="line-number">152</span>)
+		<span class="method-title">_isSizeDirectiveEqualTo</span> (line <span class="line-number">158</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1482,11 +1583,11 @@
 			
 	</div>
 <a name="method_isSizeDirectiveGreaterThan" id="_isSizeDirectiveGreaterThan"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_isSizeDirectiveGreaterThan</span> (line <span class="line-number">160</span>)
+		<span class="method-title">_isSizeDirectiveGreaterThan</span> (line <span class="line-number">166</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1514,11 +1615,11 @@
 			
 	</div>
 <a name="method_isSizeDirectiveGreaterThanOrEqualTo" id="_isSizeDirectiveGreaterThanOrEqualTo"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_isSizeDirectiveGreaterThanOrEqualTo</span> (line <span class="line-number">168</span>)
+		<span class="method-title">_isSizeDirectiveGreaterThanOrEqualTo</span> (line <span class="line-number">174</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1546,11 +1647,11 @@
 			
 	</div>
 <a name="method_isSizeDirectiveLessThan" id="_isSizeDirectiveLessThan"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_isSizeDirectiveLessThan</span> (line <span class="line-number">177</span>)
+		<span class="method-title">_isSizeDirectiveLessThan</span> (line <span class="line-number">183</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1578,11 +1679,11 @@
 			
 	</div>
 <a name="method_isSizeDirectiveLessThanOrEqual" id="_isSizeDirectiveLessThanOrEqual"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">_isSizeDirectiveLessThanOrEqual</span> (line <span class="line-number">185</span>)
+		<span class="method-title">_isSizeDirectiveLessThanOrEqual</span> (line <span class="line-number">191</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1615,7 +1716,7 @@
 
 	
 	<p class="notes" id="credit">
-		Documentation generated on Mon, 01 Nov 2010 20:52:19 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Sun, 21 Nov 2010 22:41:29 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>

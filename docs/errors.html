@@ -16,6 +16,7 @@
 <a href="#Cli.php">Cli.php</a><br>
 <a href="#DisplayErrors.php">DisplayErrors.php</a><br>
 <a href="#DisplayOrLogErrors.php">DisplayOrLogErrors.php</a><br>
+<a href="#Enabled.php">Enabled.php</a><br>
 <a href="#ExposePhp.php">ExposePhp.php</a><br>
 <a href="#ExtensionAbstract.php">ExtensionAbstract.php</a><br>
 <a href="#Interface.php">Interface.php</a><br>
@@ -26,6 +27,7 @@
 <a href="#RegisterLongArrays.php">RegisterLongArrays.php</a><br>
 <a href="#Report.php">Report.php</a><br>
 <a href="#Section.php">Section.php</a><br>
+<a href="#Stat.php">Stat.php</a><br>
 <a href="#Text.php">Text.php</a><br>
 <a name="Post-parsing"></a>
 <h1>Post-parsing</h1>
@@ -62,59 +64,62 @@
 <a name="CheckAbstract.php"></a>
 <h1>CheckAbstract.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 65</b> - Method "_addError" has no method-level DocBlock.<br>
-<b>Warning on line 70</b> - Method "_addIssue" has no method-level DocBlock.<br>
-<b>Warning on line 85</b> - Method "_addWarning" has no method-level DocBlock.<br>
-<b>Warning on line 100</b> - Method "_comparePhpVersion" has no method-level DocBlock.<br>
-<b>Warning on line 102</b> - Method "_doCheck" has no method-level DocBlock.<br>
-<b>Warning on line 107</b> - Method "_getConfig" has no method-level DocBlock.<br>
-<b>Warning on line 112</b> - Method "_getDirective" has no method-level DocBlock.<br>
-<b>Warning on line 117</b> - Method "_getEnvironment" has no method-level DocBlock.<br>
-<b>Warning on line 122</b> - Method "_getExtensionCode" has no method-level DocBlock.<br>
-<b>Warning on line 127</b> - Method "_getExtensionName" has no method-level DocBlock.<br>
-<b>Warning on line 132</b> - Method "_getPhpVersion" has no method-level DocBlock.<br>
-<b>Warning on line 141</b> - Method "_getSizeDirective" has no method-level DocBlock.<br>
-<b>Warning on line 149</b> - Method "_isSizeDirectiveDifferentFrom" has no method-level DocBlock.<br>
-<b>Warning on line 157</b> - Method "_isSizeDirectiveEqualTo" has no method-level DocBlock.<br>
-<b>Warning on line 165</b> - Method "_isSizeDirectiveGreaterThan" has no method-level DocBlock.<br>
-<b>Warning on line 174</b> - Method "_isSizeDirectiveGreaterThanOrEqualTo" has no method-level DocBlock.<br>
-<b>Warning on line 182</b> - Method "_isSizeDirectiveLessThan" has no method-level DocBlock.<br>
-<b>Warning on line 190</b> - Method "_isSizeDirectiveLessThanOrEqual" has no method-level DocBlock.<br>
-<b>Warning on line 195</b> - Method "_isDirectiveDisabled" has no method-level DocBlock.<br>
-<b>Warning on line 200</b> - Method "_isDirectiveEnabled" has no method-level DocBlock.<br>
-<b>Warning on line 205</b> - Method "_isDirectiveNumeric" has no method-level DocBlock.<br>
-<b>Warning on line 210</b> - Method "_isEnvironment" has no method-level DocBlock.<br>
-<b>Warning on line 215</b> - Method "_isEnvironmentNot" has no method-level DocBlock.<br>
-<b>Warning on line 220</b> - Method "_isPhpVersionEqualTo" has no method-level DocBlock.<br>
-<b>Warning on line 225</b> - Method "_isPhpVersionGreaterThan" has no method-level DocBlock.<br>
-<b>Warning on line 231</b> - Method "_isPhpVersionGreaterThanOrEqualTo" has no method-level DocBlock.<br>
-<b>Warning on line 236</b> - Method "_isPhpVersionLessThan" has no method-level DocBlock.<br>
-<b>Warning on line 242</b> - Method "_isPhpVersionLessThanOrEqualTo" has no method-level DocBlock.<br>
-<b>Warning on line 252</b> - Method "__construct" has no method-level DocBlock.<br>
-<b>Warning on line 259</b> - Method "check" has no method-level DocBlock.<br>
-<b>Warning on line 264</b> - Method "getIssues" has no method-level DocBlock.<br>
-<b>Warning on line 269</b> - Method "isTestable" has no method-level DocBlock.<br>
+<b>Warning on line 66</b> - Method "_addError" has no method-level DocBlock.<br>
+<b>Warning on line 71</b> - Method "_addIssue" has no method-level DocBlock.<br>
+<b>Warning on line 86</b> - Method "_addWarning" has no method-level DocBlock.<br>
+<b>Warning on line 101</b> - Method "_comparePhpVersion" has no method-level DocBlock.<br>
+<b>Warning on line 103</b> - Method "_doCheck" has no method-level DocBlock.<br>
+<b>Warning on line 108</b> - Method "_getConfig" has no method-level DocBlock.<br>
+<b>Warning on line 113</b> - Method "_getDirective" has no method-level DocBlock.<br>
+<b>Warning on line 118</b> - Method "_getEnvironment" has no method-level DocBlock.<br>
+<b>Warning on line 123</b> - Method "_getExtensionCode" has no method-level DocBlock.<br>
+<b>Warning on line 128</b> - Method "_getExtensionName" has no method-level DocBlock.<br>
+<b>Warning on line 133</b> - Method "_getPhpVersion" has no method-level DocBlock.<br>
+<b>Warning on line 142</b> - Method "_getSizeDirective" has no method-level DocBlock.<br>
+<b>Warning on line 147</b> - Method "_isExtensionLoaded" has no method-level DocBlock.<br>
+<b>Warning on line 155</b> - Method "_isSizeDirectiveDifferentFrom" has no method-level DocBlock.<br>
+<b>Warning on line 163</b> - Method "_isSizeDirectiveEqualTo" has no method-level DocBlock.<br>
+<b>Warning on line 171</b> - Method "_isSizeDirectiveGreaterThan" has no method-level DocBlock.<br>
+<b>Warning on line 180</b> - Method "_isSizeDirectiveGreaterThanOrEqualTo" has no method-level DocBlock.<br>
+<b>Warning on line 188</b> - Method "_isSizeDirectiveLessThan" has no method-level DocBlock.<br>
+<b>Warning on line 197</b> - Method "_isSizeDirectiveLessThanOrEqual" has no method-level DocBlock.<br>
+<b>Warning on line 202</b> - Method "_isDirectiveDisabled" has no method-level DocBlock.<br>
+<b>Warning on line 207</b> - Method "_isDirectiveEnabled" has no method-level DocBlock.<br>
+<b>Warning on line 212</b> - Method "_isDirectiveNumeric" has no method-level DocBlock.<br>
+<b>Warning on line 217</b> - Method "_isEnvironment" has no method-level DocBlock.<br>
+<b>Warning on line 222</b> - Method "_isEnvironmentNot" has no method-level DocBlock.<br>
+<b>Warning on line 227</b> - Method "_isPhpVersionEqualTo" has no method-level DocBlock.<br>
+<b>Warning on line 232</b> - Method "_isPhpVersionGreaterThan" has no method-level DocBlock.<br>
+<b>Warning on line 238</b> - Method "_isPhpVersionGreaterThanOrEqualTo" has no method-level DocBlock.<br>
+<b>Warning on line 243</b> - Method "_isPhpVersionLessThan" has no method-level DocBlock.<br>
+<b>Warning on line 249</b> - Method "_isPhpVersionLessThanOrEqualTo" has no method-level DocBlock.<br>
+<b>Warning on line 260</b> - Method "__construct" has no method-level DocBlock.<br>
+<b>Warning on line 267</b> - Method "check" has no method-level DocBlock.<br>
+<b>Warning on line 272</b> - Method "getIssues" has no method-level DocBlock.<br>
+<b>Warning on line 277</b> - Method "isTestable" has no method-level DocBlock.<br>
 <a name="CheckTestCase.php"></a>
 <h1>CheckTestCase.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 79</b> - Method "_getIssues" has no method-level DocBlock.<br>
-<b>Warning on line 94</b> - Method "_initialize" has no method-level DocBlock.<br>
-<b>Warning on line 101</b> - Method "__construct" has no method-level DocBlock.<br>
-<b>Warning on line 116</b> - Method "assertIssuesContainError" has no method-level DocBlock.<br>
-<b>Warning on line 131</b> - Method "assertIssuesContainErrorOnly" has no method-level DocBlock.<br>
-<b>Warning on line 176</b> - Method "assertIssuesContainLevel" has no method-level DocBlock.<br>
-<b>Warning on line 207</b> - Method "assertIssuesEmpty" has no method-level DocBlock.<br>
-<b>Warning on line 223</b> - Method "assertIssuesContainWarning" has no method-level DocBlock.<br>
-<b>Warning on line 239</b> - Method "assertIssuesContainWarningOnly" has no method-level DocBlock.<br>
-<b>Warning on line 255</b> - Method "assertIssuesNotContainError" has no method-level DocBlock.<br>
-<b>Warning on line 298</b> - Method "assertIssuesNotContainLevel" has no method-level DocBlock.<br>
-<b>Warning on line 313</b> - Method "assertIssuesNotContainWarning" has no method-level DocBlock.<br>
+<b>Warning on line 80</b> - Method "_getIssues" has no method-level DocBlock.<br>
+<b>Warning on line 95</b> - Method "_initialize" has no method-level DocBlock.<br>
+<b>Warning on line 103</b> - Method "__construct" has no method-level DocBlock.<br>
+<b>Warning on line 127</b> - Method "assertCheckIsTestable" has no method-level DocBlock.<br>
+<b>Warning on line 138</b> - Method "assertCheckIsNotTestable" has no method-level DocBlock.<br>
+<b>Warning on line 153</b> - Method "assertIssuesContainError" has no method-level DocBlock.<br>
+<b>Warning on line 169</b> - Method "assertIssuesContainErrorOnly" has no method-level DocBlock.<br>
+<b>Warning on line 214</b> - Method "assertIssuesContainLevel" has no method-level DocBlock.<br>
+<b>Warning on line 251</b> - Method "assertIssuesEmpty" has no method-level DocBlock.<br>
+<b>Warning on line 267</b> - Method "assertIssuesContainWarning" has no method-level DocBlock.<br>
+<b>Warning on line 283</b> - Method "assertIssuesContainWarningOnly" has no method-level DocBlock.<br>
+<b>Warning on line 299</b> - Method "assertIssuesNotContainError" has no method-level DocBlock.<br>
+<b>Warning on line 342</b> - Method "assertIssuesNotContainLevel" has no method-level DocBlock.<br>
+<b>Warning on line 357</b> - Method "assertIssuesNotContainWarning" has no method-level DocBlock.<br>
 <a name="Cli.php"></a>
 <h1>Cli.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 38</b> - Page-level DocBlock precedes "require_once 'PHP/ConfigReport/Runner/Abstract.php'", use another DocBlock to document the source element<br>
-<b>Warning on line 287</b> - Method "getConsoleInput" has no method-level DocBlock.<br>
-<b>Warning on line 292</b> - Method "getConsoleOutput" has no method-level DocBlock.<br>
+<b>Warning on line 299</b> - Method "getConsoleInput" has no method-level DocBlock.<br>
+<b>Warning on line 304</b> - Method "getConsoleOutput" has no method-level DocBlock.<br>
 <a name="DisplayErrors.php"></a>
 <h1>DisplayErrors.php</h1>
 <h2>Warnings:</h2><br>
@@ -123,6 +128,11 @@
 <h1>DisplayOrLogErrors.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 61</b> - Method "_doCheck" has no method-level DocBlock.<br>
+<a name="Enabled.php"></a>
+<h1>Enabled.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 59</b> - Method "_doCheck" has no method-level DocBlock.<br>
+<b>Warning on line 64</b> - Method "isTestable" has no method-level DocBlock.<br>
 <a name="ExposePhp.php"></a>
 <h1>ExposePhp.php</h1>
 <h2>Warnings:</h2><br>
@@ -130,12 +140,13 @@
 <a name="ExtensionAbstract.php"></a>
 <h1>ExtensionAbstract.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 64</b> - Method "_checkRequirements" has no method-level DocBlock.<br>
-<b>Warning on line 92</b> - Method "_populateReportSection" has no method-level DocBlock.<br>
-<b>Warning on line 123</b> - Method "getConfig" has no method-level DocBlock.<br>
-<b>Warning on line 129</b> - Method "getEnvironment" has no method-level DocBlock.<br>
-<b>Warning on line 134</b> - Method "getExtensionCode" has no method-level DocBlock.<br>
-<b>Warning on line 139</b> - Method "getExtensionName" has no method-level DocBlock.<br>
+<b>Warning on line 65</b> - Method "_checkRequirements" has no method-level DocBlock.<br>
+<b>Warning on line 94</b> - Method "_populateReportSection" has no method-level DocBlock.<br>
+<b>Warning on line 127</b> - Method "getConfig" has no method-level DocBlock.<br>
+<b>Warning on line 132</b> - Method "getEnvironment" has no method-level DocBlock.<br>
+<b>Warning on line 137</b> - Method "getExtensionCode" has no method-level DocBlock.<br>
+<b>Warning on line 142</b> - Method "getExtensionName" has no method-level DocBlock.<br>
+<b>Warning on line 147</b> - Method "getLoadedExtensions" has no method-level DocBlock.<br>
 <a name="Interface.php"></a>
 <h1>Interface.php</h1>
 <h2>Warnings:</h2><br>
@@ -194,6 +205,11 @@
 <b>Warning on line 113</b> - Method "getIssues" has no method-level DocBlock.<br>
 <b>Warning on line 118</b> - Method "hasIssues" has no method-level DocBlock.<br>
 <b>Warning on line 124</b> - Method "setExtensionName" has no method-level DocBlock.<br>
+<a name="Stat.php"></a>
+<h1>Stat.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 79</b> - Method "_doCheck" has no method-level DocBlock.<br>
+<b>Warning on line 84</b> - Method "isTestable" has no method-level DocBlock.<br>
 <a name="Text.php"></a>
 <h1>Text.php</h1>
 <h2>Warnings:</h2><br>
@@ -201,7 +217,7 @@
 <b>Warning on line 58</b> - Method "getWidth" has no method-level DocBlock.<br>
 <b>Warning on line 152</b> - Method "setWidth" has no method-level DocBlock.<br>
 	<p class="notes" id="credit">
-		Documentation generated on Mon, 01 Nov 2010 20:52:20 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Sun, 21 Nov 2010 22:41:30 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</body>
 </html>
