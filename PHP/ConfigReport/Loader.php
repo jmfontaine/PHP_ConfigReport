@@ -77,6 +77,6 @@ class PHP_ConfigReport_Loader
             return false;
         }
 
-        return include $classPath;
+        return (bool) include $classPath;
     }
 }
