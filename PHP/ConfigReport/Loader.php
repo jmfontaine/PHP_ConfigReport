@@ -43,6 +43,26 @@
  */
 class PHP_ConfigReport_Loader
 {
+    protected static function _getClassPath($class)
+    {
+        $relativePath = str_replace('_', '/', $class) . '.php';
+
+        $includePathParts = self::_getIncludePathParts();
+        foreach ($includePathParts as $part) {
+            $classPath = $part . DIRECTORY_SEPARATOR . $relativePath;
+            if (is_readable($classPath)) {
+                return $classPath;
+            }
+        }
+
+        return false;
+    }
+
+    protected static function _getIncludePathParts()
+    {
+        return explode(PATH_SEPARATOR, get_include_path());
+    }
+
     /**
      * Tries to load the file containing the specified class.
      * This method is to be used with spl_autoload_register() function.
@@ -52,12 +72,11 @@ class PHP_ConfigReport_Loader
      */
     public static function autoload($class)
     {
-        $path = str_replace('_', '/', $class) . '.php';
-        if (file_exists($path)) {
-            require_once $path;
-            return true;
-        } else {
+        $classPath = self::_getClassPath($class);
+        if (false === $classPath) {
             return false;
         }
+
+        return include $classPath;
     }
 }
