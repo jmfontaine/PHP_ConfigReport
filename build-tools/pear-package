@@ -1,0 +1,82 @@
+#!/usr/bin/env php
+<?php
+$rootPath = realpath(dirname(__FILE__) . '/..');
+
+// Temporary replace PHP path by @php_bin@ tag
+$phpcrPath = $rootPath . '/phpcr';
+$code = file_get_contents($phpcrPath);
+$code = str_replace('#!/usr/bin/env php', '#!@php_bin@', $code);
+file_put_contents($phpcrPath, $code);
+
+// Hide PEAR shame
+error_reporting(E_ALL & ~E_DEPRECATED);
+
+require_once 'PEAR.php';
+PEAR::setErrorHandling(PEAR_ERROR_DIE);
+
+// Generate package
+require_once 'PEAR/PackageFileManager2.php';
+$packageManager = new PEAR_PackageFileManager2();
+
+$packageManager->setOptions(
+    array(
+        'baseinstalldir' => '/',
+        'exceptions'     => array(
+            'LICENSE'         => 'doc',
+            'phpcr'           => 'script',
+            'README.markdown' => 'doc'
+        ),
+        'filelistgenerator' => 'file',
+        'ignore'            => array(
+            'build-tools/',
+            'Tests/',
+            'phpunit.xml.dist'
+        ),
+        'installexceptions' => array(
+            'phpcr' => '/',
+        ),
+        'packagedirectory' => $rootPath,
+    )
+);
+
+$packageManager->setPackage('PHP_ConfigReport');
+$packageManager->setSummary('PHP_ConfigReport is a PHP configuration analyzer');
+$packageManager->setDescription('PHP_ConfigReport is a tool that analyzes PHP configuration looking for security and performance problems.');
+$packageManager->setChannel('pear.jmfontaine.net');
+
+$packageManager->addGlobalReplacement('pear-config', '@php_bin@', 'php_bin');
+
+$packageManager->addRelease();
+$packageManager->setAPIVersion('0.1.0');
+$packageManager->setReleaseVersion('0.1.0');
+$packageManager->setReleaseStability('alpha');
+$packageManager->setAPIStability('alpha');
+$packageManager->setNotes('
+* v0.1.0
+- Initial public release
+');
+$packageManager->setPackageType('php');
+$packageManager->setPhpDep('5.2.0');
+$packageManager->setPearinstallerDep('1.4.0');
+$packageManager->addMaintainer(
+    'lead',
+    'jmfontaine',
+    'Jean-Marc Fontaine',
+    'jm@jmfontaine.net'
+);
+$packageManager->setLicense(
+    'BSD License',
+    'http://www.opensource.org/licenses/bsd-license.php'
+);
+
+$packageManager->generateContents();
+
+$packageManager->writePackageFile();
+
+passthru("pear package $rootPath/package.xml");
+
+// Replace back @php_bin@ tag by PHP path
+$code = str_replace('#!@php_bin@', '#!/usr/bin/env php', $code);
+file_put_contents($phpcrPath, $code);
+unset($code);
+unset($phpcrPath);
