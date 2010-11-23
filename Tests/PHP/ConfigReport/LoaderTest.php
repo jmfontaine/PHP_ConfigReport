@@ -43,7 +43,7 @@ class PHP_ConfigReport_LoaderTest
      */
     public function loadingExistingClassSucceed()
     {
-        $newIncludePath = realpath(dirname(__FILE__) . '/../../_files/classes');
+        $newIncludePath = realpath(FILES_PATH . '/classes');
         $oldIncludePath = set_include_path($newIncludePath);
 
         if (false === $oldIncludePath) {
@@ -64,7 +64,7 @@ class PHP_ConfigReport_LoaderTest
      */
     public function loadingNonExistingClassFails()
     {
-        $newIncludePath = realpath(dirname(__FILE__) . '/../../_files/classes');
+        $newIncludePath = realpath(FILES_PATH . '/classes');
         $oldIncludePath = set_include_path($newIncludePath);
 
         if (false === $oldIncludePath) {
