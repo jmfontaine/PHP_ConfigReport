@@ -29,7 +29,7 @@ $packageManager->setOptions(
         'filelistgenerator' => 'file',
         'ignore'            => array(
             'build-tools/',
-            'Tests/',
+            'tests/',
             'phpunit.xml.dist'
         ),
         'installexceptions' => array(

@@ -13,8 +13,8 @@
   <email>jm@jmfontaine.net</email>
   <active>yes</active>
  </lead>
- <date>2010-11-22</date>
- <time>10:53:25</time>
+ <date>2010-11-23</date>
+ <time>20:13:27</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -594,13 +594,13 @@
    <file baseinstalldir="/" md5sum="892beea150014cd35837a0774e03427d" name="docs/Test/_Test---CheckTestCase.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="5a5aee9ea2c1794c5a5e60556c79c666" name="PHP/ConfigReport/Analyzer.php" role="php">
+   <file baseinstalldir="/" md5sum="64b261d9152b7dd8684ea90967c02e03" name="PHP/ConfigReport/Analyzer.php" role="php">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
    <file baseinstalldir="/" md5sum="098d5e6cceae656f26f3c387ef02b998" name="PHP/ConfigReport/Config.php" role="php">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="a2eaaba842392e240de2b2d7c9ab339a" name="PHP/ConfigReport/Loader.php" role="php">
+   <file baseinstalldir="/" md5sum="3d03c7623610a0dda7785c2fa4c85c3e" name="PHP/ConfigReport/Loader.php" role="php">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
    <file baseinstalldir="/" md5sum="a320b6b957978a2190a1b81e1ea1621d" name="PHP/ConfigReport/Report.php" role="php">
@@ -693,9 +693,6 @@
    <file baseinstalldir="/" md5sum="66ec182f071a3b3cf35a967bef625488" name="phpcr" role="script">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="ec030dc8be4d347c215850ab3f29c226" name="PHP_ConfigReport-0.1.0.tgz" role="data">
-    <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
-   </file>
    <file baseinstalldir="/" md5sum="1a7e183b316c2e0103fcc0455120a32b" name="README.markdown" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
@@ -722,7 +719,7 @@
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2010-11-22</date>
+   <date>2010-11-23</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD License</license>
    <notes>
 * v0.1.0

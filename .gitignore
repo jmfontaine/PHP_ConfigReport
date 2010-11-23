@@ -2,4 +2,4 @@
 .project
 .settings
 PHP_ConfigReport-*.tgz
-Tests/_coverage/*
+tests/_coverage/*
