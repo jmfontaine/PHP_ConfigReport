@@ -78,6 +78,46 @@ class PHP_ConfigReport_Analyzer
     }
 
     /**
+     * Returns configuration
+     *
+     * @return PHP_ConfigReport_Config
+     */
+    public function getConfig()
+    {
+        return $this->_config;
+    }
+
+    /**
+     * Returns environment
+     *
+     * @return string
+     */
+    public function getEnvironment()
+    {
+        return $this->_environment;
+    }
+
+    /**
+     * Returns loaded extensions
+     *
+     * @return array
+     */
+    public function getLoadedExtensions()
+    {
+        return $this->_loadedExtensions;
+    }
+
+    /**
+     * Returns PHP version
+     *
+     * @return string
+     */
+    public function getPhpVersion()
+    {
+        return $this->_phpVersion;
+    }
+
+    /**
      * Generates and returns report
      *
      * @return PHP_ConfigReport_Report Report
