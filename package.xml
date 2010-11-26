@@ -14,7 +14,7 @@
   <active>yes</active>
  </lead>
  <date>2010-11-26</date>
- <time>12:16:49</time>
+ <time>12:18:38</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -36,7 +36,7 @@
    <file baseinstalldir="/" md5sum="8dc2712d3d52a98ce283ef83f7c8019a" name="docs/classtrees_Analyzer.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="c9ec6c4f40be34b415b3a07bf76b914c" name="docs/classtrees_PHP_ConfigReport.html" role="doc">
+   <file baseinstalldir="/" md5sum="498606525ef26bb89909e52cf42d93dd" name="docs/classtrees_PHP_ConfigReport.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
    <file baseinstalldir="/" md5sum="4ed524e0869bd5db38a9564a08611106" name="docs/classtrees_Test.html" role="doc">
@@ -45,13 +45,13 @@
    <file baseinstalldir="/" md5sum="977c636280b157e4660556262ee775cb" name="docs/classtrees_Tests.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="759d03ce61080a4233ed88a145a176f3" name="docs/elementindex.html" role="doc">
+   <file baseinstalldir="/" md5sum="d6a5948829420a59e9f95f03b0454ab5" name="docs/elementindex.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
    <file baseinstalldir="/" md5sum="5fe84af767e633a83c9bcbc0331fcd3c" name="docs/elementindex_Analyzer.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="794dde0ef836cb59371ef1e8de5e48fb" name="docs/elementindex_PHP_ConfigReport.html" role="doc">
+   <file baseinstalldir="/" md5sum="b7aa624ea4b7b9c96192032794e48289" name="docs/elementindex_PHP_ConfigReport.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
    <file baseinstalldir="/" md5sum="6a2aa19e649ba66ef16fa6039ba30c9c" name="docs/elementindex_Test.html" role="doc">
@@ -60,10 +60,10 @@
    <file baseinstalldir="/" md5sum="9d1dc564153913d5071f88ba08624863" name="docs/elementindex_Tests.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="0f2c886d4cb07980f35859dbbb3419a2" name="docs/errors.html" role="doc">
+   <file baseinstalldir="/" md5sum="3170590e2f761d435c6ab2c9a27bc998" name="docs/errors.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="f91488383b813fb5b32568cbea1c4b78" name="docs/index.html" role="doc">
+   <file baseinstalldir="/" md5sum="a160e6f96b290f68a706eaffe1149904" name="docs/index.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
    <file baseinstalldir="/" md5sum="a26493c6dc8dfb23c50c6fc44622df0e" name="docs/li_Analyzer.html" role="doc">
@@ -402,190 +402,190 @@
    <file baseinstalldir="/" md5sum="a58c0f7b4f9979061a0099eb6d1b7059" name="docs/PHP_ConfigReport/_Runner---Interface.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="bbe19235045275a975a1f5f063ca7c6b" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer.html" role="doc">
+   <file baseinstalldir="/" md5sum="781c07fdc56c9e0fb2f9db2c355c4b75" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="3ac214845c5a4e9d797456a5287cb3da" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc.html" role="doc">
+   <file baseinstalldir="/" md5sum="ae4837c58349e5374dbdf41d409cc4da" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="f404938d91222179f83e801125085e1d" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Enabled.html" role="doc">
+   <file baseinstalldir="/" md5sum="d89cf6cae826b19ab20bc3ce29c7d588" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Enabled.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="2e7fb55b7f43c5d4ada9318ea5332b07" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Stat.html" role="doc">
+   <file baseinstalldir="/" md5sum="5f87e704d2481e15a452d160cf4b39a2" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Stat.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="1167600e2f0b04c5d4ef73acf928c106" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_CheckAbstract.html" role="doc">
+   <file baseinstalldir="/" md5sum="578be8bb3d8dc6c69c4497b559c2d78a" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_CheckAbstract.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="0c9ffa8e7f15827a5760fc3181b172fc" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core.html" role="doc">
+   <file baseinstalldir="/" md5sum="a3542c0a09e12d3e58271e2e9b10f71d" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="b9ebb1690c4f6db64939bdd6322e7569" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_AllowUrlFopen.html" role="doc">
+   <file baseinstalldir="/" md5sum="3040da36f41e1a8d5a8d5dae34a17017" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_AllowUrlFopen.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="47e3a6851551fc5ea32d58b391bb8f1a" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_AllowUrlInclude.html" role="doc">
+   <file baseinstalldir="/" md5sum="600a826e06d2aed254771aeeab6854a3" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_AllowUrlInclude.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="7a7b89fac6b68116a2e9221f96f108b3" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_DisplayErrors.html" role="doc">
+   <file baseinstalldir="/" md5sum="cbd1a991ecaa874cc93b5f7c39df3fb3" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_DisplayErrors.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="8f38b525930e26193d0d44a9b9fa2913" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_DisplayOrLogErrors.html" role="doc">
+   <file baseinstalldir="/" md5sum="8ccd8bd711210b195accc2402aa0c67a" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_DisplayOrLogErrors.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="823144711b4c38493453e274c48fbff1" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_ExposePhp.html" role="doc">
+   <file baseinstalldir="/" md5sum="7e070e936a5359a8b7b5bb7d13af9402" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_ExposePhp.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="51395b124b95bac07b2beb7d5ab3fdfb" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_LogErrors.html" role="doc">
+   <file baseinstalldir="/" md5sum="e7c032b966a26c4c5d7dbc0815efacdc" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_LogErrors.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="1cfa599c789ee7c27dff5d8c0b86e376" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_MagicQuotesGpc.html" role="doc">
+   <file baseinstalldir="/" md5sum="d105b70001d62aeb755269c0f08c47c1" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_MagicQuotesGpc.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="a4c3e530a58e26b78cd051738acfef12" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_MemoryLimit.html" role="doc">
+   <file baseinstalldir="/" md5sum="340638efa582aacd485a72bd19c408b3" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_MemoryLimit.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="34deb5f6d9aee20500354f1b2ea7e9b4" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_RegisterGlobals.html" role="doc">
+   <file baseinstalldir="/" md5sum="ed2ca8bd081f5f96664c8b4cd42b62d2" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_RegisterGlobals.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="c93e9e70cfdc5aed78472316a868ad74" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_RegisterLongArrays.html" role="doc">
+   <file baseinstalldir="/" md5sum="7ee973e5f4aec0e7a69a81c42aec91b4" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_RegisterLongArrays.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="14306aeba46ac304c4d9fedab6fb87b1" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_ExtensionAbstract.html" role="doc">
+   <file baseinstalldir="/" md5sum="e0f9f8919130e82169735e1ae922ae30" name="docs/PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_ExtensionAbstract.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="c2e6ea5310c827b61f7fc83acc108dd6" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Apc---Enabled.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="350ffc850e51a6731fcbdf132dec1f64" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Apc---Enabled.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="8a6939f78d13e878dd37a4956399927f" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Apc---Stat.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="0c2e0f4117877295e41b379777910f2a" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Apc---Stat.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="201ca92f3ac83a95dfd3f04c46b52b07" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Apc.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="a11f3817dad51c4cfa31521f7606823f" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Apc.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="b9cc88988fd256c5093b15bf90a9f147" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---CheckAbstract.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="15685759916b1d7175c24cc875441224" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---CheckAbstract.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="1a28102034364de59eb06f4d6fbb18ee" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core---AllowUrlFopen.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="2119bc0ea5cf6128a6f71cfa609eadd3" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core---AllowUrlFopen.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="a500db0d9e779b8a60c39b90196115b1" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core---AllowUrlInclude.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="82627ecdb2e2c45478c506c653d1a152" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core---AllowUrlInclude.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="e0a04feda8947353be614cc20e6837f4" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core---DisplayErrors.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="dd58cb082db6468f428103dd29b1596a" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core---DisplayErrors.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="a1b9c86408808db2f0cddfae507f930b" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core---DisplayOrLogErrors.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="77d8f0c5f54f6129b8cc1b9ffab5ba3a" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core---DisplayOrLogErrors.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="d1f7c9e8f8d9d1ec2d844eb1389c7639" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core---ExposePhp.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="e258b2514caeab25b4803b772339d800" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core---ExposePhp.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="b85fbd023120eebdf20b9775eba9f0a1" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core---LogErrors.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="1c9cc03f63dc14c878cbc947caec0a95" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core---LogErrors.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="f3b5f69ecdbfceebd1c249b28d012ffc" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core---MagicQuotesGpc.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="e49f1119abcbb70fa563e4524a8d24ab" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core---MagicQuotesGpc.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="ad5af562d26b6743b657609a9edcb302" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core---MemoryLimit.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="35c1273f46fec178f9f5baa5fa95c5d4" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core---MemoryLimit.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="8478fad4d6f36709b6c89096513dd1fd" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core---RegisterGlobals.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="712b88c2de93f1596cb1a6b5ea7c8234" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core---RegisterGlobals.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="d86cfbf352623d3819078f1a065026bc" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core---RegisterLongArrays.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="9446f01b4d67ba376eb8e3d8d1a7084d" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core---RegisterLongArrays.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="c9e087e68bcc6c9d6d45b357c05456ec" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="190b77524b2aaf4f85e76eee49e9dfc2" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---Core.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="7c378f877ede1a43b808914239834aff" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---ExtensionAbstract.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="f4a2f94ff1b8d59a26c979d76dbccde2" name="docs/PHP_ConfigReport/Analyzer/_Analyzer---ExtensionAbstract.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="a35b0e6493c6d4c8fd57a6acd0c5b493" name="docs/PHP_ConfigReport/Analyzer/_Analyzer.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="eaa2cc143033d35ab908429f8140392e" name="docs/PHP_ConfigReport/Analyzer/_Analyzer.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="ad9105017d094c36263e72ba73754e58" name="docs/PHP_ConfigReport/Config/PHP_ConfigReport_Config.html" role="doc">
+   <file baseinstalldir="/" md5sum="c3bda11bbfe997578b5439b3921346f7" name="docs/PHP_ConfigReport/Config/PHP_ConfigReport_Config.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="9887f8973b2de125fe3cbcedb3801a5a" name="docs/PHP_ConfigReport/Config/_Config.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="b241a07ac328ddb93af76d3bb8e9b1e6" name="docs/PHP_ConfigReport/Config/_Config.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="37f996a07108629ce39ccc06894ffefb" name="docs/PHP_ConfigReport/Issue/PHP_ConfigReport_Issue_Abstract.html" role="doc">
+   <file baseinstalldir="/" md5sum="53e90ce1eaea416f9556b0aae15b7947" name="docs/PHP_ConfigReport/Issue/PHP_ConfigReport_Issue_Abstract.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="0f2fb397d99c64ee59ec35535bd8a329" name="docs/PHP_ConfigReport/Issue/PHP_ConfigReport_Issue_Error.html" role="doc">
+   <file baseinstalldir="/" md5sum="02d2ebcf8913ef9afd975a530a35b9b5" name="docs/PHP_ConfigReport/Issue/PHP_ConfigReport_Issue_Error.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="4fd15048475d6490c61c0e3bc7d772e4" name="docs/PHP_ConfigReport/Issue/PHP_ConfigReport_Issue_Interface.html" role="doc">
+   <file baseinstalldir="/" md5sum="76f974ff17d25eda9a1aa04c7c80dde1" name="docs/PHP_ConfigReport/Issue/PHP_ConfigReport_Issue_Interface.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="5d3621612f3c1bad2587356e449ecc22" name="docs/PHP_ConfigReport/Issue/PHP_ConfigReport_Issue_Warning.html" role="doc">
+   <file baseinstalldir="/" md5sum="e06f7eb0dd1c5ce621b21b5532e7a49b" name="docs/PHP_ConfigReport/Issue/PHP_ConfigReport_Issue_Warning.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="bb669f55239bcec34801c3b069259d71" name="docs/PHP_ConfigReport/Issue/_Issue---Abstract.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="b4c404c43f4cc685fa801c8dbe437527" name="docs/PHP_ConfigReport/Issue/_Issue---Abstract.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="f3edc94a29b7c0a68047918c8380509a" name="docs/PHP_ConfigReport/Issue/_Issue---Error.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="e99d6433074b3fa347d3e1a3e3639c98" name="docs/PHP_ConfigReport/Issue/_Issue---Error.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="fc3fed46de314db15473ef0ca5facc63" name="docs/PHP_ConfigReport/Issue/_Issue---Interface.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="a01a1f26caa1d20b33a8b00195710d1b" name="docs/PHP_ConfigReport/Issue/_Issue---Interface.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="2dbc52d258d66436423ac8234f7634df" name="docs/PHP_ConfigReport/Issue/_Issue---Warning.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="0c6459edc9ab756a269a01a4afda0e6f" name="docs/PHP_ConfigReport/Issue/_Issue---Warning.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="9a49f928ca7de2d05dd6f16b2abada06" name="docs/PHP_ConfigReport/Loader/PHP_ConfigReport_Loader.html" role="doc">
+   <file baseinstalldir="/" md5sum="8c7c98f625c20d03fa5cf4901f6cea72" name="docs/PHP_ConfigReport/Loader/PHP_ConfigReport_Loader.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="a2394116aa98abe09a09e5fdd36ce664" name="docs/PHP_ConfigReport/Loader/_Loader.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="6f88120b4c08084196d48e8d1be32d93" name="docs/PHP_ConfigReport/Loader/_Loader.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="f716cfed18b5e7dc3000b2021c20e886" name="docs/PHP_ConfigReport/Renderer/PHP_ConfigReport_Renderer_Interface.html" role="doc">
+   <file baseinstalldir="/" md5sum="11c7a2b4a15f98bb9100fe52ad2fe167" name="docs/PHP_ConfigReport/Renderer/PHP_ConfigReport_Renderer_Interface.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="8631c78c8c320365d2f4374434ca4caf" name="docs/PHP_ConfigReport/Renderer/PHP_ConfigReport_Renderer_Text.html" role="doc">
+   <file baseinstalldir="/" md5sum="2b30078fe3beacbbece94f90601dc7ce" name="docs/PHP_ConfigReport/Renderer/PHP_ConfigReport_Renderer_Text.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="a3a0ef32e3b0fbc75f3c149f540e6b5d" name="docs/PHP_ConfigReport/Renderer/_Renderer---Interface.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="ce4f0001b5c81a084729872af9c77c9a" name="docs/PHP_ConfigReport/Renderer/_Renderer---Interface.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="e1671e134e0a1a55b05528a16bf82fa3" name="docs/PHP_ConfigReport/Renderer/_Renderer---Text.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="b821c6ac8cf6389abd99e697af6656f3" name="docs/PHP_ConfigReport/Renderer/_Renderer---Text.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="a6a4c1d1672c840aac8d8b555b6e334c" name="docs/PHP_ConfigReport/Report/PHP_ConfigReport_Report.html" role="doc">
+   <file baseinstalldir="/" md5sum="56c83b597598388b12570007c9cadf25" name="docs/PHP_ConfigReport/Report/PHP_ConfigReport_Report.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="ec58432370dd73f822f1312ad8c9e977" name="docs/PHP_ConfigReport/Report/PHP_ConfigReport_Report_Section.html" role="doc">
+   <file baseinstalldir="/" md5sum="1f267c055cebd5089b8e16587c7e4692" name="docs/PHP_ConfigReport/Report/PHP_ConfigReport_Report_Section.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="fbfb0d5f1cef96a19cba4310aad551f1" name="docs/PHP_ConfigReport/Report/_Report---Section.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="1da12e30f501fd263ba8242a05ef256d" name="docs/PHP_ConfigReport/Report/_Report---Section.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="1ea99744ae60f2d08870cc84892c318e" name="docs/PHP_ConfigReport/Report/_Report.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="80d106de743b80a44229c052049009c0" name="docs/PHP_ConfigReport/Report/_Report.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="0f4be75c11ed7a4a0c607f6a73226593" name="docs/PHP_ConfigReport/Runner/PHP_ConfigReport_Runner_Abstract.html" role="doc">
+   <file baseinstalldir="/" md5sum="4d5b24e30d8c6c700f322b212aac0eda" name="docs/PHP_ConfigReport/Runner/PHP_ConfigReport_Runner_Abstract.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="3025f1ca00f690cf4c9cd369ccade130" name="docs/PHP_ConfigReport/Runner/PHP_ConfigReport_Runner_Cli.html" role="doc">
+   <file baseinstalldir="/" md5sum="702fba26b1f586c15332843ebbcde0da" name="docs/PHP_ConfigReport/Runner/PHP_ConfigReport_Runner_Cli.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="dfde64d0c64143205da514bb5cb21003" name="docs/PHP_ConfigReport/Runner/PHP_ConfigReport_Runner_Interface.html" role="doc">
+   <file baseinstalldir="/" md5sum="5c6c6611e39555d795352d3e9207b196" name="docs/PHP_ConfigReport/Runner/PHP_ConfigReport_Runner_Interface.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="adf57f985f2d6e707367367633b7f11e" name="docs/PHP_ConfigReport/Runner/_Runner---Abstract.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="8691954b8335e4b8ba1670ad29f6be1f" name="docs/PHP_ConfigReport/Runner/_Runner---Abstract.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="5bc89a35ad3e0c34a888d121f4023470" name="docs/PHP_ConfigReport/Runner/_Runner---Cli.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="2e1b6536a29029f2ed2fee7ed2e36f54" name="docs/PHP_ConfigReport/Runner/_Runner---Cli.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="1bfe7d6b64ff8293b2bcbd88790dc0ed" name="docs/PHP_ConfigReport/Runner/_Runner---Interface.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="659c52f1caaf53607010d854ca220d5a" name="docs/PHP_ConfigReport/Runner/_Runner---Interface.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="61bfd18db404419e128eb6aca3275720" name="docs/PHP_ConfigReport/Test/PHP_ConfigReport_Test_CheckTestCase.html" role="doc">
+   <file baseinstalldir="/" md5sum="56c33a4ffc10e20f1d67011104609160" name="docs/PHP_ConfigReport/Test/PHP_ConfigReport_Test_CheckTestCase.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="abb6fba4cf380d89b137cb0d78120342" name="docs/PHP_ConfigReport/Test/_Test---CheckTestCase.php.html" role="doc">
+   <file baseinstalldir="/" md5sum="80dff7a574ec6b2af998e9aa0935e730" name="docs/PHP_ConfigReport/Test/_Test---CheckTestCase.php.html" role="doc">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
    <file baseinstalldir="/" md5sum="45f4fe727e79b3630073f2a935a845bd" name="docs/Test/PHP_ConfigReport_Test_CheckTestCase.html" role="doc">
@@ -678,7 +678,7 @@
    <file baseinstalldir="/" md5sum="888fac98e66828245c2bfc8afe4b6281" name="PHP/ConfigReport/Runner/Abstract.php" role="php">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
-   <file baseinstalldir="/" md5sum="b8f5baef5f616761a5bd328f38f24d4f" name="PHP/ConfigReport/Runner/Cli.php" role="php">
+   <file baseinstalldir="/" md5sum="e58740c091230d33faa1440afe87eb9a" name="PHP/ConfigReport/Runner/Cli.php" role="php">
     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
    </file>
    <file baseinstalldir="/" md5sum="77f5b872af47e62cf8d48f35960abfab" name="PHP/ConfigReport/Runner/Interface.php" role="php">
