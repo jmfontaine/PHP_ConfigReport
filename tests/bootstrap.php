@@ -4,7 +4,7 @@ if (!defined('ROOT_PATH')) {
     define('ROOT_PATH', realpath(dirname(__FILE__) . '/../'));
 }
 if (!defined('FILES_PATH')) {
-    define('FILES_PATH', ROOT_PATH . '/Tests/_files');
+    define('FILES_PATH', ROOT_PATH . '/tests/_files');
 }
 
 // Add library path to include path

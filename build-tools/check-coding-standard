@@ -49,7 +49,7 @@ foreach ($options as $name => $value) {
 }
 
 $path     = realpath(__DIR__ . '/..');
-$command .= " $path/build-tools $path/PHP $path/Tests $path/phpcr";
+$command .= " $path/build-tools $path/PHP $path/tests $path/phpcr";
 
 passthru($command, $returnCode);
 exit($returnCode);

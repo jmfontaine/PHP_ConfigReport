@@ -13,8 +13,8 @@
   <email>jm@jmfontaine.net</email>
   <active>yes</active>
  </lead>
- <date>2010-11-23</date>
- <time>20:13:27</time>
+ <date>2010-11-26</date>
+ <time>12:16:49</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -719,7 +719,7 @@
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2010-11-23</date>
+   <date>2010-11-26</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD License</license>
    <notes>
 * v0.1.0
