@@ -288,7 +288,7 @@ EOT;
     public static function displayVersion()
     {
         self::getConsoleOutput()->outputLine(
-            'PHP_ConfigReport 0.1 by Jean-Marc Fontaine',
+            'PHP_ConfigReport 0.2-dev by Jean-Marc Fontaine',
             'version'
         );
         self::getConsoleOutput()->outputLine();
