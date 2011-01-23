@@ -29,7 +29,7 @@
 <p class="short-description">Abstract analyzer for PHP configuration</p>
 	<ul class="tags">
 				<li><span class="field">author:</span> Jean-Marc Fontaine &lt;<a href="mailto:jm@jmfontaine.net">jm@jmfontaine.net</a>&gt;</li>
-				<li><span class="field">copyright:</span> 2010 Jean-Marc Fontaine &lt;jm@jmfontaine.net&gt;</li>
+				<li><span class="field">copyright:</span> 2010-2011 Jean-Marc Fontaine &lt;jm@jmfontaine.net&gt;</li>
 				<li><span class="field">abstract:</span> </li>
 				<li><span class="field">license:</span> <a href="http://www.opensource.org/licenses/bsd-license.php">BSD License</a></li>
 			</ul>
@@ -65,10 +65,10 @@
 								 alt=" class"
 								 title=" class"
 								 style="vertical-align: center"/>
-						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Stat.html">PHP_ConfigReport_Analyzer_Apc_Stat</a>
+						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_ExposePhp.html">PHP_ConfigReport_Analyzer_Core_ExposePhp</a>
 					</td>
 					<td>
-											apc.enabled check
+											expose_php check
 										</td>
 				</tr>
 								<tr>
@@ -77,10 +77,10 @@
 								 alt=" class"
 								 title=" class"
 								 style="vertical-align: center"/>
-						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Enabled.html">PHP_ConfigReport_Analyzer_Apc_Enabled</a>
+						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_MagicQuotesGpc.html">PHP_ConfigReport_Analyzer_Core_MagicQuotesGpc</a>
 					</td>
 					<td>
-											apc.enabled check
+											magic_quotes_gpc check
 										</td>
 				</tr>
 								<tr>
@@ -89,10 +89,10 @@
 								 alt=" class"
 								 title=" class"
 								 style="vertical-align: center"/>
-						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_DisplayOrLogErrors.html">PHP_ConfigReport_Analyzer_Core_DisplayOrLogErrors</a>
+						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_RegisterLongArrays.html">PHP_ConfigReport_Analyzer_Core_RegisterLongArrays</a>
 					</td>
 					<td>
-											display_errors and log_errors check
+											register_long_arrays check
 										</td>
 				</tr>
 								<tr>
@@ -125,58 +125,34 @@
 								 alt=" class"
 								 title=" class"
 								 style="vertical-align: center"/>
+						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_DisplayErrors.html">PHP_ConfigReport_Analyzer_Core_DisplayErrors</a>
+					</td>
+					<td>
+											display_errors check
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; white-space: nowrap">
+						<img src="../../media/images/Class.png"
+								 alt=" class"
+								 title=" class"
+								 style="vertical-align: center"/>
+						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_DisplayOrLogErrors.html">PHP_ConfigReport_Analyzer_Core_DisplayOrLogErrors</a>
+					</td>
+					<td>
+											display_errors and log_errors check
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; white-space: nowrap">
+						<img src="../../media/images/Class.png"
+								 alt=" class"
+								 title=" class"
+								 style="vertical-align: center"/>
 						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_LogErrors.html">PHP_ConfigReport_Analyzer_Core_LogErrors</a>
 					</td>
 					<td>
 											log_errors check
-										</td>
-				</tr>
-								<tr>
-					<td style="padding-right: 2em; white-space: nowrap">
-						<img src="../../media/images/Class.png"
-								 alt=" class"
-								 title=" class"
-								 style="vertical-align: center"/>
-						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_RegisterLongArrays.html">PHP_ConfigReport_Analyzer_Core_RegisterLongArrays</a>
-					</td>
-					<td>
-											register_long_arrays check
-										</td>
-				</tr>
-								<tr>
-					<td style="padding-right: 2em; white-space: nowrap">
-						<img src="../../media/images/Class.png"
-								 alt=" class"
-								 title=" class"
-								 style="vertical-align: center"/>
-						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_MagicQuotesGpc.html">PHP_ConfigReport_Analyzer_Core_MagicQuotesGpc</a>
-					</td>
-					<td>
-											magic_quotes_gpc check
-										</td>
-				</tr>
-								<tr>
-					<td style="padding-right: 2em; white-space: nowrap">
-						<img src="../../media/images/Class.png"
-								 alt=" class"
-								 title=" class"
-								 style="vertical-align: center"/>
-						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_AllowUrlInclude.html">PHP_ConfigReport_Analyzer_Core_AllowUrlInclude</a>
-					</td>
-					<td>
-											allow_url_include check
-										</td>
-				</tr>
-								<tr>
-					<td style="padding-right: 2em; white-space: nowrap">
-						<img src="../../media/images/Class.png"
-								 alt=" class"
-								 title=" class"
-								 style="vertical-align: center"/>
-						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_ExposePhp.html">PHP_ConfigReport_Analyzer_Core_ExposePhp</a>
-					</td>
-					<td>
-											expose_php check
 										</td>
 				</tr>
 								<tr>
@@ -197,10 +173,34 @@
 								 alt=" class"
 								 title=" class"
 								 style="vertical-align: center"/>
-						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_DisplayErrors.html">PHP_ConfigReport_Analyzer_Core_DisplayErrors</a>
+						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_AllowUrlInclude.html">PHP_ConfigReport_Analyzer_Core_AllowUrlInclude</a>
 					</td>
 					<td>
-											display_errors check
+											allow_url_include check
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; white-space: nowrap">
+						<img src="../../media/images/Class.png"
+								 alt=" class"
+								 title=" class"
+								 style="vertical-align: center"/>
+						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Enabled.html">PHP_ConfigReport_Analyzer_Apc_Enabled</a>
+					</td>
+					<td>
+											apc.enabled check
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; white-space: nowrap">
+						<img src="../../media/images/Class.png"
+								 alt=" class"
+								 title=" class"
+								 style="vertical-align: center"/>
+						<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Stat.html">PHP_ConfigReport_Analyzer_Apc_Stat</a>
+					</td>
+					<td>
+											apc.enabled check
 										</td>
 				</tr>
 							</table>
@@ -779,16 +779,16 @@
 		<div class="notes">Redefined in descendants as:</div>
 		<ul class="redefinitions">
 					<li>
-				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Stat.html#methodisTestable">PHP_ConfigReport_Analyzer_Apc_Stat::isTestable()</a>
+				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_AllowUrlFopen.html#methodisTestable">PHP_ConfigReport_Analyzer_Core_AllowUrlFopen::isTestable()</a>
+							</li>
+					<li>
+				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_AllowUrlInclude.html#methodisTestable">PHP_ConfigReport_Analyzer_Core_AllowUrlInclude::isTestable()</a>
 							</li>
 					<li>
 				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Enabled.html#methodisTestable">PHP_ConfigReport_Analyzer_Apc_Enabled::isTestable()</a>
 							</li>
 					<li>
-				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_AllowUrlFopen.html#methodisTestable">PHP_ConfigReport_Analyzer_Core_AllowUrlFopen::isTestable()</a>
-							</li>
-					<li>
-				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_AllowUrlInclude.html#methodisTestable">PHP_ConfigReport_Analyzer_Core_AllowUrlInclude::isTestable()</a>
+				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Stat.html#methodisTestable">PHP_ConfigReport_Analyzer_Apc_Stat::isTestable()</a>
 							</li>
 				</ul>
 	</div>
@@ -966,13 +966,13 @@
 		<div class="notes">Redefined in descendants as:</div>
 		<ul class="redefinitions">
 					<li>
-				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Stat.html#method_doCheck">PHP_ConfigReport_Analyzer_Apc_Stat::_doCheck()</a>
+				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_ExposePhp.html#method_doCheck">PHP_ConfigReport_Analyzer_Core_ExposePhp::_doCheck()</a>
 							</li>
 					<li>
-				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Enabled.html#method_doCheck">PHP_ConfigReport_Analyzer_Apc_Enabled::_doCheck()</a>
+				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_MagicQuotesGpc.html#method_doCheck">PHP_ConfigReport_Analyzer_Core_MagicQuotesGpc::_doCheck()</a>
 							</li>
 					<li>
-				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_DisplayOrLogErrors.html#method_doCheck">PHP_ConfigReport_Analyzer_Core_DisplayOrLogErrors::_doCheck()</a>
+				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_RegisterLongArrays.html#method_doCheck">PHP_ConfigReport_Analyzer_Core_RegisterLongArrays::_doCheck()</a>
 							</li>
 					<li>
 				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_AllowUrlFopen.html#method_doCheck">PHP_ConfigReport_Analyzer_Core_AllowUrlFopen::_doCheck()</a>
@@ -981,25 +981,25 @@
 				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_RegisterGlobals.html#method_doCheck">PHP_ConfigReport_Analyzer_Core_RegisterGlobals::_doCheck()</a>
 							</li>
 					<li>
+				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_DisplayErrors.html#method_doCheck">PHP_ConfigReport_Analyzer_Core_DisplayErrors::_doCheck()</a>
+							</li>
+					<li>
+				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_DisplayOrLogErrors.html#method_doCheck">PHP_ConfigReport_Analyzer_Core_DisplayOrLogErrors::_doCheck()</a>
+							</li>
+					<li>
 				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_LogErrors.html#method_doCheck">PHP_ConfigReport_Analyzer_Core_LogErrors::_doCheck()</a>
-							</li>
-					<li>
-				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_RegisterLongArrays.html#method_doCheck">PHP_ConfigReport_Analyzer_Core_RegisterLongArrays::_doCheck()</a>
-							</li>
-					<li>
-				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_MagicQuotesGpc.html#method_doCheck">PHP_ConfigReport_Analyzer_Core_MagicQuotesGpc::_doCheck()</a>
-							</li>
-					<li>
-				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_AllowUrlInclude.html#method_doCheck">PHP_ConfigReport_Analyzer_Core_AllowUrlInclude::_doCheck()</a>
-							</li>
-					<li>
-				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_ExposePhp.html#method_doCheck">PHP_ConfigReport_Analyzer_Core_ExposePhp::_doCheck()</a>
 							</li>
 					<li>
 				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_MemoryLimit.html#method_doCheck">PHP_ConfigReport_Analyzer_Core_MemoryLimit::_doCheck()</a>
 							</li>
 					<li>
-				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_DisplayErrors.html#method_doCheck">PHP_ConfigReport_Analyzer_Core_DisplayErrors::_doCheck()</a>
+				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Core_AllowUrlInclude.html#method_doCheck">PHP_ConfigReport_Analyzer_Core_AllowUrlInclude::_doCheck()</a>
+							</li>
+					<li>
+				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Enabled.html#method_doCheck">PHP_ConfigReport_Analyzer_Apc_Enabled::_doCheck()</a>
+							</li>
+					<li>
+				<a href="../../PHP_ConfigReport/Analyzer/PHP_ConfigReport_Analyzer_Apc_Stat.html#method_doCheck">PHP_ConfigReport_Analyzer_Apc_Stat::_doCheck()</a>
 							</li>
 				</ul>
 	</div>
@@ -1716,7 +1716,7 @@
 
 	
 	<p class="notes" id="credit">
-		Documentation generated on Fri, 26 Nov 2010 12:18:26 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Sun, 23 Jan 2011 16:23:54 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>

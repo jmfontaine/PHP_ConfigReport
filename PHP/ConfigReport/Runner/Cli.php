@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2010, Jean-Marc Fontaine
+ * Copyright (c) 2010-2011, Jean-Marc Fontaine
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,7 @@
  * @package PHP_ConfigReport
  * @subpackage Runner
  * @author Jean-Marc Fontaine <jm@jmfontaine.net>
- * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
+ * @copyright 2010-2011 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 
@@ -44,7 +44,7 @@ require_once 'PHP/ConfigReport/Runner/Abstract.php';
  * @package PHP_ConfigReport
  * @subpackage Runner
  * @author Jean-Marc Fontaine <jm@jmfontaine.net>
- * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
+ * @copyright 2010-2011 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 class PHP_ConfigReport_Runner_Cli extends PHP_ConfigReport_Runner_Abstract

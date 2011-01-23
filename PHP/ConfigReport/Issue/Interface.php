@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2010, Jean-Marc Fontaine
+ * Copyright (c) 2010-2011, Jean-Marc Fontaine
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,7 @@
  * @package PHP_ConfigReport
  * @subpackage Issue
  * @author Jean-Marc Fontaine <jm@jmfontaine.net>
- * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
+ * @copyright 2010-2011 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 
@@ -38,7 +38,7 @@
  * @package PHP_ConfigReport
  * @subpackage Issue
  * @author Jean-Marc Fontaine <jm@jmfontaine.net>
- * @copyright 2010 Jean-Marc Fontaine <jm@jmfontaine.net>
+ * @copyright 2010-2011 Jean-Marc Fontaine <jm@jmfontaine.net>
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 interface PHP_ConfigReport_Issue_Interface

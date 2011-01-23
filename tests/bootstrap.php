@@ -11,6 +11,7 @@ if (!defined('FILES_PATH')) {
 if (!defined('INCLUDE_PATH_SET')) {
     set_include_path(
         ROOT_PATH . PATH_SEPARATOR .
+        FILES_PATH . '/classes' . PATH_SEPARATOR .
         get_include_path()
     );
     define('INCLUDE_PATH_SET', 1);
